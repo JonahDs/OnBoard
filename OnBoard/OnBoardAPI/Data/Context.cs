@@ -1,0 +1,28 @@
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using OnBoardAPI.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace OnBoardAPI.Data
+{
+    public class Context : IdentityDbContext
+    {
+        public DbSet<Order> Order { get; set; }
+        public Context(DbContextOptions<Context> options) : base(options)
+        {
+
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
+    }
+
+
+
+
+}
