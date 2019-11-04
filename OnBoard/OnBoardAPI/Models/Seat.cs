@@ -10,5 +10,7 @@ namespace OnBoardAPI.Models
         public int SeatId { get; set; }
 
         public int SeatNumber { get; set; }
+
+        public User User { get; set; }
     }
 }

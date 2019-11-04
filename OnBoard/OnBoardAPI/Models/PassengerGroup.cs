@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 
 namespace OnBoardAPI.Models
 {
-    public class Passenger: User
+    public class PassengerGroup
     {
-        public long BookingNr { get; set; }
+        public List<Passenger> Passengers { get; set; }
 
-        public PassengerGroup Group { get; set; }
+        public PassengerGroup()
+        {
+
+        }
     }
 }

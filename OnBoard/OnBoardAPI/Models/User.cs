@@ -13,8 +13,6 @@ namespace OnBoardAPI.Models
 
         public string Firstname { get; set; }
 
-        public IEnumerable<User> Users { get; set; }
-
         public IEnumerable<Order> Orders { get; set; }
     }
 }

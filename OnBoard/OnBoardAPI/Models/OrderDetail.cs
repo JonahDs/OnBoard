@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OnBoardAPI.Models
 {
-    public class ProductOrder
+    public class OrderDetail
     {
         public Product Product { get; set; }
 
