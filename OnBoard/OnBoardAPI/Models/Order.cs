@@ -1,4 +1,6 @@
-﻿namespace OnBoardAPI.Models
+﻿using OnBoardAPI.Models.Enums;
+
+namespace OnBoardAPI.Models
 {
     public class Order
     {

@@ -11,6 +11,8 @@ namespace OnBoardAPI.Data
     public class Context : IdentityDbContext
     {
         public DbSet<Order> Order { get; set; }
+        public DbSet<Product> Product { get; set; }
+
         public Context(DbContextOptions<Context> options) : base(options)
         {
 

@@ -17,6 +17,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using NSwag.Generation.Processors.Security;
 using OnBoardAPI.Data;
+using OnBoardAPI.Data.Repositories;
+using OnBoardAPI.Data.RepositoryInstances;
 
 namespace OnBoardAPI
 {
@@ -39,6 +41,8 @@ namespace OnBoardAPI
 
             services.AddScoped<DataInitializer>();
             services.AddIdentity<IdentityUser, IdentityRole>(cfg => cfg.User.RequireUniqueEmail = true).AddEntityFrameworkStores<Context>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+
 
             services.AddOpenApiDocument(c =>
             {

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using OnBoardAPI.Models;
+using OnBoardAPI.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +24,9 @@ namespace OnBoardAPI.Data
             _context.Database.EnsureDeleted();
             if (_context.Database.EnsureCreated())
             {
-
+                Product chocolateBar = new Product { ProductName = "Chocolate Bar", ProductPrice = 5.00, ProductType = ProductType.Snack, ProductDescription = "Sweet Chocolate", Sale = 0 };
+                _context.Product.Add(chocolateBar);
+                await _context.SaveChangesAsync();
             }
         }
     }

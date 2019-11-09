@@ -1,4 +1,4 @@
-﻿namespace OnBoardAPI.Models
+﻿namespace OnBoardAPI.Models.Enums
 {
     public enum OrderState
     {
