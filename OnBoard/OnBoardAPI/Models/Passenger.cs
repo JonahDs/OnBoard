@@ -8,7 +8,5 @@ namespace OnBoardAPI.Models
     public class Passenger: User
     {
         public long BookingNr { get; set; }
-
-        public PassengerGroup Group { get; set; }
     }
 }

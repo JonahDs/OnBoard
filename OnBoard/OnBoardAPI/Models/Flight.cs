@@ -20,5 +20,10 @@ namespace OnBoardAPI.Models
         public DateTime EstimatedArrival { get; set; }
 
         public string Destination { get; set; }
+
+        public Flight()
+        {
+            Seats = new List<Seat>();
+        }
     }
 }

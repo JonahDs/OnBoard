@@ -7,11 +7,11 @@ namespace OnBoardAPI.Models
 {
     public class PassengerGroup
     {
-        public List<Passenger> Passengers { get; set; }
+        public IEnumerable<Passenger> Passengers { get; set; }
 
         public PassengerGroup()
         {
-
+            Passengers = new List<Passenger>();
         }
     }
 }

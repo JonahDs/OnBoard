@@ -42,7 +42,7 @@ namespace OnBoardAPI
             services.AddScoped<DataInitializer>();
             services.AddIdentity<IdentityUser, IdentityRole>(cfg => cfg.User.RequireUniqueEmail = true).AddEntityFrameworkStores<Context>();
             services.AddScoped<IProductRepository, ProductRepository>();
-
+            services.AddScoped<IFlightRepository, FlightRepository>();
 
             services.AddOpenApiDocument(c =>
             {

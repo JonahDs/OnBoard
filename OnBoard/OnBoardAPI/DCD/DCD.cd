@@ -40,9 +40,12 @@
   <Class Name="OnBoardAPI.Models.Product">
     <Position X="10.25" Y="7" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAIAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <HashCode>EAAAAIAQAgAAAAAAAAAAgAABAAAAAAAAAAAAAAAIAAA=</HashCode>
       <FileName>Models\Product.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ProductType" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="OnBoardAPI.Models.OrderDetail">
     <Position X="10.25" Y="4.75" Width="1.5" />
@@ -85,11 +88,18 @@
       <Property Name="Passengers" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Enum Name="OnBoardAPI.Models.OrderState">
-    <Position X="12.5" Y="7" Width="1.5" />
+  <Enum Name="OnBoardAPI.Models.Enums.ProductType">
+    <Position X="12.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Enums\ProductType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="OnBoardAPI.Models.Enums.OrderState">
+    <Position X="12.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
-      <FileName>Models\OrderState.cs</FileName>
+      <FileName>Models\Enums\OrderState.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segou UI" Size="9" />
