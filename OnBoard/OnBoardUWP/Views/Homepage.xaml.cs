@@ -20,12 +20,15 @@ namespace OnBoardUWP.Views
 
     public sealed partial class Homepage : Page
     {
-        // Using the, in app.cs initialized, viewmodel for databinding
-        public HomepageViewModel ViewModel => App.HomepageModel;
+        
+        public HomepageViewModel ViewModel;
 
         public Homepage()
         {
             this.InitializeComponent();
+            // Using the, in app.cs initialized, viewmodel for databinding
+            ViewModel = App.HomepageModel;
+            
         }
     }
 }

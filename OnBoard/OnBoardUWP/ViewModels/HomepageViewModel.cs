@@ -14,19 +14,29 @@ namespace OnBoardUWP.ViewModels
     /// </summary>
     public class HomepageViewModel : BindableBase
     {
-        public Flight Flight { get; set; }
+        private Flight _flight;
+
+        public Flight Flight {
+            get {
+                return _flight;
+            }
+            set {
+                Set(ref _flight, value);
+            }
+        }
+
         private HttpClient client = new HttpClient();
 
         /// <summary>
         /// Creates a viewmodel and seeding the flight property
         /// </summary>
-        public HomepageViewModel() => Task.Run(GetFlightInformation);
+        public HomepageViewModel() => GetFlightInformation();
 
         /// <summary>
         /// Calls the api for a flight object, making sure the call succeeds to only work with 20X messages
         /// </summary>
         /// <returns></returns>
-        private async Task GetFlightInformation()
+        private async void GetFlightInformation()
         {
             Uri requestUri = new Uri("http://localhost:50236/api/flight");
 
@@ -34,7 +44,8 @@ namespace OnBoardUWP.ViewModels
             string httpResponseBody = "";
 
             try
-            {
+            {   
+
                 httpResponse = await client.GetAsync(requestUri);
                 httpResponse.EnsureSuccessStatusCode();
                 httpResponseBody = await httpResponse.Content.ReadAsStringAsync();

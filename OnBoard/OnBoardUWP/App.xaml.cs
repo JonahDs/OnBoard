@@ -1,4 +1,5 @@
-﻿using OnBoardUWP.ViewModels;
+﻿
+using OnBoardUWP.ViewModels;
 using OnBoardUWP.Views;
 using System;
 using System.Collections.Generic;
@@ -73,6 +74,7 @@ namespace OnBoardUWP
                 {
                     // Redirecting to the homepage, suppressing the navigation animation
                     rootFrame.Navigate(typeof(Homepage), null, new SuppressNavigationTransitionInfo());
+                    //rootFrame.Navigate(typeof(Homepage), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();

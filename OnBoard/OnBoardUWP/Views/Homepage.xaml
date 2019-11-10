@@ -2,14 +2,19 @@
     x:Class="OnBoardUWP.Views.Homepage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:OnBoardUWP.Views"
+    xmlns:local="using:OnBoardUWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    
-    <Grid>
-        <TextBlock Text="{x:Bind Path=ViewModel.Flight.FlightName, Mode=OneWay}"></TextBlock>
-    </Grid>
+
+    <StackPanel>
+        <TextBlock Text="Dikke layout ikr"></TextBlock>
+        <TextBlock Text="{x:Bind ViewModel.Flight.Destination, Mode=OneWay}"></TextBlock>
+        <TextBlock Text="{x:Bind ViewModel.Flight.Arrival, Mode=OneWay}"></TextBlock>
+        <TextBlock Text="{x:Bind ViewModel.Flight.Departure, Mode=OneWay}"></TextBlock>
+        <TextBlock Text="{x:Bind ViewModel.Flight.EstimatedArrival, Mode=OneWay}"></TextBlock>
+        <TextBlock Text="{x:Bind ViewModel.Flight.FlightName, Mode=OneWay}"></TextBlock>
+    </StackPanel>
 </Page>

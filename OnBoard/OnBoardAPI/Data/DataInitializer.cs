@@ -21,7 +21,7 @@ namespace OnBoardAPI.Data
 
         public async Task InitializeData()
         {
-            _context.Database.EnsureDeleted();
+            //_context.Database.EnsureDeleted();
             if (_context.Database.EnsureCreated())
             {
                 #region Products
