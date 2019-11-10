@@ -114,7 +114,7 @@ namespace OnBoardAPI
             }
 
             app.UseAuthentication();
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
             app.UseSwaggerUi3();
             app.UseOpenApi();

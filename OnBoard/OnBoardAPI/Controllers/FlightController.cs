@@ -20,6 +20,10 @@ namespace OnBoardAPI.Controllers
             _flightRepository = flightRepository;
         }
 
+        /// <summary>
+        /// Get the current flight and return it with a status code of 200
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult<Flight> GetCurrentFlight()
         {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OnBoardUWP.ViewModels;
+using OnBoardUWP.Views;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,6 +15,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 namespace OnBoardUWP
@@ -22,6 +25,11 @@ namespace OnBoardUWP
     /// </summary>
     sealed partial class App : Application
     {
+        /// <summary>
+        /// Creating a singleton of the ViewModel, providing it globally
+        /// </summary>
+        public static HomepageViewModel HomepageModel { get; } = new HomepageViewModel();
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -63,10 +71,8 @@ namespace OnBoardUWP
             {
                 if (rootFrame.Content == null)
                 {
-                    // When the navigation stack isn't restored navigate to the first page,
-                    // configuring the new page by passing required information as a navigation
-                    // parameter
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    // Redirecting to the homepage, suppressing the navigation animation
+                    rootFrame.Navigate(typeof(Homepage), null, new SuppressNavigationTransitionInfo());
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();

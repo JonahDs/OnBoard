@@ -19,22 +19,42 @@ namespace OnBoardAPI.Data.RepositoryInstances
             _products = context.Product;
         }
 
+        /// <summary>
+        /// Deletes a product and saves the changes
+        /// </summary>
+        /// <param name="productId"></param>
         public void DeleteProduct(int productId)
         {
             _products.Remove(_products.FirstOrDefault(t => t.ProductId == productId));
             _context.SaveChanges();
         }
 
+
+        /// <summary>
+        /// Get all products
+        /// </summary>
+        /// <returns> Collection of products </returns>
         public IEnumerable<Product> GetAll()
         {
             return _products.ToList();
         }
 
+        /// <summary>
+        /// Returns product with a certain ID
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns> Product object </returns>
         public Product GetProductById(int productId)
         {
             return _products.FirstOrDefault(t => t.ProductId == productId);
         }
 
+        /// <summary>
+        /// Sets sale to a product 
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="salePercentage"></param>
+        /// <returns> The new product price </returns>
         public double SetSaleOnProduct(Product product, double salePercentage)
         {
             product.SetProductSale(salePercentage);
