@@ -30,5 +30,17 @@ namespace OnBoardUWP.Views
             ViewModel = App.HomepageModel;
             
         }
+
+        private void list_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainSplitView.IsPaneOpen = !mainSplitView.IsPaneOpen;
+        }
+
+        
     }
 }
