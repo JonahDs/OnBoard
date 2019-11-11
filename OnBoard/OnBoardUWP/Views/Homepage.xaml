@@ -7,123 +7,24 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <SplitView x:Name="mainSplitView"
-        IsPaneOpen="False" DisplayMode="CompactOverlay" OpenPaneLength="170" CompactPaneLength="46">
-        <SplitView.Pane>
-            <!--<StackPanel 
-                Orientation="Vertical" 
-                Background="#FF2B2B2B" 
-                Padding="10"
-                >
-                <Button 
-                    x:Name="HamburgerButton" 
-                    FontFamily="Segoe MDL2 Assets" 
-                    Content=""
-                    Foreground="White"
-                    Background="Transparent" 
-                    Click="HamburgerButton_Click"
-                    Margin="6,5,5,10"
-                    Padding="5"
-                    />
-                <Button x:Name="ButtonHome" Background="Transparent" Foreground="White" Click="ButtonHome_Click" >
-                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                        <SymbolIcon Symbol="Home"/>
-                        <TextBlock Text="Home" Margin="18,0,0,0"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="ButtonFood" Background="Transparent" Foreground="White" Click="ButtonFood_Click" >
-                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                        <SymbolIcon Symbol="Shop"/>
-                        <TextBlock Text="Food and snacks" Margin="18,0,0,0"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="ButtonMovies" Background="Transparent" Foreground="White" Click="ButtonMovies_Click" >
-                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                        <SymbolIcon Symbol="Video"/>
-                        <TextBlock Text="Movies" Margin="18,0,0,0"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="ButtonMusic" Background="Transparent" Foreground="White" Click="ButtonMusic_Click" >
-                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                        <SymbolIcon Symbol="MusicInfo"/>
-                        <TextBlock Text="Music" Margin="18,0,0,0"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="ButtonChat" Background="Transparent" Foreground="White" Click="ButtonChat_Click" >
-                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                        <SymbolIcon Symbol="LeaveChat"/>
-                        <TextBlock Text="iChat" Margin="18,0,0,0"/>
-                    </StackPanel>
-                </Button>
-            </StackPanel>-->
-            <StackPanel Orientation="Vertical" Background="CornflowerBlue">
-                <Button x:Name="HamburgerButton" 
-                        Background="Transparent"
-                        Click="HamburgerButton_Click"
-                        Padding="10" 
-                        HorizontalAlignment="Left">
-                    <SymbolIcon Symbol="GlobalNavigationButton" />
-                </Button>
-                <ListView x:Name="list"
-                      HorizontalAlignment="Left" SelectionChanged="list_SelectionChanged" Width="170">
-                    <ListViewItem x:Name="home" IsSelected="True">
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Home" />
-                            <TextBlock Text="Home" VerticalAlignment="Center"
-                                   Margin="15,0,0,0"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="food" IsSelected="False">
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Shop" />
-                            <TextBlock Text="Food and snacks" VerticalAlignment="Center"
-                                   Margin="15,0,0,0"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="movies" IsSelected="False">
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Video" />
-                            <TextBlock Text="Movies" VerticalAlignment="Center"
-                                   Margin="15,0,0,0"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="music" IsSelected="False">
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Audio" />
-                            <TextBlock Text="Music" VerticalAlignment="Center"
-                                   Margin="15,0,0,0"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="chat" IsSelected="False">
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Message" />
-                            <TextBlock Text="iChat" VerticalAlignment="Center"
-                                   Margin="15,0,0,0"/>
-                        </StackPanel>
-                    </ListViewItem>
-                </ListView>
-            </StackPanel>
-        </SplitView.Pane>
-        <Grid x:Name="mainGrid" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="3*" />
-                <RowDefinition Height="3*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Row="1" Grid.Column="1">
-                <TextBlock Text="Dikke layout ikr"></TextBlock>
-                <TextBlock Text="{x:Bind ViewModel.Flight.Destination, Mode=OneWay}"></TextBlock>
-                <TextBlock Text="{x:Bind ViewModel.Flight.Arrival, Mode=OneWay}"></TextBlock>
-                <TextBlock Text="{x:Bind ViewModel.Flight.Departure, Mode=OneWay}"></TextBlock>
-                <TextBlock Text="{x:Bind ViewModel.Flight.EstimatedArrival, Mode=OneWay}"></TextBlock>
-                <TextBlock Text="{x:Bind ViewModel.Flight.FlightName, Mode=OneWay}"></TextBlock>
-            </StackPanel>
-        </Grid>
-    </SplitView>
-    
 
-    
+
+    <Grid x:Name="mainGrid" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="3*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Text="Dikke layout ikr"></TextBlock>
+            <TextBlock Text="{x:Bind ViewModel.Flight.Destination, Mode=OneWay}"></TextBlock>
+            <TextBlock Text="{x:Bind ViewModel.Flight.Arrival, Mode=OneWay}"></TextBlock>
+            <TextBlock Text="{x:Bind ViewModel.Flight.Departure, Mode=OneWay}"></TextBlock>
+            <TextBlock Text="{x:Bind ViewModel.Flight.EstimatedArrival, Mode=OneWay}"></TextBlock>
+            <TextBlock Text="{x:Bind ViewModel.Flight.FlightName, Mode=OneWay}"></TextBlock>
+        </StackPanel>
+    </Grid>
 </Page>
