@@ -45,7 +45,6 @@ namespace OnBoardUWP.ViewModels
 
             try
             {   
-
                 httpResponse = await client.GetAsync(requestUri);
                 httpResponse.EnsureSuccessStatusCode();
                 httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
