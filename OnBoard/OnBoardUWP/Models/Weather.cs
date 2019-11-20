@@ -9,26 +9,29 @@ namespace OnBoardUWP.Models
     public class Weather
     {
         public DateTime Date { get; set; }
+        private int _minTemperature;
         public int MinTemperature
         {
             get
             {
-                return ConvertToCelcius(MinTemperature);
+                return ConvertToCelcius(_minTemperature);
             }
             set
             {
-                MinTemperature = value;
+                _minTemperature = value;
             }
         }
+
+        private int _maxTemperature;
         public int MaxTemperature
         {
             get
             {
-                return ConvertToCelcius(MaxTemperature);
+                return ConvertToCelcius(_maxTemperature);
             }
             set
             {
-                MaxTemperature = value;
+                _maxTemperature = value;
             }
         }
 
