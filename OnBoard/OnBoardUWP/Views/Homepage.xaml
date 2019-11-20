@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
         <RelativePanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
@@ -36,24 +36,63 @@
 
         <StackPanel x:Name="weatherStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0">
 
-            <TextBlock Text="Forecast"></TextBlock>
+            <TextBlock Text="Forecast" FontSize="24pt"></TextBlock>
 
-            <ListView ItemsSource="{x:Bind WeatherViewModel.WeatherForecast, Mode=OneWay}">
+            <!--<ListView ItemsSource="{x:Bind WeatherViewModel.WeatherForecast, Mode=OneWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
 
-                            <TextBlock Text="{Binding GetDayOfDate}"></TextBlock>
-                            <TextBlock Text="{Binding DayIcon}"></TextBlock>
-                            <TextBlock Text="{Binding DayPhrase}"></TextBlock>
-                            <TextBlock Text="{Binding MaxTemperature}"></TextBlock>
-                            <TextBlock Text="{Binding MinTemperature}"></TextBlock>
+                            <TextBlock Margin="5" Text="{Binding Date.DayOfWeek}"></TextBlock>
+                            <TextBlock Margin="5" Text="{Binding DayIcon}"></TextBlock>
+                            <TextBlock Margin="5" Text="{Binding DayPhrase}"></TextBlock>
+                            <TextBlock Margin="5" Text="{Binding MaxTemperature}"></TextBlock>
+                            <TextBlock Margin="5" Text="{Binding MinTemperature}"></TextBlock>
 
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Day" FontWeight="Bold"></TextBlock>
+                
+                <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Text="Weather Information" FontWeight="Bold"></TextBlock>
+                <TextBlock HorizontalAlignment="Center" Grid.Column="3" Text="Max" FontWeight="Bold"></TextBlock>
+                <TextBlock HorizontalAlignment="Center" Grid.Column="4" Text="Min" FontWeight="Bold"></TextBlock>
+            </Grid>
+            <Grid Margin="10">
+                <ItemsControl ItemsSource="{x:Bind WeatherViewModel.WeatherForecast, Mode=OneWay}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                            <Grid Margin="0,0,0,25">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Date.DayOfWeek}"></TextBlock>
+                                <Viewbox Grid.Column="1" Margin="0,0,20,0">
+                                    <Path Fill="#FF000000" Data="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z" />
+                                </Viewbox>
+                                <!--<TextBlock Grid.Column="1" Text="{Binding DayIcon}"></TextBlock>-->
+                                <TextBlock Grid.Column="2" Text="{Binding DayPhrase}"></TextBlock>
+                                <TextBlock HorizontalAlignment="Center" Grid.Column="3" Text="{Binding MaxTemperature}"></TextBlock>
+                                <TextBlock HorizontalAlignment="Center" Grid.Column="4" Text="{Binding MinTemperature}"></TextBlock>
+                            </Grid>
 
+                        </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            </Grid>
         </StackPanel>
     </Grid>
 </Page>
