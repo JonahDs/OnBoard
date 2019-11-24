@@ -62,15 +62,15 @@
                     <ColumnDefinition Width="40"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="Day" FontWeight="Bold"></TextBlock>
-                
+
                 <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Text="Weather Information" FontWeight="Bold"></TextBlock>
                 <TextBlock HorizontalAlignment="Center" Grid.Column="3" Text="Max" FontWeight="Bold"></TextBlock>
                 <TextBlock HorizontalAlignment="Center" Grid.Column="4" Text="Min" FontWeight="Bold"></TextBlock>
             </Grid>
             <Grid Margin="10">
                 <ItemsControl ItemsSource="{x:Bind WeatherViewModel.WeatherForecast, Mode=OneWay}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
                             <Grid Margin="0,0,0,25">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
@@ -90,8 +90,8 @@
                             </Grid>
 
                         </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </Grid>
         </StackPanel>
     </Grid>
