@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnBoardUWP.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,11 @@ namespace OnBoardUWP.Views
     /// </summary>
     public sealed partial class Food : Page
     {
+        public FoodViewModel viewModel;
         public Food()
-        {
+        {   
             this.InitializeComponent();
+            viewModel = new FoodViewModel();
         }
     }
 }

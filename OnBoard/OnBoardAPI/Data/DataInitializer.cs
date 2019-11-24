@@ -21,12 +21,19 @@ namespace OnBoardAPI.Data
 
         public async Task InitializeData()
         {
-            //_context.Database.EnsureDeleted();
+            _context.Database.EnsureDeleted();
             if (_context.Database.EnsureCreated())
             {
                 #region Products
                 Product chocolateBar = new Product { ProductName = "Chocolate Bar", ProductPrice = 5.00, ProductType = ProductType.Snack, ProductDescription = "Sweet Chocolate", Sale = 0 };
-                _context.Product.Add(chocolateBar);
+
+                Product apple = new Product { ProductName = "Apple", ProductPrice = 100.00, ProductType = ProductType.Snack, ProductDescription = "Appel kut", Sale=20 };
+
+                Product hamburgerWithFries = new Product { ProductName = "Hamburger with fries", ProductPrice = 12.50, ProductType = ProductType.Dinner, ProductDescription = "Dikke hamburger junge" };
+
+
+                IEnumerable<Product> products = new List<Product> { apple, hamburgerWithFries, chocolateBar };
+                _context.Product.AddRange(products);
                 #endregion
 
                 #region PassangerGroups
