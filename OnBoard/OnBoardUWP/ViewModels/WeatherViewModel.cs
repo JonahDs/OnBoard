@@ -29,6 +29,9 @@ namespace OnBoardUWP.ViewModels
             GetWeatherInformation();
         }
 
+        /// <summary>
+        /// gets the forecast of the destination for the upcoming 5 days
+        /// </summary>
         public async void GetWeatherInformation()
         {   
             Uri requestUri = new Uri("http://dataservice.accuweather.com/forecasts/v1/daily/5day/2325604?apikey=QQNG7cuoNmPQVt0NA2MKbgagkN6Zausm&details=false&metric=false");
@@ -48,6 +51,10 @@ namespace OnBoardUWP.ViewModels
             }
         }
 
+        /// <summary>
+        /// only pick certain parts of the json response and set them to a object
+        /// </summary>
+        /// <param name="httpResponseBody"></param>
         public void MorphRequest(string httpResponseBody)
         {
             JObject weather = JObject.Parse(httpResponseBody);
