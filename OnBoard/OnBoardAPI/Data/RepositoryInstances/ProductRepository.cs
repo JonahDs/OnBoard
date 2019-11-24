@@ -59,7 +59,7 @@ namespace OnBoardAPI.Data.RepositoryInstances
         {
             product.SetProductSale(salePercentage);
             _context.SaveChanges();
-            return product.ProductPrice;
+            return product.SalePrice;
         }
     }
 }

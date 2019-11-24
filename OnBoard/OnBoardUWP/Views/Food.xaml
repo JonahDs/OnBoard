@@ -9,6 +9,23 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <StackPanel Orientation="Vertical">
+        <TextBlock Text="Promoted"></TextBlock>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListView x:Name="PromotedItems" ItemsSource="{x:Bind viewModel.ProductsOnSale}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Product">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{x:Bind ProductName}"></TextBlock>
+                            <TextBlock Text="{x:Bind ProductDescription}"></TextBlock>
+                            <TextBlock Text="{x:Bind ProductPrice}"></TextBlock>
+                            <TextBlock Text="{x:Bind SalePrice}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        <TextBlock Text="Catalogus"></TextBlock>
     <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <ListView x:Name="myLv" ItemsSource="{x:Bind viewModel.Products}">
             <ListView.ItemTemplate>
@@ -38,5 +55,6 @@
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>--> 
+    </StackPanel>
     </StackPanel>
 </Page>

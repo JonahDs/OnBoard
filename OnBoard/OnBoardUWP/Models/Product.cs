@@ -16,6 +16,8 @@ namespace OnBoardUWP.Models
 
         public double Sale { get; set; }
 
+        public double SalePrice { get; set; }
+
         public string ProductType { get; set; }
 
         public string ProductDescription { get; set; }

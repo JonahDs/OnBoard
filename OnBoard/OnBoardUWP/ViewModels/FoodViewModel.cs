@@ -14,7 +14,8 @@ namespace OnBoardUWP.ViewModels
     {
         private HttpClient client = new HttpClient();
         public ObservableCollection<Product> Products { get; set; }
-        public IEnumerable<Product> ProductsOnSale => Products?.Where(p => p.Sale > 0);
+        //public IEnumerable<Product> ProductsOnSale => Products?.Where(p => p.Sale > 0);
+        public ObservableCollection<Product> ProductsOnSale { get; set; }
 
         private Product _product;
         public Product Product { get { return this._product; } set { Set(ref _product, value); } }
@@ -25,6 +26,7 @@ namespace OnBoardUWP.ViewModels
         public FoodViewModel()
         {
             Products = new ObservableCollection<Product>();
+            ProductsOnSale = new ObservableCollection<Product>();
             GetProducts();
         }
         
@@ -50,6 +52,10 @@ namespace OnBoardUWP.ViewModels
                 foreach (Product prod in data)
                 {
                     Products.Add(prod);
+                }
+                foreach (Product p in Products) if (p.Sale > 0)
+                {
+                    ProductsOnSale.Add(p);
                 }
             }
             catch (Exception ex)
