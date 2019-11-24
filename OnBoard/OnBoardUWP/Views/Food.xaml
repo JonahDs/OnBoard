@@ -9,36 +9,63 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Orientation="Vertical">
-        <TextBlock Text="Promoted"></TextBlock>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <ListView x:Name="PromotedItems" ItemsSource="{x:Bind viewModel.ProductsOnSale}">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Product">
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Text="{x:Bind ProductName}"></TextBlock>
-                            <TextBlock Text="{x:Bind ProductDescription}"></TextBlock>
-                            <TextBlock Text="{x:Bind ProductPrice}"></TextBlock>
-                            <TextBlock Text="{x:Bind SalePrice}"></TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="3*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0">
+            <TextBlock Text="Promoted"></TextBlock>
+            <Grid>
+                <ListView x:Name="PromotedItems" ItemsSource="{x:Bind viewModel.ProductsOnSale}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Product">
+                            <StackPanel Orientation="Vertical" Width="200">
+                                <Image Width="100" Height="100">
+                                    <Image.Source>
+                                        <BitmapImage UriSource="{x:Bind ImageUrl}" ></BitmapImage>
+                                    </Image.Source>
+                                </Image>
+                                <TextBlock Text="{x:Bind ProductName}"></TextBlock>
+                                
+                                <TextBlock Text="{x:Bind ProductPrice}"></TextBlock>
+                                <TextBlock Text="{x:Bind SalePrice}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </StackPanel>
-        <TextBlock Text="Catalogus"></TextBlock>
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <ListView x:Name="myLv" ItemsSource="{x:Bind viewModel.Products}">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:Product">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{x:Bind ProductName}"></TextBlock>
-                        <TextBlock Text="{x:Bind ProductDescription}"></TextBlock>
-                        <TextBlock Text="{x:Bind ProductPrice}"></TextBlock>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    <!--<GridView x:Name="gv" ItemsSource="{x:Bind viewModel.Products}">
+        <StackPanel Orientation="Vertical" Grid.Row="1">
+            <TextBlock Text="Catalogus"></TextBlock>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <ListView x:Name="myLv" ItemsSource="{x:Bind viewModel.Products}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Product">
+                            <StackPanel Orientation="Vertical" Width="200">
+                                <Image Width="100" Height="100">
+                                    <Image.Source>
+                                        <BitmapImage UriSource="{x:Bind ImageUrl}" ></BitmapImage>
+                                    </Image.Source>
+                                </Image>
+                                <TextBlock Text="{x:Bind ProductName}"></TextBlock>
+                                
+                                <TextBlock Text="{x:Bind ProductPrice}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <!--<GridView x:Name="gv" ItemsSource="{x:Bind viewModel.Products}">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:Product">
                     <Grid>
@@ -54,7 +81,8 @@
                     <WrapGrid MaximumRowsOrColumns="5" />
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
-        </GridView>--> 
-    </StackPanel>
-    </StackPanel>
+        </GridView>-->
+            </StackPanel>
+        </StackPanel>
+    </Grid>
 </Page>

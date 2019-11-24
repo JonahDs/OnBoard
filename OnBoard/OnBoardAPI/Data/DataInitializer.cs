@@ -25,14 +25,20 @@ namespace OnBoardAPI.Data
             if (_context.Database.EnsureCreated())
             {
                 #region Products
-                Product chocolateBar = new Product { ProductName = "Chocolate Bar", ProductPrice = 5.00, ProductType = ProductType.Snack, ProductDescription = "Sweet Chocolate"};
+                Product chocolateBar = new Product { ProductName = "Chocolate Bar", ProductPrice = 5.00, ProductType = ProductType.Snack, ProductDescription = "Sweet Chocolate", ImageUrl = "https://5.imimg.com/data5/JT/VB/MY-33382055/brown-chocolate-bar-500x500.jpg" };
 
-                Product apple = new Product { ProductName = "Apple", ProductPrice = 100.00, ProductType = ProductType.Snack, ProductDescription = "Appel kut", Sale = 20, SalePrice = 80.00};
+                Product apple = new Product { ProductName = "Apple", ProductPrice = 100.00, ProductType = ProductType.Snack, ProductDescription = "Appel kut", Sale = 20, SalePrice = 80.00, ImageUrl = "https://www.lekkervanbijons.be/sites/default/files/styles/large/public/sp_image/kanzi_appel_4_0.jpg?itok=NO3Ad1rZ" };
 
-                Product hamburgerWithFries = new Product { ProductName = "Hamburger with fries", ProductPrice = 12.50, ProductType = ProductType.Dinner, ProductDescription = "Dikke hamburger junge" };
+                Product hamburgerWithFries = new Product { ProductName = "Hamburger with fries", ProductPrice = 12.50, ProductType = ProductType.Dinner, ProductDescription = "Dikke hamburger junge", ImageUrl = "https://www.lekkervanbijons.be/sites/default/files/styles/large/public/sp_image/kanzi_appel_4_0.jpg?itok=NO3Ad1rZ" };
+
+                Product pear = new Product { ProductName = "Pear", ProductPrice = 10.00, ProductType = ProductType.Snack, ProductDescription = "Peer kut", Sale = 30, SalePrice = 7.00, ImageUrl = "https://debuurman.nu/wp-content/uploads/2019/02/conferance-peer-600x600.jpg" };
+
+                Product spaghetti = new Product { ProductName = "Spaghetti", ProductPrice = 12.50, ProductType = ProductType.Dinner, ProductDescription = "Somebody toucha my spaghet", ImageUrl = "https://www.lekkervanbijons.be/sites/default/files/styles/large/public/sp_image/kanzi_appel_4_0.jpg?itok=NO3Ad1rZ" };
+
+                Product cheesecake = new Product { ProductName = "Cheesecake", ProductPrice = 8.50, ProductType = ProductType.Snack, ProductDescription = "Cheesy", ImageUrl = "https://www.lekkervanbijons.be/sites/default/files/styles/large/public/sp_image/kanzi_appel_4_0.jpg?itok=NO3Ad1rZ" };
 
 
-                IEnumerable<Product> products = new List<Product> { apple, hamburgerWithFries, chocolateBar };
+                IEnumerable<Product> products = new List<Product> { apple, hamburgerWithFries, chocolateBar, pear, spaghetti, cheesecake };
                 _context.Product.AddRange(products);
                 #endregion
 

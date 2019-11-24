@@ -16,7 +16,8 @@ namespace OnBoardAPI.Models
         public double Sale { get; set; }
 
         public double SalePrice { get; set; }
-
+    
+        public string ImageUrl { get; set; }
         // Convert the enum to a string, instead of the numeric value
         [JsonConverter(typeof(StringEnumConverter))]
         public ProductType ProductType { get; set; }

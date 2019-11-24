@@ -49,14 +49,20 @@ namespace OnBoardUWP.ViewModels
                 httpResponse.EnsureSuccessStatusCode();
                 httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                 var data = JsonConvert.DeserializeObject<ObservableCollection<Product>>(httpResponseBody);
-                foreach (Product prod in data)
+                data.ToList().ForEach(p =>
                 {
-                    Products.Add(prod);
-                }
-                foreach (Product p in Products) if (p.Sale > 0)
-                {
-                    ProductsOnSale.Add(p);
-                }
+                    if (p.Sale == 0)
+                    {
+                        Products.Add(p);
+                    }
+                    else
+                    {
+                        ProductsOnSale.Add(p);
+                    }
+                });
+
+                
+                
             }
             catch (Exception ex)
             {
