@@ -40,7 +40,7 @@ namespace OnBoardUWP.Views
         /// <param name="args"></param>
         private async void MovieSelected(object sender, ItemClickEventArgs args)
         {
-            // Fetch the rest of the movie details before navigating, task and await if needed to ensure that data collection is completed before navigating
+            // Fetch the rest of the movie details before navigating, task and await if needed to ensure this
             await movieViewModel.FetchMovieDetails(((Movie)args.ClickedItem).ImdbID);
             Frame.Navigate(typeof(SpecificMovie));
         }

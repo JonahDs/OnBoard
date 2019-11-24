@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -32,6 +34,15 @@ namespace OnBoardUWP.Views
             movieViewModel = App.MovieViewModel;
             Movie m = movieViewModel.CurrentlyViewedMovie;
         }
+
+        private void OpenMediaPlayer(object sender, RoutedEventArgs args)
+        {
+            if (!MoviePopup.IsOpen)
+            {
+                MoviePopup.IsOpen = true;
+            }
+        }
+
 
     }
 }
