@@ -87,7 +87,7 @@ namespace OnBoardUWP.ViewModels
         /// Sets the currently viewed movie
         /// </summary>
         /// <param name="movieId"></param>
-        public async void FetchMovieDetails(string movieId)
+        public async Task FetchMovieDetails(string movieId)
         {
             Uri requestUri = new Uri($"http://www.omdbapi.com/?apikey=78b40767&i={movieId}");
             string httpResponseBody = "";

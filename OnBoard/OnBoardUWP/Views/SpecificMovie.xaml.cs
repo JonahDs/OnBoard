@@ -30,6 +30,7 @@ namespace OnBoardUWP.Views
         {
             this.InitializeComponent();
             movieViewModel = App.MovieViewModel;
+            Movie m = movieViewModel.CurrentlyViewedMovie;
         }
 
     }

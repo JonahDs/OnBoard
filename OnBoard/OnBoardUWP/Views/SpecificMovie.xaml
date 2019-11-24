@@ -9,10 +9,26 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Image>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="3*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Stretch="Fill">
             <Image.Source>
                 <BitmapImage UriSource="{x:Bind movieViewModel.CurrentlyViewedMovie.Poster}"></BitmapImage>
             </Image.Source>
         </Image>
+
+        <RelativePanel Grid.Row="0" Grid.Column="1">
+            <TextBlock x:Name="MovieTitle" Text="{x:Bind movieViewModel.CurrentlyViewedMovie.Title}"></TextBlock>
+            <TextBlock x:Name="MoviePlot" TextWrapping="Wrap" Text="{x:Bind movieViewModel.CurrentlyViewedMovie.Plot}" RelativePanel.Below="MovieLanguage"></TextBlock>
+            <TextBlock x:Name="MovieLanguage" Text="{x:Bind movieViewModel.CurrentlyViewedMovie.Language}" RelativePanel.Below="MovieTitle"></TextBlock>
+            <TextBlock x:Name="MovieScore" Text="{x:Bind movieViewModel.CurrentlyViewedMovie.ImdbRating}" RelativePanel.Below="MovieTitle" RelativePanel.RightOf="MovieLanguage"></TextBlock>
+        </RelativePanel>
     </Grid>
 </Page>
