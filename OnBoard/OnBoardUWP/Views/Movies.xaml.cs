@@ -1,4 +1,5 @@
-﻿using OnBoardUWP.ViewModels;
+﻿using OnBoardUWP.Models;
+using OnBoardUWP.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,9 +29,14 @@ namespace OnBoardUWP.Views
         public MovieViewModel movieViewModel;
         public Movies()
         {
-            movieViewModel = new MovieViewModel();
+            movieViewModel = App.MovieViewModel;
             this.InitializeComponent();
         }
 
+
+        private void MovieSelected(object sender, ItemClickEventArgs args)
+        {
+            movieViewModel.FetchMovieDetails(((Movie)args.ClickedItem).ImdbID);
+        }
     }
 }

@@ -30,6 +30,7 @@ namespace OnBoardUWP
         /// Creating a singleton of the ViewModel, providing it globally
         /// </summary>
         public static HomepageViewModel HomepageModel { get; } = new HomepageViewModel();
+        public static MovieViewModel MovieViewModel { get; } = new MovieViewModel();
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code

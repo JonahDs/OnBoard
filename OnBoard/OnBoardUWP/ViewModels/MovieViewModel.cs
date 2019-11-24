@@ -26,10 +26,12 @@ namespace OnBoardUWP.ViewModels
             }
         }
 
+       
         public MovieViewModel()
         {
             Movies = new ObservableCollection<Movie>();
             GetMovies();
+
         }
 
         private async void GetMovies()
@@ -63,6 +65,11 @@ namespace OnBoardUWP.ViewModels
                 Movie m = element.ToObject<Movie>();
                 Movies.Add(element.ToObject<Movie>());
             });
+        }
+
+        public void FetchMovieDetails(string movieId)
+        {
+            int x = 0;
         }
     }
 }
