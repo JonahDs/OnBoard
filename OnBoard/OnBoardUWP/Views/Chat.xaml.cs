@@ -26,5 +26,16 @@ namespace OnBoardUWP.Views
         {
             this.InitializeComponent();
         }
+
+        public void ConnectButton_Click(object sender, RoutedEventArgs args)
+        {
+
+        }
+
+        public void SendButton_Click(object sender, RoutedEventArgs args)
+        {
+            
+        }
     }
+
 }
