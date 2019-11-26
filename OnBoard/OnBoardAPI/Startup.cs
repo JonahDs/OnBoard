@@ -19,6 +19,7 @@ using NSwag.Generation.Processors.Security;
 using OnBoardAPI.Data;
 using OnBoardAPI.Data.Repositories;
 using OnBoardAPI.Data.RepositoryInstances;
+using OnBoardAPI.Hubs;
 
 namespace OnBoardAPI
 {
@@ -43,6 +44,7 @@ namespace OnBoardAPI
             services.AddIdentity<IdentityUser, IdentityRole>(cfg => cfg.User.RequireUniqueEmail = true).AddEntityFrameworkStores<Context>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IFlightRepository, FlightRepository>();
+            services.AddSignalR();
 
             services.AddOpenApiDocument(c =>
             {
@@ -113,11 +115,18 @@ namespace OnBoardAPI
                 app.UseHsts();
             }
 
+
             app.UseAuthentication();
             //app.UseHttpsRedirection();
             app.UseMvc();
             app.UseSwaggerUi3();
             app.UseOpenApi();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chatHub");
+            });
+
             dataInitializer.InitializeData().Wait();
         }
     }
