@@ -25,20 +25,27 @@ namespace OnBoardAPI.Data
             if (_context.Database.EnsureCreated())
             {
                 #region Products
-                Product chocolateBar = new Product { ProductName = "Chocolate Bar", ProductPrice = 5.00, ProductType = ProductType.Snack, ProductDescription = "Sweet Chocolate", ImageUrl = "https://5.imimg.com/data5/JT/VB/MY-33382055/brown-chocolate-bar-500x500.jpg" };
+                Product chocolateBar = new Product { ProductName = "Chocolate Bar", ProductPrice = 5.00, ProductType = ProductType.Snack, ProductDescription = "Sweet Chocolate", ImageUrl = "http://assets.stickpng.com/thumbs/580b57fbd9996e24bc43c0d2.png" };
 
-                Product apple = new Product { ProductName = "Apple", ProductPrice = 100.00, ProductType = ProductType.Snack, ProductDescription = "Appel kut", Sale = 20, SalePrice = 80.00, ImageUrl = "https://www.lekkervanbijons.be/sites/default/files/styles/large/public/sp_image/kanzi_appel_4_0.jpg?itok=NO3Ad1rZ" };
+                Product apple = new Product { ProductName = "Apple", ProductPrice = 100.00, ProductType = ProductType.Snack, ProductDescription = "Appel kut", Sale = 20, SalePrice = 80.00, ImageUrl = "https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Fruit-PNG/Large_Red_Apple_PNG_Clipart.png?m=1507172114" };
 
-                Product hamburgerWithFries = new Product { ProductName = "Hamburger with fries", ProductPrice = 12.50, ProductType = ProductType.Dinner, ProductDescription = "Dikke hamburger junge", ImageUrl = "https://www.lekkervanbijons.be/sites/default/files/styles/large/public/sp_image/kanzi_appel_4_0.jpg?itok=NO3Ad1rZ" };
+                Product hamburgerWithFries = new Product { ProductName = "Hamburger with fries", ProductPrice = 12.50, ProductType = ProductType.Dinner, ProductDescription = "Dikke hamburger junge", ImageUrl = "https://www.freepnglogos.com/uploads/burger-png/burger-png-the-eatery-steak-special-16.png" };
 
-                Product pear = new Product { ProductName = "Pear", ProductPrice = 10.00, ProductType = ProductType.Snack, ProductDescription = "Peer kut", Sale = 30, SalePrice = 7.00, ImageUrl = "https://debuurman.nu/wp-content/uploads/2019/02/conferance-peer-600x600.jpg" };
+                Product pear = new Product { ProductName = "Pear", ProductPrice = 10.00, ProductType = ProductType.Snack, ProductDescription = "Peer kut", Sale = 30, SalePrice = 7.00, ImageUrl = "https://www.pngarts.com/files/3/Sliced-Pear-PNG-Image-Background.png" };
 
-                Product spaghetti = new Product { ProductName = "Spaghetti", ProductPrice = 12.50, ProductType = ProductType.Dinner, ProductDescription = "Somebody toucha my spaghet", ImageUrl = "https://www.lekkervanbijons.be/sites/default/files/styles/large/public/sp_image/kanzi_appel_4_0.jpg?itok=NO3Ad1rZ" };
+                Product spaghetti = new Product { ProductName = "Spaghetti", ProductPrice = 12.50, ProductType = ProductType.Dinner, ProductDescription = "Somebody toucha my spaghet", ImageUrl = "https://www.trzcacak.rs/myfile/full/454-4546713_spaghetti-with-sauce-png.png" };
 
-                Product cheesecake = new Product { ProductName = "Cheesecake", ProductPrice = 8.50, ProductType = ProductType.Snack, ProductDescription = "Cheesy", ImageUrl = "https://www.lekkervanbijons.be/sites/default/files/styles/large/public/sp_image/kanzi_appel_4_0.jpg?itok=NO3Ad1rZ" };
+                Product cake = new Product { ProductName = "Cake", ProductPrice = 8.50, ProductType = ProductType.Snack, ProductDescription = "Hmmmm cake", ImageUrl = "https://images.squarespace-cdn.com/content/v1/538500e4e4b0fa9e95efc7b9/1558977907797-27MUKZZPLWI74TIPOGED/ke17ZwdGBToddI8pDm48kMtiXMEMZ8ID8MVhA-T_Qc9Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIXpy3a2Cibo6eml5BpILeGX-BY3QvcZT7F317PmmzovI/SKOR+CC+slice.png?format=1000w" };
 
+                Product pancakes = new Product { ProductName = "Pancakes", ProductPrice = 6.00, ProductType = ProductType.Snack, ProductDescription = "Pancakes are delicious", ImageUrl = "https://purepng.com/public/uploads/large/purepng.com-pancakepancakehotcakegriddlecakeflapjack-1411528648897qeapn.png" };
 
-                IEnumerable<Product> products = new List<Product> { apple, hamburgerWithFries, chocolateBar, pear, spaghetti, cheesecake };
+                Product cake2 = new Product { ProductName = "Cake 2", ProductPrice = 8.50, ProductType = ProductType.Snack, ProductDescription = "Hmmmm cake", ImageUrl = "https://images.squarespace-cdn.com/content/v1/538500e4e4b0fa9e95efc7b9/1558977907797-27MUKZZPLWI74TIPOGED/ke17ZwdGBToddI8pDm48kMtiXMEMZ8ID8MVhA-T_Qc9Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIXpy3a2Cibo6eml5BpILeGX-BY3QvcZT7F317PmmzovI/SKOR+CC+slice.png?format=1000w" };
+
+                Product cake3 = new Product { ProductName = "Cake 3", ProductPrice = 5.50, ProductType = ProductType.Snack, ProductDescription = "Hmmmm cake", ImageUrl = "https://images.squarespace-cdn.com/content/v1/538500e4e4b0fa9e95efc7b9/1558977907797-27MUKZZPLWI74TIPOGED/ke17ZwdGBToddI8pDm48kMtiXMEMZ8ID8MVhA-T_Qc9Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIXpy3a2Cibo6eml5BpILeGX-BY3QvcZT7F317PmmzovI/SKOR+CC+slice.png?format=1000w" };
+
+                Product cake4 = new Product { ProductName = "Cake 4", ProductPrice = 8.50, ProductType = ProductType.Snack, ProductDescription = "Hmmmm cake", ImageUrl = "https://images.squarespace-cdn.com/content/v1/538500e4e4b0fa9e95efc7b9/1558977907797-27MUKZZPLWI74TIPOGED/ke17ZwdGBToddI8pDm48kMtiXMEMZ8ID8MVhA-T_Qc9Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIXpy3a2Cibo6eml5BpILeGX-BY3QvcZT7F317PmmzovI/SKOR+CC+slice.png?format=1000w" };
+
+                IEnumerable<Product> products = new List<Product> { apple, hamburgerWithFries, chocolateBar, pear, spaghetti, cake, pancakes, cake2, cake3, cake4 };
                 _context.Product.AddRange(products);
                 #endregion
 
