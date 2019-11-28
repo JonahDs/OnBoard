@@ -13,6 +13,7 @@ namespace OnBoardAPI.Data
         public DbSet<Order> Order { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Flight> Flight { get; set; }
+        public DbSet<Seat> Seat { get; set; }
 
         public Context(DbContextOptions<Context> options) : base(options)
         {

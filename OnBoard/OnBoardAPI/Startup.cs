@@ -44,6 +44,7 @@ namespace OnBoardAPI
             services.AddIdentity<IdentityUser, IdentityRole>(cfg => cfg.User.RequireUniqueEmail = true).AddEntityFrameworkStores<Context>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IFlightRepository, FlightRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddSignalR();
 
             services.AddOpenApiDocument(c =>

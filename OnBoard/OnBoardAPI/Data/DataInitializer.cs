@@ -21,7 +21,7 @@ namespace OnBoardAPI.Data
 
         public async Task InitializeData()
         {
-            //_context.Database.EnsureDeleted();
+            _context.Database.EnsureDeleted();
             if (_context.Database.EnsureCreated())
             {
                 #region Products
@@ -34,33 +34,37 @@ namespace OnBoardAPI.Data
                 #endregion
 
                 #region Passangers
-                IList<Passenger> passengers;
+
                 User passenger1 = new Passenger
                 {
                     BookingNr = 95120659,
                     Firstname = "Jonah",
-                    Name = "De Smet"
+                    Name = "De Smet",
+                    Group = group1
+
                 };
 
                 User passenger2 = new Passenger
                 {
                     BookingNr = 95120659,
                     Firstname = "Johanna",
-                    Name = "De Bruycker"
+                    Name = "De Bruycker",
+                    Group = group1
+
                 };
 
                 User passenger3 = new Passenger
                 {
                     BookingNr = 95120659,
                     Firstname = "Bram",
-                    Name = "De Bleecker"
+                    Name = "De Bleecker",
+                    Group = group1
+
                 };
 
-                passengers = new List<Passenger> { (Passenger)passenger1, (Passenger)passenger2, (Passenger)passenger3 };
-                #endregion
 
-                // Adding the passangers to passenger groups
-                group1.Passengers = passengers;
+                #endregion
+                
 
                 #region Seats
                 IList<Seat> seats;

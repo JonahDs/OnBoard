@@ -30,5 +30,6 @@ namespace OnBoardAPI.Hubs
         {
             return Clients.User(userId).SendAsync("RecieveMessage", message);
         }
+
     }
 }

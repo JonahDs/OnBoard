@@ -7,6 +7,7 @@ namespace OnBoardAPI.Models
 {
     public class PassengerGroup
     {
+        public int Id { get; set; }
         public IEnumerable<Passenger> Passengers { get; set; }
 
         public PassengerGroup()

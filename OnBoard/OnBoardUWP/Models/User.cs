@@ -12,6 +12,7 @@ namespace OnBoardUWP.Models
         public int BookingNr { get; set; }
         public string Name { get; set; }
         public string Firstname { get; set; }
+        public PassengerGroup Group { get; set; }
         public List<Order> Orders { get; set; }
     }
 }
