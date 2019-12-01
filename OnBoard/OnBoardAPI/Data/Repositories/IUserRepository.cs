@@ -9,5 +9,7 @@ namespace OnBoardAPI.Data.Repositories
     public interface IUserRepository
     {
         Seat GetUserInstanceForAppliction(int userCount);
+        IEnumerable<Message> GetUserMessages(int userId);
+        void StoreMessage(Message message);
     }
 }

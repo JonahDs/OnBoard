@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnBoardUWP.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,8 +23,13 @@ namespace OnBoardUWP.Views
     /// </summary>
     public sealed partial class Chat : Page
     {
+        private HomepageViewModel homepage;
+        private ChatViewModel chatmodel;
+
         public Chat()
         {
+            homepage = App.HomepageModel;
+            chatmodel = new ChatViewModel(homepage.Seat.User.Id);
             this.InitializeComponent();
         }
 

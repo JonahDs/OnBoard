@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace OnBoardUWP.Models
 {
-    class Message
+    public class Message
     {
-        public string UserName { get; set; }
+        public User Destinator { get; set; }
+        public string Sender { get; set; }
         public string MessageString { get; set; }
     }
 }

@@ -7,8 +7,9 @@ namespace OnBoardAPI.Models
 {
     public class Message
     {
-        public int PassengerGroupId { get; set; }
-        public string UserName { get; set; }
+        public int Id { get; set; }
+        public User Destinator { get; set; }
+        public string Sender { get; set; }
         public string MessageString { get; set; }
     }
 }

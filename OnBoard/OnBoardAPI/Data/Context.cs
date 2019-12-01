@@ -25,7 +25,8 @@ namespace OnBoardAPI.Data
             base.OnModelCreating(builder);
             builder.Entity<Passenger>();
             builder.Entity<CrewMember>();
-            builder.Entity<User>().HasDiscriminator<string>("User_Type");            
+            builder.Entity<User>().HasDiscriminator<string>("User_Type");
+
         }
     }
 
