@@ -25,9 +25,17 @@ namespace OnBoardUWP.Views
     {
         public FoodViewModel viewModel;
         public Food()
-        {   
-            this.InitializeComponent();
+        {
             viewModel = new FoodViewModel();
+            this.InitializeComponent();
+        }
+
+        private void BGRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            string foodCategory = rb.Tag.ToString();
+            viewModel.FilterProducts(foodCategory);
+            this.UpdateLayout();
         }
     }
 }
