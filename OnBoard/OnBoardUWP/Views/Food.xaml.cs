@@ -24,6 +24,16 @@ namespace OnBoardUWP.Views
     public sealed partial class Food : Page
     {
         public FoodViewModel viewModel;
+
+        private int _numValue = 0;
+
+        public int NumValue {
+            get { return _numValue; }
+            set {
+                _numValue = value;
+            }
+        }
+
         public Food()
         {
             viewModel = new FoodViewModel();
@@ -36,6 +46,28 @@ namespace OnBoardUWP.Views
             string foodCategory = rb.Tag.ToString();
             viewModel.FilterProducts(foodCategory);
             this.UpdateLayout();
+        }
+
+        private void txtNum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (tb.Text == null)
+            {
+                return;
+            }
+
+            if (!int.TryParse(tb.Text, out _numValue))
+                tb.Text = _numValue.ToString();
+        }
+
+        private void cmdUp_Click(object sender, RoutedEventArgs e)
+        {
+            NumValue++;
+        }
+
+        private void cmdDown_Click(object sender, RoutedEventArgs e)
+        {
+            NumValue--;
         }
     }
 }

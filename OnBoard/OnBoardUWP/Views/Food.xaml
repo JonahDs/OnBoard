@@ -77,6 +77,11 @@
                                             <TextBlock Text="€" Margin="0,0,2,0"></TextBlock>
                                             <TextBlock Text="{x:Bind ProductPrice}"></TextBlock>
                                         </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBox x:Name="Aantal" Margin="5,5,0,5" Width="50" Text="0" TextChanged="txtNum_TextChanged" />
+                                            <Button x:Name="cmdUp" Margin="5,5,0,5" Content="˄" Width="30" Click="cmdUp_Click" />
+                                            <Button x:Name="cmdDown" Margin="0,5,0,5"  Content="˅" Width="30" Click="cmdDown_Click" />
+                                        </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
