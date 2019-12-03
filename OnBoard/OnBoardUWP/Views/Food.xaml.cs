@@ -26,14 +26,14 @@ namespace OnBoardUWP.Views
     {
         public FoodViewModel viewModel;
 
-        private int _numValue = 0;
+        //private int _numValue = 0;
 
-        public int NumValue {
-            get { return _numValue; }
-            set {
-                _numValue = value;
-            }
-        }
+        //public int NumValue {
+        //    get { return _numValue; }
+        //    set {
+        //        _numValue = value;
+        //    }
+        //}
 
         public Food()
         {
@@ -76,7 +76,14 @@ namespace OnBoardUWP.Views
 
         private void AddProduct(object sender, RoutedEventArgs e)
         {
+            Button bt = sender as Button;
+            var productId = Convert.ToInt32(bt.Tag.ToString());
+            viewModel.AddProductToBasket(productId);
+        }
 
+        private void ToShoppingCart(object sender, RoutedEventArgs e)
+        {
+            this.foodFrame.Navigate(typeof(ShoppingCart), viewModel);
         }
     }
 }

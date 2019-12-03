@@ -122,6 +122,7 @@
     <Compile Include="Convertors\ImagePathConvertor.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Seat.cs" />
     <Compile Include="Models\User.cs" />
@@ -146,6 +147,9 @@
     </Compile>
     <Compile Include="Views\Navigation.xaml.cs">
       <DependentUpon>Navigation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShoppingCart.xaml.cs">
+      <DependentUpon>ShoppingCart.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +205,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Navigation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShoppingCart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

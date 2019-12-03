@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Frame x:Name="foodFrame">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="140"></ColumnDefinition>
@@ -22,6 +23,7 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1">
             <Grid Margin="10">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
@@ -58,7 +60,7 @@
                 <StackPanel Orientation="Vertical" Grid.Row="1">
                     <TextBlock Text="Catalogus" FontSize="30"></TextBlock>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <ListView x:Name="myLv" ItemsSource="{x:Bind viewModel.FilteredProducts, Mode=TwoWay}">
+                        <ListView x:Name="myLv" ItemsSource="{x:Bind viewModel.FilteredProducts, Mode=OneWay}">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
@@ -89,10 +91,11 @@
                         </ListView>
                     </StackPanel>
                 </StackPanel>
+                <Button Grid.Row="2" x:Name="ShoppingCart" HorizontalAlignment="Right" Content="ShoppingCart" Click="ToShoppingCart"></Button>
             </Grid>
         </ScrollViewer>
     </Grid>
-    
+    </Frame>
 </Page>
 
 <!--<GridView x:Name="gv" ItemsSource="{x:Bind viewModel.Products}">

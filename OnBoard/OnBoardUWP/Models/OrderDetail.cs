@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace OnBoardAPI.Models
+namespace OnBoardUWP.Models
 {
-    public class OrderDetail
+    class OrderDetail
     {
         public Product Product { get; set; }
 

@@ -23,6 +23,8 @@ namespace OnBoardUWP.ViewModels
         private ObservableCollection<Product> _filteredProducts;
         public ObservableCollection<Product> FilteredProducts { get { return this._filteredProducts; } set { Set(ref _filteredProducts, value); } }
 
+        private ObservableCollection<Product> _selectedProducts;
+        public ObservableCollection<Product> SelectedProducts { get { return this._selectedProducts; } set { Set(ref _selectedProducts, value); } }
         /// <summary>
         /// Constructor that calls getProducts() method
         /// </summary>
@@ -30,6 +32,7 @@ namespace OnBoardUWP.ViewModels
         {
             Products = new ObservableCollection<Product>();
             ProductsOnSale = new ObservableCollection<Product>();
+            SelectedProducts = new ObservableCollection<Product>();
             FilteredProducts = Products;
             GetProducts();
         }
@@ -72,38 +75,43 @@ namespace OnBoardUWP.ViewModels
             {
                 httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
             }
-    }
-
-    public void FilterProducts(string foodCategory)
-    {
-        switch (foodCategory)
-        {
-            case "All":
-                FilteredProducts = Products;
-                break;
-            case "Dinner":
-                FilteredProducts = new ObservableCollection<Product>(Products.Where(p => p.ProductType.Equals("Dinner")));
-                break;
-            case "Snacks":
-                FilteredProducts = new ObservableCollection<Product>(Products.Where(p => p.ProductType.Equals("Snacks")));
-                break;
-            case "Drinks":
-                FilteredProducts = new ObservableCollection<Product>(Products.Where(p => p.ProductType.Equals("Drinks")));
-                break;
         }
+
+        public void FilterProducts(string foodCategory)
+        {
+            switch (foodCategory)
+            {
+                case "All":
+                    FilteredProducts = Products;
+                    break;
+                case "Dinner":
+                    FilteredProducts = new ObservableCollection<Product>(Products.Where(p => p.ProductType.Equals("Dinner")));
+                    break;
+                case "Snacks":
+                    FilteredProducts = new ObservableCollection<Product>(Products.Where(p => p.ProductType.Equals("Snacks")));
+                    break;
+                case "Drinks":
+                    FilteredProducts = new ObservableCollection<Product>(Products.Where(p => p.ProductType.Equals("Drinks")));
+                    break;
+            }
+        }
+
+        public void AddProductToBasket(int productId)
+        {
+            var prod = Products.ToList().FirstOrDefault(p => p.ProductId == productId);
+            SelectedProducts.Add(prod);
+        }
+        //public void AddQuantity(int productId)
+        //{
+        //    Products.ToList().FirstOrDefault(p => p.ProductId == productId).Quantity++;
+        //    FilteredProducts.ToList().FirstOrDefault(p => p.ProductId == productId).Quantity++;
+        //}
+
+        //public void ReduceQuantity(int productId)
+        //{
+        //    var product = Products.ToList().FirstOrDefault(p => p.ProductId == productId);
+        //    if (product.Quantity != 0)
+        //        Products.ToList().FirstOrDefault(p => p.ProductId == productId).Quantity--;
+        //}
     }
-
-    //public void AddQuantity(int productId)
-    //{
-    //    Products.ToList().FirstOrDefault(p => p.ProductId == productId).Quantity++;
-    //    FilteredProducts.ToList().FirstOrDefault(p => p.ProductId == productId).Quantity++;
-    //}
-
-    //public void ReduceQuantity(int productId)
-    //{
-    //    var product = Products.ToList().FirstOrDefault(p => p.ProductId == productId);
-    //    if (product.Quantity != 0)
-    //        Products.ToList().FirstOrDefault(p => p.ProductId == productId).Quantity--;
-    //}
-}
 }
