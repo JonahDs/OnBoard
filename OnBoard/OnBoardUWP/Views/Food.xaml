@@ -58,7 +58,7 @@
                 <StackPanel Orientation="Vertical" Grid.Row="1">
                     <TextBlock Text="Catalogus" FontSize="30"></TextBlock>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <ListView x:Name="myLv" ItemsSource="{x:Bind viewModel.FilteredProducts, Mode=OneWay}">
+                        <ListView x:Name="myLv" ItemsSource="{x:Bind viewModel.FilteredProducts, Mode=TwoWay}">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
@@ -77,11 +77,12 @@
                                             <TextBlock Text="€" Margin="0,0,2,0"></TextBlock>
                                             <TextBlock Text="{x:Bind ProductPrice}"></TextBlock>
                                         </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBox x:Name="Aantal" Margin="5,5,0,5" Width="50" Text="0" TextChanged="txtNum_TextChanged" />
-                                            <Button x:Name="cmdUp" Margin="5,5,0,5" Content="˄" Width="30" Click="cmdUp_Click" />
+                                        <Button x:Name="AddButton" Tag="{x:Bind ProductId}" Margin="5,5,0,5" Content="+" Click="AddProduct"></Button>
+                                        <!--<StackPanel Orientation="Horizontal">
+                                            <Button x:Name="cmdUp" Tag="{x:Bind ProductId}" Margin="5,5,0,5" Content="˄" Width="30" Click="cmdUp_Click" />
+                                            <TextBlock x:Name="Quantity" Margin="5,5,0,5" Width="50" Text="{x:Bind Quantity}"></TextBlock>
                                             <Button x:Name="cmdDown" Margin="0,5,0,5"  Content="˅" Width="30" Click="cmdDown_Click" />
-                                        </StackPanel>
+                                        </StackPanel>-->
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

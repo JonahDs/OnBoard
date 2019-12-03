@@ -1,4 +1,5 @@
-﻿using OnBoardUWP.ViewModels;
+﻿using OnBoardUWP.Models;
+using OnBoardUWP.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -48,26 +49,34 @@ namespace OnBoardUWP.Views
             this.UpdateLayout();
         }
 
-        private void txtNum_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox tb = sender as TextBox;
-            if (tb.Text == null)
-            {
-                return;
-            }
+        //private void quantity_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    TextBox tb = sender as TextBox;
+        //    if (tb.Text == null)
+        //    {
+        //        return;
+        //    }
 
-            if (!int.TryParse(tb.Text, out _numValue))
-                tb.Text = _numValue.ToString();
-        }
+        //    if (!int.TryParse(tb.Text, out _numValue))
+        //        tb.Text = _numValue.ToString();
+        //}
 
-        private void cmdUp_Click(object sender, RoutedEventArgs e)
-        {
-            NumValue++;
-        }
+        //private void cmdUp_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Button bt = sender as Button;
+        //    var id = Convert.ToInt32(bt.Tag.ToString());
+        //    viewModel.AddQuantity(id);
+        //    this.UpdateLayout();
+        //}
 
-        private void cmdDown_Click(object sender, RoutedEventArgs e)
+        //private void cmdDown_Click(object sender, RoutedEventArgs e)
+        //{
+        //    NumValue--;
+        //}
+
+        private void AddProduct(object sender, RoutedEventArgs e)
         {
-            NumValue--;
+
         }
     }
 }
