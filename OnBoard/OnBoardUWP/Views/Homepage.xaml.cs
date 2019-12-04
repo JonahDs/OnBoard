@@ -22,12 +22,14 @@ namespace OnBoardUWP.Views
     {
         
         public HomepageViewModel ViewModel;
+        public WeatherViewModel WeatherViewModel;
 
         public Homepage()
         {
             this.InitializeComponent();
             // Using the, in app.cs initialized, viewmodel for databinding
             ViewModel = App.HomepageModel;
+            WeatherViewModel = new WeatherViewModel();
             
         }
     }

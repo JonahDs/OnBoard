@@ -11,8 +11,8 @@
     <AssemblyName>OnBoardUWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17763.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -121,15 +121,29 @@
     </Compile>
     <Compile Include="Convertors\ImagePathConvertor.cs" />
     <Compile Include="Models\Flight.cs" />
+    <Compile Include="Models\GlobalMethods.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Order.cs" />
+
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Product.cs" />
+
+    <Compile Include="Models\PassengerGroup.cs" />
+
     <Compile Include="Models\Seat.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Weather.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BindableBase.cs" />
+
     <Compile Include="ViewModels\FoodViewModel.cs" />
+
+    <Compile Include="ViewModels\ChatViewModel.cs" />
+
     <Compile Include="ViewModels\HomepageViewModel.cs" />
+    <Compile Include="ViewModels\MovieViewModel.cs" />
+    <Compile Include="ViewModels\WeatherViewModel.cs" />
     <Compile Include="Views\Chat.xaml.cs">
       <DependentUpon>Chat.xaml</DependentUpon>
     </Compile>
@@ -148,8 +162,13 @@
     <Compile Include="Views\Navigation.xaml.cs">
       <DependentUpon>Navigation.xaml</DependentUpon>
     </Compile>
+
     <Compile Include="Views\ShoppingCart.xaml.cs">
       <DependentUpon>ShoppingCart.xaml</DependentUpon>
+
+    <Compile Include="Views\SpecificMovie.xaml.cs">
+      <DependentUpon>SpecificMovie.xaml</DependentUpon>
+
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +178,7 @@
     <None Include="OnBoardUWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\exdee.mp4" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -175,11 +195,17 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
+      <Version>3.0.0</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.8</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Utf8Json">
+      <Version>1.3.7</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />
@@ -208,7 +234,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
     <Page Include="Views\ShoppingCart.xaml">
+
+    <Page Include="Views\SpecificMovie.xaml">
+
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

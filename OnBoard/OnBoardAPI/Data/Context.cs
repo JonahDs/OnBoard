@@ -13,6 +13,8 @@ namespace OnBoardAPI.Data
         public DbSet<Order> Order { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Flight> Flight { get; set; }
+        public DbSet<Seat> Seat { get; set; }
+        public DbSet<User> User { get; set; }
 
         public Context(DbContextOptions<Context> options) : base(options)
         {
@@ -25,6 +27,7 @@ namespace OnBoardAPI.Data
             builder.Entity<Passenger>();
             builder.Entity<CrewMember>();
             builder.Entity<User>().HasDiscriminator<string>("User_Type");
+
             builder.Entity<OrderDetail>().HasKey(shared => new
             {
                 shared.OrderId, shared.ProductId
@@ -32,6 +35,9 @@ namespace OnBoardAPI.Data
             builder.Entity<OrderDetail>().HasOne(t => t.Product).WithMany();
             builder.Entity<OrderDetail>().HasOne(t => t.Order).WithMany(t => t.OrderDetails);
             builder.Entity<Order>().HasMany(t => t.OrderDetails);
+
+
+
         }
     }
 

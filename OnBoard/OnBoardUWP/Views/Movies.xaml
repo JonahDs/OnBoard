@@ -8,8 +8,33 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="261,235,0,0" Text="MOVIES YAY" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-    </Grid>
+    <ScrollViewer>
+        <Grid>
+
+
+
+            <ListView ItemsSource="{x:Bind movieViewModel.Movies}" ItemClick="MovieSelected" IsItemClickEnabled="True">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Padding="10">
+                            <Image Stretch="Fill" Width="250" Height="300" >
+                                <Image.Source>
+                                    <BitmapImage UriSource="{Binding Poster}" ></BitmapImage>
+                                </Image.Source>
+                            </Image>
+                            <TextBlock TextWrapping="Wrap" Margin="10" TextAlignment="Center" Text="{Binding Title}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </Grid>
+    </ScrollViewer>
 </Page>

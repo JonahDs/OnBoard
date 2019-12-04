@@ -24,5 +24,7 @@ namespace OnBoardAPI.Data.RepositoryInstances
         {
             return _flights.Include(t => t.Seats).ThenInclude(t => t.User).First();
         }
+
+
     }
 }
