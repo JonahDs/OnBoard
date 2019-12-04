@@ -3,9 +3,9 @@ using OnBoardUWP.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Web.Http;
 
 namespace OnBoardUWP.ViewModels
 {
@@ -50,7 +50,7 @@ namespace OnBoardUWP.ViewModels
         public HomepageViewModel()
         {
             GetFlightInformation();
-            GetSeatInstance();
+            GetSeatInstance(1);
         }
 
         /// <summary>
@@ -62,9 +62,9 @@ namespace OnBoardUWP.ViewModels
             Flight = await GlobalMethods.ApiCall<Flight>("http://localhost:50236/api/flight", client);
         }
 
-        public async void GetSeatInstance()
+        public async void GetSeatInstance(int seatNumber)
         {
-            Seat = await GlobalMethods.ApiCall<Seat>("http://localhost:50236/api/user", client);
+            Seat = await GlobalMethods.ApiCall<Seat>($"http://localhost:50236/api/seat/{seatNumber}", client);
         }
 
         

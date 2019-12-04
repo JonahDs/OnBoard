@@ -29,7 +29,7 @@ namespace OnBoardUWP.Views
         public Chat()
         {
             homepage = App.HomepageModel;
-            chatmodel = new ChatViewModel(homepage.Seat.User.Id);
+            chatmodel = new ChatViewModel(homepage.Seat.User);
             this.InitializeComponent();
         }
 

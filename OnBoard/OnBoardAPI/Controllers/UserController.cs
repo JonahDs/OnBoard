@@ -21,12 +21,10 @@ namespace OnBoardAPI.Controllers
             _userRepository = userRepository;
         }
 
-        [HttpGet]
-        public ActionResult<Seat> GetUserInstance()
+        [HttpGet("passenerGroup/{userId}")]
+        public ActionResult<IEnumerable<User>> GetCompanionGroups(int userId)
         {
-            Seat seat = _userRepository.GetUserInstanceForAppliction(GlobalVariables.loggedInCounter);
-            GlobalVariables.IncrementLoggedCount();
-            return new OkObjectResult(seat);
+            return new OkObjectResult(_userRepository.GetUsersWithSameGroup(userId));
         }
     }
 }

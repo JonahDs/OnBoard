@@ -38,6 +38,7 @@ namespace OnBoardAPI
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IFlightRepository, FlightRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ISeatRepository, SeatRepository>();
 
             services.AddOpenApiDocument(c =>
             {
