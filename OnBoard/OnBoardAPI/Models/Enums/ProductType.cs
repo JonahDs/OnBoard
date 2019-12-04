@@ -7,6 +7,6 @@ namespace OnBoardAPI.Models.Enums
 {
     public enum ProductType
     {
-        Dinner, Snack
+        Dinner, Snacks, Drinks
     }
 }

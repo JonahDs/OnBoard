@@ -28,6 +28,16 @@ namespace OnBoardAPI.Data
             builder.Entity<CrewMember>();
             builder.Entity<User>().HasDiscriminator<string>("User_Type");
 
+            builder.Entity<OrderDetail>().HasKey(shared => new
+            {
+                shared.OrderId, shared.ProductId
+            });
+            builder.Entity<OrderDetail>().HasOne(t => t.Product).WithMany();
+            builder.Entity<OrderDetail>().HasOne(t => t.Order).WithMany(t => t.OrderDetails);
+            builder.Entity<Order>().HasMany(t => t.OrderDetails);
+
+
+
         }
     }
 
