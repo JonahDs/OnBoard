@@ -50,7 +50,6 @@ namespace OnBoardUWP.ViewModels
         public HomepageViewModel()
         {
             GetFlightInformation();
-            GetSeatInstance(1);
         }
 
         /// <summary>
