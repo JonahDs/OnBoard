@@ -165,7 +165,7 @@
 
     <Compile Include="Views\ShoppingCart.xaml.cs">
       <DependentUpon>ShoppingCart.xaml</DependentUpon>
-
+    </Compile>
     <Compile Include="Views\SpecificMovie.xaml.cs">
       <DependentUpon>SpecificMovie.xaml</DependentUpon>
 
@@ -236,7 +236,7 @@
     </Page>
 
     <Page Include="Views\ShoppingCart.xaml">
-
+    </Page>
     <Page Include="Views\SpecificMovie.xaml">
 
       <SubType>Designer</SubType>
