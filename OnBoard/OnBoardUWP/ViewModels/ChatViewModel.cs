@@ -43,6 +43,9 @@ namespace OnBoardUWP.ViewModels
             }
         }
 
+        public User Destinator { get; set; }
+
+
         public ChatViewModel(User loggedUser)
         {
             FetchMessages(loggedUser.Id);
@@ -62,16 +65,21 @@ namespace OnBoardUWP.ViewModels
         }
 
 
-
-        public async void SendMessage(int loggedUserId, int destinatorId, string messageString)
+        public void SetMessageDestinator(User destinator)
         {
-            Message message = new Message { SenderId = loggedUserId, DestinatorId = destinatorId, MessageString = messageString };
+            Destinator = destinator;
+        }
+
+
+        public async void SendMessage(string messageString, User loggedUser)
+        {
+            Message message = new Message { SenderId = loggedUser.Id, DestinatorId = Destinator.Id, MessageString = messageString };
             try
             {
-                Uri uri = new Uri("");
-                var jsonString = Utf8Json.JsonSerializer.Serialize(message).ToString();
+                Uri uri = new Uri($"http://localhost:50236/api/message/sendMessage/{message}");
+                var jsonString = JsonConvert.SerializeObject(message);
 
-                HttpStringContent content = new HttpStringContent(jsonString);
+                HttpStringContent content = new HttpStringContent(jsonString, encoding: Windows.Storage.Streams.UnicodeEncoding.Utf8, mediaType: "application/json");
                 HttpResponseMessage responseMessage = await client.PostAsync(uri, content);
                 responseMessage.EnsureSuccessStatusCode();
 

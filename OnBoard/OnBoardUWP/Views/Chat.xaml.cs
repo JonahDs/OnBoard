@@ -1,4 +1,5 @@
-﻿using OnBoardUWP.ViewModels;
+﻿using OnBoardUWP.Models;
+using OnBoardUWP.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,16 +33,20 @@ namespace OnBoardUWP.Views
             chatmodel = new ChatViewModel(homepage.Seat.User);
             this.InitializeComponent();
         }
-
-        public void ConnectButton_Click(object sender, RoutedEventArgs args)
-        {
-
-        }
+        
 
         public void SendButton_Click(object sender, RoutedEventArgs args)
         {
-            
+            chatmodel.SendMessage(messageTextBox.Text, homepage.Seat.User);
         }
+
+        public void DestinatorSet(object sender, SelectionChangedEventArgs args)
+        {
+            var selectedUser = args.AddedItems[0];
+            chatmodel.SetMessageDestinator((User)selectedUser);
+        }
+
+
     }
 
 }

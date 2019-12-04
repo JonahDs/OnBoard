@@ -3,6 +3,7 @@ using OnBoardAPI.Data.Repositories;
 using OnBoardAPI.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,13 +30,13 @@ namespace OnBoardAPI.Data.RepositoryInstances
 
         public IEnumerable<Message> GetUserMessages(int userId)
         {
-            User user =  _users.Where(t => t.Id == userId).Include(t => t.Messages).FirstOrDefault();
+            User user = _users.Where(t => t.Id == userId).Include(t => t.Messages).FirstOrDefault();
             return user.Messages;
         }
 
         public Passenger GetUserWithId(int userId)
         {
-            return _users.Where(t => t.Id == userId).OfType<Passenger>().Include(t => t.Group).FirstOrDefault();
+            return _users.Where(t => t.Id == userId).OfType<Passenger>().Include(t => t.Group).Include(t => t.Messages).FirstOrDefault();
         }
 
         public IEnumerable<User> GetUsersWithSameGroup(int userId)
@@ -46,7 +47,9 @@ namespace OnBoardAPI.Data.RepositoryInstances
 
         public void StoreMessage(Message message)
         {
-            GetUserWithId(message.Destinator.Id).Messages.ToList().Add(message);
+            Passenger passenger = GetUserWithId(message.DestinatorId);
+            passenger.AddMessage(message);
+            _context.Update(passenger);
             _context.SaveChanges();
         }
     }
