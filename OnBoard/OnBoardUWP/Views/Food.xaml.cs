@@ -83,7 +83,7 @@ namespace OnBoardUWP.Views
 
         private void ToShoppingCart(object sender, RoutedEventArgs e)
         {
-            this.foodFrame.Navigate(typeof(ShoppingCart), viewModel);
+            this.foodFrame.Navigate(typeof(ShoppingCart), viewModel.SelectedProducts);
         }
     }
 }

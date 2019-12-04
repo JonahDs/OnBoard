@@ -1,6 +1,8 @@
-﻿using OnBoardUWP.ViewModels;
+﻿using OnBoardUWP.Models;
+using OnBoardUWP.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -23,16 +25,18 @@ namespace OnBoardUWP.Views
     /// </summary>
     public sealed partial class ShoppingCart : Page
     {
-        public FoodViewModel viewModel;
+        public ShoppingCartViewModel viewModel;
 
         public ShoppingCart()
         {
+            viewModel = new ShoppingCartViewModel();
             this.InitializeComponent();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            viewModel = (FoodViewModel)e.Parameter;
+            //viewModel.SelectedProducts = new ObservableCollection<Product>((IEnumerable<Product>)e.Parameter);
+            viewModel.groupProducts((ObservableCollection<Product>)e.Parameter);
             base.OnNavigatedTo(e);
         }
     }

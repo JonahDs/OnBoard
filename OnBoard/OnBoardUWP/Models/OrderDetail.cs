@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnBoardUWP.Models
 {
-    class OrderDetail
+    public class OrderDetail
     {
         public Product Product { get; set; }
 
