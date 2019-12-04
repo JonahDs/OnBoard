@@ -13,6 +13,24 @@
             <ColumnDefinition Width="109*"/>
             <ColumnDefinition Width="288*"/>
         </Grid.ColumnDefinitions>
+        
+        
+        <ComboBox x:Name="Available_users" Header="Available Users" Height="44" Width="296" ItemsSource="{x:Bind chatmodel.Users, Mode=OneWay}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Name}">
+                            
+                        </TextBlock>
+                        <TextBlock Text="{Binding Firstname}">
+                            
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        
+        
         <Button x:Name="connectButton" Content="Connect" HorizontalAlignment="Left" Margin="275.333,63,0,0" VerticalAlignment="Top" Width="95" Click="ConnectButton_Click" Height="41" Grid.Column="1" />
         <Button x:Name="sendButton" Content="Send Message" HorizontalAlignment="Left" Margin="275.333,113,0,0" VerticalAlignment="Top" Width="95" Click="SendButton_Click" Height="41" Grid.Column="1" IsEnabled="False"/>
         <TextBox x:Name="messageTextBox" HorizontalAlignment="Left" Height="41" Margin="82,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="311" Grid.ColumnSpan="2"/>

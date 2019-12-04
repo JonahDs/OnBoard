@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
+using Newtonsoft.Json;
 using OnBoardUWP.Models;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,20 @@ namespace OnBoardUWP.ViewModels
             }
         }
 
+        private ObservableCollection<User> _users;
+
+        public ObservableCollection<User> Users
+        {
+            get
+            {
+                return _users;
+            }
+            set
+            {
+                Set(ref _users, value);
+            }
+        }
+
         public ChatViewModel(User loggedUser)
         {
             FetchMessages(loggedUser.Id);
@@ -37,16 +52,17 @@ namespace OnBoardUWP.ViewModels
 
         public async void FetchMessages(int loggedUserId)
         {
-            var list = await GlobalMethods.ApiCall<object>($"http://localhost:50236/api/message/{loggedUserId}", client);
+            var list = await GlobalMethods.ApiCall<List<Message>>($"http://localhost:50236/api/message/{loggedUserId}", client);
         }
 
         public async void FetchTextableUsers(int loggedUserId)
         {
-            var list = await GlobalMethods.ApiCall<object>($"http://localhost:50236/api/user/passengerGroup/{loggedUserId}", client);
+            var list = await GlobalMethods.ApiCall<List<User>>($"http://localhost:50236/api/user/passenerGroup/{loggedUserId}", client);
+            Users = new ObservableCollection<User>(list);   
         }
 
 
-        
+
         public async void SendMessage(int loggedUserId, int destinatorId, string messageString)
         {
             Message message = new Message { SenderId = loggedUserId, DestinatorId = destinatorId, MessageString = messageString };
@@ -56,10 +72,11 @@ namespace OnBoardUWP.ViewModels
                 var jsonString = Utf8Json.JsonSerializer.Serialize(message).ToString();
 
                 HttpStringContent content = new HttpStringContent(jsonString);
-                HttpResponseMessage responseMessage = await client.PostAsync(uri , content);
+                HttpResponseMessage responseMessage = await client.PostAsync(uri, content);
                 responseMessage.EnsureSuccessStatusCode();
 
-            } catch(Exception e)
+            }
+            catch (Exception e)
             {
                 Debug.WriteLine(e);
             }

@@ -24,7 +24,8 @@ namespace OnBoardAPI.Controllers
         [HttpGet("passenerGroup/{userId}")]
         public ActionResult<IEnumerable<User>> GetCompanionGroups(int userId)
         {
-            return new OkObjectResult(_userRepository.GetUsersWithSameGroup(userId));
+            IEnumerable<User> users = _userRepository.GetUsersWithSameGroup(userId);
+            return new OkObjectResult(users.ToList().Where(t => t.Id != userId));
         }
     }
 }
