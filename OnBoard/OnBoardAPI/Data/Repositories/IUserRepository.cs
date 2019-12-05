@@ -8,7 +8,7 @@ namespace OnBoardAPI.Data.Repositories
 {
     public interface IUserRepository
     {
-        User GetUserInstanceForAppliction(int userCount);
+        User GetCrewMemberInstance(int crewmemberId);
         IEnumerable<Message> GetUserMessages(int userId);
         void StoreMessage(Message message);
         IEnumerable<User> GetUsersWithSameGroup(int groupId);

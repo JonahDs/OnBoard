@@ -35,7 +35,6 @@ namespace OnBoardUWP.Views
             try
             {
                 homepage.GetSeatInstance(int.Parse(seatNumber.Text));
-
             }
             catch (Exception ex)
             {
@@ -45,9 +44,25 @@ namespace OnBoardUWP.Views
             Frame.Navigate(typeof(Navigation));
         }
 
+        public void ButtonAir_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                homepage.GetCrewMemberInstance(int.Parse(hostedId.Text));
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            Frame.Navigate(typeof(CrewNavigation));
+
+        }
+
         private void Textbox_BeforeChange(object sender, TextBoxBeforeTextChangingEventArgs args)
         {
             args.Cancel = args.NewText.Any(c => !char.IsDigit(c));
         }
+
     }
 }

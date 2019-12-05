@@ -84,7 +84,18 @@ namespace OnBoardAPI.Data
 
 
                 #endregion
-                
+
+                #region CrewMember
+                User Maria = new CrewMember
+                {
+                    CrewMemberID = 1234,
+                    Firstname = "Maria",
+                    Name = "Garcia",
+                };
+
+                _context.User.Add(Maria);
+                #endregion
+
 
                 #region Seats
                 IList<Seat> seats;

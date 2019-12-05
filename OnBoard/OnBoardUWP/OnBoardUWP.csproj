@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Convertors\ImagePathConvertor.cs" />
+    <Compile Include="Models\CrewMember.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\GlobalMethods.cs" />
     <Compile Include="Models\Message.cs" />
@@ -140,6 +141,9 @@
     <Compile Include="ViewModels\WeatherViewModel.cs" />
     <Compile Include="Views\Chat.xaml.cs">
       <DependentUpon>Chat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CrewNavigation.xaml.cs">
+      <DependentUpon>CrewNavigation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Food.xaml.cs">
       <DependentUpon>Food.xaml</DependentUpon>
@@ -206,6 +210,10 @@
   <ItemGroup />
   <ItemGroup>
     <Page Include="Views\Chat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CrewNavigation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
