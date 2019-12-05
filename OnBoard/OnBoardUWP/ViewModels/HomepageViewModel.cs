@@ -42,6 +42,20 @@ namespace OnBoardUWP.ViewModels
             }
         }
 
+        private CrewMember _crewMember;
+
+        public CrewMember CrewMember
+        {
+            get
+            {
+                return _crewMember;
+            }
+            set
+            {
+                Set(ref _crewMember, value);
+            }
+        }
+
         private HttpClient client = new HttpClient();
 
         /// <summary>
@@ -50,7 +64,6 @@ namespace OnBoardUWP.ViewModels
         public HomepageViewModel()
         {
             GetFlightInformation();
-            GetSeatInstance(1);
         }
 
         /// <summary>
@@ -67,6 +80,10 @@ namespace OnBoardUWP.ViewModels
             Seat = await GlobalMethods.ApiCall<Seat>($"http://localhost:50236/api/seat/{seatNumber}", client);
         }
 
-        
+        public async void GetCrewMemberInstance(int crewmemberId)
+        {
+            CrewMember = await GlobalMethods.ApiCall<CrewMember>($"http://localhost:50236/api/user/{crewmemberId}", client);
+        }
+
     }
 }
