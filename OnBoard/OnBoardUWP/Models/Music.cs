@@ -11,11 +11,6 @@ namespace OnBoardUWP.Models
         public string Title { get; set; }
         public string Link { get; set; }
         public string Artist { get; set; }
-
-        public Music()
-        {
-
-        }
-
+        public string Duration { get; set; }
     }
 }

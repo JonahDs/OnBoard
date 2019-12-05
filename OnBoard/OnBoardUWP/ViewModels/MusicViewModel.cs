@@ -14,25 +14,24 @@ namespace OnBoardUWP.ViewModels
     public class MusicViewModel : BindableBase
     {
         private HttpClient client = new HttpClient();
-        private ObservableCollection<Music> _musicList;
-        public ObservableCollection<Music> MusicList {
+        private ObservableCollection<Playlist> _playlists;
+        public ObservableCollection<Playlist> Playlists {
             get {
-                return _musicList;
+                return _playlists;
             }
             set {
-                Set(ref _musicList, value);
+                Set(ref _playlists, value);
             }
         }
 
         public MusicViewModel()
         {
-            _musicList = new ObservableCollection<Music>();
-            GetMusic();
-            var x = MusicList;
+            _playlists = new ObservableCollection<Playlist>();
+            GetPlaylists();
         }
-        private async void GetMusic()
+        private async void GetPlaylists()
         {
-            Uri requestUri = new Uri("https://api.deezer.com/playlist/955331455/tracks");
+            Uri requestUri = new Uri("https://api.deezer.com/artist/142381/playlists");
             string httpResponseBody = "";
             HttpResponseMessage httpResponse = new HttpResponseMessage();
             try
@@ -46,22 +45,19 @@ namespace OnBoardUWP.ViewModels
             {
                 httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
             }
-
-
         }
-
 
         private void MorphRequest(string httpResponseBody)
         {
             JObject json = JObject.Parse(httpResponseBody);
-            IEnumerable<JToken> trackjsonlist = json["data"].Children();
-            foreach (JToken trackjson in trackjsonlist)
+            IEnumerable<JToken> playlistjsonlist = json["data"].Children();
+            foreach (JToken playlistjson in playlistjsonlist)
             {
-                MusicList.Add(new Music()
+                Playlists.Add(new Playlist()
                 {
-                    Title = (string)trackjson["title"],
-                    Link = (string)trackjson["link"],
-                    Artist = (string)trackjson["artist"]["name"]
+                    Name = (string)playlistjson["title"],
+                    Image = (string)playlistjson["picture"],
+                    TrackList = (string)playlistjson["tracklist"]
                 });
             }
         }

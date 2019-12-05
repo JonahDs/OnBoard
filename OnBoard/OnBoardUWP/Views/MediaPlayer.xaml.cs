@@ -1,4 +1,5 @@
-﻿using OnBoardUWP.ViewModels;
+﻿using OnBoardUWP.Models;
+using OnBoardUWP.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,25 +15,28 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace OnBoardUWP.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class Music : Page
+    public sealed partial class MediaPlayer : Page
     {
-        public MusicViewModel musicViewModel;
-        public Music()
+        public MediaPlayerViewModel vm;
+        public MediaPlayer()
         {
             this.InitializeComponent();
-            musicViewModel = new MusicViewModel();
+            vm = new MediaPlayerViewModel();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {   
+            base.OnNavigatedTo(e);
+            vm.Playlist = (Playlist)e.Parameter;
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            this.Frame.Navigate(typeof(MediaPlayer), e.ClickedItem);
+        {   
+            //mediaSimple.MediaPlayer.AutoPlay = true;
         }
     }
 }
