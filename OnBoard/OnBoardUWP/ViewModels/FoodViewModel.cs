@@ -101,17 +101,5 @@ namespace OnBoardUWP.ViewModels
             var prod = Products.ToList().FirstOrDefault(p => p.ProductId == productId);
             SelectedProducts.Add(prod);
         }
-        //public void AddQuantity(int productId)
-        //{
-        //    Products.ToList().FirstOrDefault(p => p.ProductId == productId).Quantity++;
-        //    FilteredProducts.ToList().FirstOrDefault(p => p.ProductId == productId).Quantity++;
-        //}
-
-        //public void ReduceQuantity(int productId)
-        //{
-        //    var product = Products.ToList().FirstOrDefault(p => p.ProductId == productId);
-        //    if (product.Quantity != 0)
-        //        Products.ToList().FirstOrDefault(p => p.ProductId == productId).Quantity--;
-        //}
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using OnBoardAPI.Models.Enums;
+using System.Collections.Generic;
 
 namespace OnBoardAPI.Models
 {
@@ -23,6 +24,8 @@ namespace OnBoardAPI.Models
         public ProductType ProductType { get; set; }
 
         public string ProductDescription { get; set; }
+
+        public IList<OrderDetail> OrderDetails { get; set; }
 
         /// <summary>
         /// Calculates the product price when there is a sale

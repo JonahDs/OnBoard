@@ -15,8 +15,6 @@ namespace OnBoardAPI.Models
 
         public int OrderId { get; set; }
 
-        public int Id { get; set; }
-
         public int OrderedAmount { get; set; }
     }
 }

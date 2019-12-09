@@ -2,6 +2,7 @@
 using OnBoardUWP.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -26,18 +27,9 @@ namespace OnBoardUWP.Views
     {
         public FoodViewModel viewModel;
 
-        //private int _numValue = 0;
-
-        //public int NumValue {
-        //    get { return _numValue; }
-        //    set {
-        //        _numValue = value;
-        //    }
-        //}
-
         public Food()
         {
-            viewModel = new FoodViewModel();
+            viewModel = App.FoodViewModel;
             this.InitializeComponent();
         }
 
@@ -77,13 +69,19 @@ namespace OnBoardUWP.Views
         private void AddProduct(object sender, RoutedEventArgs e)
         {
             Button bt = sender as Button;
-            var productId = Convert.ToInt32(bt.Tag.ToString());
+            var productId = Convert.ToInt32(bt.Tag);
             viewModel.AddProductToBasket(productId);
         }
 
         private void ToShoppingCart(object sender, RoutedEventArgs e)
         {
-            this.foodFrame.Navigate(typeof(ShoppingCart), viewModel.SelectedProducts);
+            this.foodFrame.Navigate(typeof(ShoppingCart));
         }
+
+        //protected override void OnNavigatedTo(NavigationEventArgs e)
+        //{
+        //    viewModel.SelectedProducts = ((ObservableCollection<Product>)e.Parameter);
+        //    base.OnNavigatedTo(e);
+        //}
     }
 }

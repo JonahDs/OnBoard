@@ -11,6 +11,7 @@ namespace OnBoardAPI.Data.Repositories
         User GetUserInstanceForAppliction(int userCount);
         IEnumerable<Message> GetUserMessages(int userId);
         void StoreMessage(Message message);
+        Passenger GetUserWithId(int userId);
         IEnumerable<User> GetUsersWithSameGroup(int groupId);
     }
 }

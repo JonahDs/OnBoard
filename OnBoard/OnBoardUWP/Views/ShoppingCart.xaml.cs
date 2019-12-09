@@ -29,15 +29,24 @@ namespace OnBoardUWP.Views
 
         public ShoppingCart()
         {
-            viewModel = new ShoppingCartViewModel();
+            viewModel = new ShoppingCartViewModel(App.HomepageModel.Seat.User);
             this.InitializeComponent();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //viewModel.SelectedProducts = new ObservableCollection<Product>((IEnumerable<Product>)e.Parameter);
-            viewModel.groupProducts((ObservableCollection<Product>)e.Parameter);
+            viewModel.groupProducts(App.FoodViewModel.SelectedProducts);
             base.OnNavigatedTo(e);
+        }
+
+        private void goBackToCatalog(object sender, RoutedEventArgs e)
+        {
+            this.shoppingcartFrame.Navigate(typeof(Food));
+        }
+
+        private void placeOrder(object sender, RoutedEventArgs e)
+        {
+            viewModel.placeOrder();
         }
     }
 }

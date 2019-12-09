@@ -7,10 +7,10 @@ namespace OnBoardAPI.Models
     {
         public int OrderId { get; set; }
 
-        public User User { get; set; }
+        public Passenger Passenger { get; set; }
 
         public OrderState OrderState { get; set; }
 
-        public IEnumerable<OrderDetail> OrderDetails { get; set; }
+        public IList<OrderDetail> OrderDetails { get; set; }
     }
 }

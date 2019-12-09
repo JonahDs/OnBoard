@@ -27,14 +27,16 @@ namespace OnBoardAPI.Data
             builder.Entity<Passenger>();
             builder.Entity<CrewMember>();
             builder.Entity<User>().HasDiscriminator<string>("User_Type");
-
+            builder.Entity<User>().HasKey(t => t.Id);
+            builder.Entity<Product>().HasKey(t => t.ProductId);
+            builder.Entity<Order>().HasKey(t => t.OrderId);
+            builder.Entity<Order>().HasMany(t => t.OrderDetails);
             builder.Entity<OrderDetail>().HasKey(shared => new
             {
-                shared.OrderId, shared.ProductId
+                shared.ProductId, shared.OrderId
             });
-            builder.Entity<OrderDetail>().HasOne(t => t.Product).WithMany();
-            builder.Entity<OrderDetail>().HasOne(t => t.Order).WithMany(t => t.OrderDetails);
-            builder.Entity<Order>().HasMany(t => t.OrderDetails);
+            builder.Entity<OrderDetail>().HasOne(t => t.Product).WithMany(t => t.OrderDetails).HasForeignKey(t => t.ProductId);
+            builder.Entity<OrderDetail>().HasOne(t => t.Order).WithMany(t => t.OrderDetails).HasForeignKey(t => t.OrderId);
             builder.Entity<Passenger>().HasMany(t => t.Messages).WithOne().HasForeignKey(t => t.SenderId);
 
 

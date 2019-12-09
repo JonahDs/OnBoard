@@ -31,6 +31,7 @@ namespace OnBoardUWP
         /// </summary>
         public static HomepageViewModel HomepageModel { get; } = new HomepageViewModel();
         public static MovieViewModel MovieViewModel { get; } = new MovieViewModel();
+        public static FoodViewModel FoodViewModel { get; } = new FoodViewModel();
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
