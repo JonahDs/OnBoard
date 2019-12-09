@@ -10,7 +10,7 @@
     >
 
     <StackPanel>
-        <StackPanel Orientation="Horizontal" Padding="40" Spacing="40" x:Name="panel1">
+        <StackPanel Orientation="Horizontal" Padding="40 0" Spacing="40" x:Name="panel1">
             <StackPanel>
                 <Image Stretch="Fill" Width="250" Height="300" >
                     <Image.Source>
@@ -50,7 +50,7 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
-        <MediaElement x:Name="mediaSimple" AreTransportControlsEnabled="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="50">
+        <MediaElement x:Name="mediaSimple" AreTransportControlsEnabled="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="120">
             <MediaElement.TransportControls>
                 <MediaTransportControls IsZoomEnabled="False" IsZoomButtonVisible='False' IsSeekBarVisible="True" IsSeekEnabled="True" IsFullWindowButtonVisible="False" IsStopButtonVisible="True"/>
             </MediaElement.TransportControls>
