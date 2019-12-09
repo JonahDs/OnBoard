@@ -49,13 +49,7 @@ namespace OnBoardAPI.Controllers
             IList<OrderDetail> orderDetails = new List<OrderDetail>();
             orderdto.OrderDetails.ToList().ForEach(o =>
             {
-                orderDetails.Add(new OrderDetail()
-                {
-                    Order = order,
-                    Product = _productRepository.GetProductById(o.ProductId),
-                    ProductId = o.ProductId,
-                    OrderedAmount = o.OrderedAmount
-                });
+                orderDetails.Add(new OrderDetail(order, _productRepository.GetProductById(o.Product.ProductId), o.OrderedAmount));
             });
 
             order.OrderDetails = orderDetails;
