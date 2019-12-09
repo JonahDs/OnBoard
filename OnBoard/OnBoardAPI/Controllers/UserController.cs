@@ -27,5 +27,11 @@ namespace OnBoardAPI.Controllers
             IEnumerable<User> users = _userRepository.GetUsersWithSameGroup(userId);
             return new OkObjectResult(users.ToList().Where(t => t.Id != userId));
         }
+
+        [HttpGet("crewmember/{crewmemberId}")]
+        public ActionResult<CrewMember> GetCrewMemberInstance(int crewmemberId)
+        {
+            return new OkObjectResult(_userRepository.GetCrewMemberInstance(crewmemberId));
+        }
     }
 }

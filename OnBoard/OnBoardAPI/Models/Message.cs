@@ -8,8 +8,8 @@ namespace OnBoardAPI.Models
     public class Message
     {
         public int Id { get; set; }
-        public User Destinator { get; set; }
-        public string Sender { get; set; }
+        public int DestinatorId { get; set; }
+        public int SenderId { get; set; }
         public string MessageString { get; set; }
     }
 }

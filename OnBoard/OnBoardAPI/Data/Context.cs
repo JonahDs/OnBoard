@@ -35,7 +35,7 @@ namespace OnBoardAPI.Data
             builder.Entity<OrderDetail>().HasOne(t => t.Product).WithMany();
             builder.Entity<OrderDetail>().HasOne(t => t.Order).WithMany(t => t.OrderDetails);
             builder.Entity<Order>().HasMany(t => t.OrderDetails);
-
+            builder.Entity<Passenger>().HasMany(t => t.Messages).WithOne().HasForeignKey(t => t.SenderId);
 
 
         }

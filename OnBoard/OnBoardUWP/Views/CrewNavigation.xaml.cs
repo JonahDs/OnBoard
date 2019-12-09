@@ -1,6 +1,4 @@
-﻿using OnBoardUWP.Models;
-using OnBoardUWP.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,31 +20,21 @@ namespace OnBoardUWP.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Chat : Page
+    public sealed partial class CrewNavigation : Page
     {
-        private HomepageViewModel homepage;
-        private ChatViewModel chatmodel;
-
-        public Chat()
+        public CrewNavigation()
         {
-            homepage = App.HomepageModel;
-            chatmodel = new ChatViewModel(homepage.Seat.User);
             this.InitializeComponent();
         }
-        
 
-        public void SendButton_Click(object sender, RoutedEventArgs args)
+        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            chatmodel.SendMessage(messageTextBox.Text, homepage.Seat.User);
+            
         }
 
-        public void DestinatorSet(object sender, SelectionChangedEventArgs args)
+        private void nav_Loaded(object sender, RoutedEventArgs e)
         {
-            var selectedUser = args.AddedItems[0];
-            chatmodel.SetMessageDestinator((User)selectedUser);
+            nav.IsPaneOpen = false;
         }
-
-
     }
-
 }
