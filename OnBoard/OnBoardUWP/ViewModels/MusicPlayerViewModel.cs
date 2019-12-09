@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OnBoardUWP.ViewModels
 {
-    public class MediaPlayerViewModel : BindableBase
+    public class MusicPlayerViewModel : BindableBase
     {
         private HttpClient client = new HttpClient();
         private Playlist _playlist;
@@ -21,7 +21,7 @@ namespace OnBoardUWP.ViewModels
             }
         }
 
-        public MediaPlayerViewModel()
+        public MusicPlayerViewModel()
         {
 
         }

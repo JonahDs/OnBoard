@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -19,13 +20,13 @@ using Windows.UI.Xaml.Navigation;
 
 namespace OnBoardUWP.Views
 {
-    public sealed partial class MediaPlayer : Page
+    public sealed partial class MusicPlayer : Page
     {
-        public MediaPlayerViewModel vm;
-        public MediaPlayer()
+        public MusicPlayerViewModel vm;
+        public MusicPlayer()
         {
             this.InitializeComponent();
-            vm = new MediaPlayerViewModel();
+            vm = new MusicPlayerViewModel();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -35,8 +36,8 @@ namespace OnBoardUWP.Views
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
-        {   
-            //mediaSimple.MediaPlayer.AutoPlay = true;
+        {
+            mediaSimple.Source = new Uri(((Music)e.ClickedItem).Link);
         }
     }
 }

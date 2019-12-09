@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace OnBoardUWP.ViewModels
 {
-    public class MusicViewModel : BindableBase
+    public class MusicPlaylistsViewModel : BindableBase
     {
         private HttpClient client = new HttpClient();
         private ObservableCollection<Playlist> _playlists;
@@ -24,7 +24,7 @@ namespace OnBoardUWP.ViewModels
             }
         }
 
-        public MusicViewModel()
+        public MusicPlaylistsViewModel()
         {
             _playlists = new ObservableCollection<Playlist>();
             GetPlaylists();

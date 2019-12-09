@@ -138,9 +138,9 @@
     <Compile Include="ViewModels\FoodViewModel.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\HomepageViewModel.cs" />
-    <Compile Include="ViewModels\MediaPlayerViewModel.cs" />
+    <Compile Include="ViewModels\MusicPlayerViewModel.cs" />
     <Compile Include="ViewModels\MovieViewModel.cs" />
-    <Compile Include="ViewModels\MusicViewModel.cs" />
+    <Compile Include="ViewModels\MusicPlaylistsViewModel.cs" />
     <Compile Include="ViewModels\WeatherViewModel.cs" />
     <Compile Include="Views\Chat.xaml.cs">
       <DependentUpon>Chat.xaml</DependentUpon>
@@ -151,14 +151,14 @@
     <Compile Include="Views\Homepage.xaml.cs">
       <DependentUpon>Homepage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MediaPlayer.xaml.cs">
-      <DependentUpon>MediaPlayer.xaml</DependentUpon>
+    <Compile Include="Views\MusicPlayer.xaml.cs">
+      <DependentUpon>MusicPlayer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Movies.xaml.cs">
       <DependentUpon>Movies.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Music.xaml.cs">
-      <DependentUpon>Music.xaml</DependentUpon>
+    <Compile Include="Views\MusicPlaylists.xaml.cs">
+      <DependentUpon>MusicPlaylists.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Navigation.xaml.cs">
       <DependentUpon>Navigation.xaml</DependentUpon>
@@ -221,7 +221,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MediaPlayer.xaml">
+    <Page Include="Views\MusicPlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -229,7 +229,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Music.xaml">
+    <Page Include="Views\MusicPlaylists.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
