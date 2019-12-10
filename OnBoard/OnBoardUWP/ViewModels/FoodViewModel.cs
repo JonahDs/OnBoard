@@ -67,9 +67,6 @@ namespace OnBoardUWP.ViewModels
                         ProductsOnSale.Add(p);
                     }
                 });
-
-
-
             }
             catch (Exception ex)
             {
@@ -98,8 +95,24 @@ namespace OnBoardUWP.ViewModels
 
         public void AddProductToBasket(int productId)
         {
-            var prod = Products.ToList().FirstOrDefault(p => p.ProductId == productId);
-            SelectedProducts.Add(prod);
+            var product = Products.ToList().FirstOrDefault(p => p.ProductId == productId);
+            if(product != null)
+            {
+                SelectedProducts.Add(product);
+            } else
+            {
+                product = ProductsOnSale.ToList().FirstOrDefault(p => p.ProductId == productId);
+                SelectedProducts.Add(product);
+            }
+        }
+
+        public void DeleteProductFromBasket(int productId)
+        {
+            var prod = SelectedProducts.FirstOrDefault(p => p.ProductId == productId);
+            if(prod != null)
+            {
+                SelectedProducts.Remove(prod);
+            }
         }
     }
 }

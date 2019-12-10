@@ -36,24 +36,47 @@ namespace OnBoardAPI.Controllers
             return new OkObjectResult(_orderRepository.GetAll());
         }
 
+        /// <summary>
+        /// Get all orders from a certain passenger and return it with a 200 status code
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        [HttpGet("orders/{userId}")]
+        public ActionResult<IEnumerable<Order>> GetAllOrdersFromPassenger(int userId)
+        {
+            Passenger passenger = _userRepository.GetUserWithId(userId);
+            return new OkObjectResult(_orderRepository.GetOrdersById(passenger.Id));
+        }
+
+        /// <summary>
+        /// Place an order and return ok if the order went through
+        /// </summary>
+        /// <param name="orderdto"></param>
+        /// <returns></returns>
         [HttpPost("place/{orderdto}")]
         public ActionResult PlaceOrder(OrderDTO orderdto)
         {
-            Order order = new Order()
+            try
             {
-                Passenger = _userRepository.GetUserWithId(orderdto.Passenger.Id),
-                //(Passenger)orderdto.Passenger,
-                OrderState = orderdto.OrderState
-            };
+                Order order = new Order()
+                {
+                    Passenger = _userRepository.GetUserWithId(orderdto.Passenger.Id),
+                    //(Passenger)orderdto.Passenger,
+                    OrderState = orderdto.OrderState
+                };
 
-            IList<OrderDetail> orderDetails = new List<OrderDetail>();
-            orderdto.OrderDetails.ToList().ForEach(o =>
+                IList<OrderDetail> orderDetails = new List<OrderDetail>();
+                orderdto.OrderDetails.ToList().ForEach(o =>
+                {
+                    orderDetails.Add(new OrderDetail(order, _productRepository.GetProductById(o.Product.ProductId), o.OrderedAmount));
+                });
+
+                order.OrderDetails = orderDetails;
+                _orderRepository.PlaceOrder(order);
+            } catch (Exception e)
             {
-                orderDetails.Add(new OrderDetail(order, _productRepository.GetProductById(o.Product.ProductId), o.OrderedAmount));
-            });
-
-            order.OrderDetails = orderDetails;
-            _orderRepository.PlaceOrder(order);
+                return BadRequest();
+            }
             return Ok();
         }
     }

@@ -9,109 +9,102 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Frame x:Name="foodFrame">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="140"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Vertical" Grid.Column="0" Margin="20,260,0,0">
-            <RadioButton Content="All" Tag="All" Checked="BGRadioButton_Checked" IsChecked="True"/>
-            <RadioButton Content="Dinner" Tag="Dinner" Checked="BGRadioButton_Checked"/>
-            <RadioButton Content="Snacks" Tag="Snacks" Checked="BGRadioButton_Checked"/>
-            <RadioButton Content="Drinks" Tag="Drinks" Checked="BGRadioButton_Checked"/>
-        </StackPanel>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1">
-            <Grid Margin="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <StackPanel Orientation="Vertical" Grid.Row="0">
-                    <TextBlock Text="Promoted" FontSize="30"></TextBlock>
-                    <Grid>
-                        <ListView x:Name="PromotedItems" ItemsSource="{x:Bind viewModel.ProductsOnSale}">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="models:Product">
-                                    <StackPanel Orientation="Vertical" Width="180">
-                                        <Image Width="auto" Height="100" Margin="10">
-                                            <Image.Source>
-                                                <BitmapImage UriSource="{x:Bind ImageUrl}"></BitmapImage>
-                                            </Image.Source>
-                                        </Image>
-                                        <TextBlock Text="{x:Bind ProductName}" FontWeight="Medium" TextAlignment="Center" FontSize="16"></TextBlock>
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
-                                            <TextBlock Text="€" Margin="0,0,2,0"></TextBlock>
-                                            <TextBlock Text="{x:Bind ProductPrice}" TextDecorations="Strikethrough"></TextBlock>
-                                            <TextBlock Text=" -> €" Margin="0,0,2,0"></TextBlock>
-                                            <TextBlock Text="{x:Bind SalePrice}"></TextBlock>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" Grid.Column="0" Margin="20,260,0,0">
+                <RadioButton Content="All" Tag="All" Checked="BGRadioButton_Checked" IsChecked="True"/>
+                <RadioButton Content="Dinner" Tag="Dinner" Checked="BGRadioButton_Checked"/>
+                <RadioButton Content="Snacks" Tag="Snacks" Checked="BGRadioButton_Checked"/>
+                <RadioButton Content="Drinks" Tag="Drinks" Checked="BGRadioButton_Checked"/>
+                <Button x:Name="ShoppingCart" HorizontalAlignment="Center" Content="ShoppingCart" Margin="0,40,0,0" Click="ToShoppingCart"></Button>
+                <Button x:Name="OrderHistory" HorizontalAlignment="Center" Content="Order history" Margin="0,10,0,0" Click="ToOrderHistory"></Button>
+            </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Vertical" Grid.Row="0">
+                        <TextBlock Text="Promoted" FontSize="30"></TextBlock>
+                        <Grid>
+                            <ListView x:Name="PromotedItems" ItemsSource="{x:Bind viewModel.ProductsOnSale}">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="models:Product">
+                                        <StackPanel Orientation="Vertical" Width="180">
+                                            <Image Width="auto" Height="100" Margin="10">
+                                                <Image.Source>
+                                                    <BitmapImage UriSource="{x:Bind ImageUrl}"></BitmapImage>
+                                                </Image.Source>
+                                            </Image>
+                                            <TextBlock Text="{x:Bind ProductName}" FontWeight="Medium" TextAlignment="Center" FontSize="16"></TextBlock>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                                                <TextBlock Text="€" Margin="0,0,2,0"></TextBlock>
+                                                <TextBlock Text="{x:Bind ProductPrice}" TextDecorations="Strikethrough"></TextBlock>
+                                                <TextBlock Text=" -> €" Margin="0,0,2,0"></TextBlock>
+                                                <TextBlock Text="{x:Bind SalePrice}"></TextBlock>
+                                            </StackPanel>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Button x:Name="Delete" Grid.Column="0" HorizontalAlignment="Left" Tag="{x:Bind ProductId}" Width="30" Margin="0,0,0,10" Content="-" Click="DeleteProduct"></Button>
+                                                <Button x:Name="Add" Grid.Column="1" HorizontalAlignment="Right" Tag="{x:Bind ProductId}" Width="30" Margin="0,0,0,10" Content="+" Click="AddProduct"></Button>
+                                            </Grid>
                                         </StackPanel>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Grid>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Grid.Row="1">
-                    <TextBlock Text="Catalogus" FontSize="30"></TextBlock>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <ListView x:Name="myLv" ItemsSource="{x:Bind viewModel.FilteredProducts, Mode=OneWay}">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="models:Product">
-                                    <StackPanel Orientation="Vertical" Width="180">
-                                        <Image Width="auto" Height="100" Margin="10">
-                                            <Image.Source>
-                                                <BitmapImage UriSource="{x:Bind ImageUrl}"></BitmapImage>
-                                            </Image.Source>
-                                        </Image>
-                                        <TextBlock Text="{x:Bind ProductName}" FontWeight="Medium" TextAlignment="Center" FontSize="16"></TextBlock>
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
-                                            <TextBlock Text="€" Margin="0,0,2,0"></TextBlock>
-                                            <TextBlock Text="{x:Bind ProductPrice}"></TextBlock>
-                                        </StackPanel>
-                                        <Button x:Name="AddButton" Tag="{x:Bind ProductId}" Margin="5,5,0,5" Content="+" Click="AddProduct"></Button>
-                                        <!--<StackPanel Orientation="Horizontal">
-                                            <Button x:Name="cmdUp" Tag="{x:Bind ProductId}" Margin="5,5,0,5" Content="˄" Width="30" Click="cmdUp_Click" />
-                                            <TextBlock x:Name="Quantity" Margin="5,5,0,5" Width="50" Text="{x:Bind Quantity}"></TextBlock>
-                                            <Button x:Name="cmdDown" Margin="0,5,0,5"  Content="˅" Width="30" Click="cmdDown_Click" />
-                                        </StackPanel>-->
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
                     </StackPanel>
-                </StackPanel>
-                <Button Grid.Row="2" x:Name="ShoppingCart" HorizontalAlignment="Right" Content="ShoppingCart" Click="ToShoppingCart"></Button>
-            </Grid>
-        </ScrollViewer>
-    </Grid>
+                    <StackPanel Orientation="Vertical" Grid.Row="1">
+                        <TextBlock Text="Catalog" FontSize="30"></TextBlock>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <ListView x:Name="myLv" ItemsSource="{x:Bind viewModel.FilteredProducts, Mode=OneWay}">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="models:Product">
+                                        <StackPanel Orientation="Vertical" Width="180">
+                                            <Image Width="auto" Height="100" Margin="10">
+                                                <Image.Source>
+                                                    <BitmapImage UriSource="{x:Bind ImageUrl}"></BitmapImage>
+                                                </Image.Source>
+                                            </Image>
+                                            <TextBlock Text="{x:Bind ProductName}" FontWeight="Medium" TextAlignment="Center" FontSize="16"></TextBlock>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,5">
+                                                <TextBlock Text="€" Margin="0,0,2,0"></TextBlock>
+                                                <TextBlock Text="{x:Bind ProductPrice}"></TextBlock>
+                                            </StackPanel>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Button x:Name="DeleteButton" Grid.Column="0" HorizontalAlignment="Left" Tag="{x:Bind ProductId}" Width="30" Margin="0,0,0,10" Content="-" Click="DeleteProduct"></Button>
+                                                <Button x:Name="AddButton" Grid.Column="1" HorizontalAlignment="Right" Tag="{x:Bind ProductId}" Width="30" Margin="0,0,0,10" Content="+" Click="AddProduct"></Button>
+                                            </Grid>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                </Grid>
+            </ScrollViewer>
+        </Grid>
     </Frame>
 </Page>
-
-<!--<GridView x:Name="gv" ItemsSource="{x:Bind viewModel.Products}">
-            <GridView.ItemTemplate>
-                <DataTemplate x:DataType="models:Product">
-                    <Grid>
-                        <Image Stretch="Fill" Source="{x:Bind ImageUrl}" Height="192" Width="342" />
-                        <Border Opacity=".8" Background="Black" VerticalAlignment="Bottom" >
-                            <TextBlock Text="{x:Bind ProductName}" FontSize="18"/>
-                        </Border>
-                    </Grid>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-            <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapGrid MaximumRowsOrColumns="5" />
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
-        </GridView>-->

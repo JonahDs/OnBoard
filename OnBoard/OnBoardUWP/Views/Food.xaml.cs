@@ -41,31 +41,6 @@ namespace OnBoardUWP.Views
             this.UpdateLayout();
         }
 
-        //private void quantity_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    TextBox tb = sender as TextBox;
-        //    if (tb.Text == null)
-        //    {
-        //        return;
-        //    }
-
-        //    if (!int.TryParse(tb.Text, out _numValue))
-        //        tb.Text = _numValue.ToString();
-        //}
-
-        //private void cmdUp_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Button bt = sender as Button;
-        //    var id = Convert.ToInt32(bt.Tag.ToString());
-        //    viewModel.AddQuantity(id);
-        //    this.UpdateLayout();
-        //}
-
-        //private void cmdDown_Click(object sender, RoutedEventArgs e)
-        //{
-        //    NumValue--;
-        //}
-
         private void AddProduct(object sender, RoutedEventArgs e)
         {
             Button bt = sender as Button;
@@ -78,10 +53,16 @@ namespace OnBoardUWP.Views
             this.foodFrame.Navigate(typeof(ShoppingCart));
         }
 
-        //protected override void OnNavigatedTo(NavigationEventArgs e)
-        //{
-        //    viewModel.SelectedProducts = ((ObservableCollection<Product>)e.Parameter);
-        //    base.OnNavigatedTo(e);
-        //}
+        private void DeleteProduct(object sender, RoutedEventArgs e)
+        {
+            Button bt = sender as Button;
+            var productId = Convert.ToInt32(bt.Tag);
+            viewModel.DeleteProductFromBasket(productId);
+        }
+
+        private void ToOrderHistory(object sender, RoutedEventArgs e)
+        {
+            this.foodFrame.Navigate(typeof(OrderHistory));
+        }
     }
 }
