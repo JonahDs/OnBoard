@@ -9,5 +9,6 @@ namespace OnBoardAPI.Data.Repositories
     public interface ISeatRepository
     {
         Seat GetSeatInstanceWithSeatNumber(int seatNumber);
+        void SwitchUsersFromSeats(Seat s1, Seat s2);
     }
 }
