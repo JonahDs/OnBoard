@@ -55,7 +55,7 @@ namespace OnBoardAPI.Data.RepositoryInstances
 
             //return orderDTOs;
             //_orderDetails.Where(o => o.Order.Passenger.Id == userId).Include(o => o.Product).Include(o => o.Order);
-            return _orders.Where(o => o.Passenger.Id == userId).Include(o => o.OrderDetails).ToList();
+            return _orders.Where(o => o.Passenger.Id == userId).Include(o => o.OrderDetails).ThenInclude(o => o.Product).ToList();
         }
 
         public void PlaceOrder(Order order)

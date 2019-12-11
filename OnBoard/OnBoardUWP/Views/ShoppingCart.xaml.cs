@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -44,9 +45,11 @@ namespace OnBoardUWP.Views
             this.shoppingcartFrame.Navigate(typeof(Food));
         }
 
-        private void placeOrder(object sender, RoutedEventArgs e)
+        private async void placeOrder(object sender, RoutedEventArgs e)
         {
             viewModel.placeOrder();
+            this.shoppingcartFrame.Navigate(typeof(Food));
+            await new MessageDialog("", "Your order has been placed!").ShowAsync();
         }
     }
 }

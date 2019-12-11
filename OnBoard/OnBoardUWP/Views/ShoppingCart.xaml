@@ -51,7 +51,6 @@
                     </StackPanel>
                         <Button x:Name="PlaceOrder" Grid.Column="2" Content="Place Order" HorizontalAlignment="Right" Click="placeOrder" Margin="0,14,0,40"></Button>
                     </Grid>
-                    
                 </StackPanel>
             </ScrollViewer>
         </Grid>

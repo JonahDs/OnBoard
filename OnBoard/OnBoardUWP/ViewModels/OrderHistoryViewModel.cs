@@ -22,6 +22,7 @@ namespace OnBoardUWP.ViewModels
         public OrderHistoryViewModel(User loggedUser)
         {
             LoggedUser = loggedUser;
+            Orders = new ObservableCollection<Order>();
             GetOrders();
         }
 
@@ -45,10 +46,11 @@ namespace OnBoardUWP.ViewModels
                 var data = JsonConvert.DeserializeObject<ObservableCollection<Order>>(httpResponseBody);
                 data.ToList().ForEach(o =>
                 {
+                    Orders.Add(o);
                     //Order order = new Order()
                     //{
                     //    Passenger = o.Passenger,
-                    //    OrderState = o.OrderState.ToString(),
+                    //    OrderState = o.OrderState
                     //};
 
                     //ICollection<OrderDetail> orderDetails = new Collection<OrderDetail>();

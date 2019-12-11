@@ -25,7 +25,8 @@ namespace OnBoardAPI.Models
 
         public string ProductDescription { get; set; }
 
-        public IList<OrderDetail> OrderDetails { get; set; }
+        [JsonIgnore]
+        public IEnumerable<OrderDetail> OrderDetails { get; set; }
 
         /// <summary>
         /// Calculates the product price when there is a sale

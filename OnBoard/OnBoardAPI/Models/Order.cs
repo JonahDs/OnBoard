@@ -1,4 +1,6 @@
-﻿using OnBoardAPI.Models.Enums;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using OnBoardAPI.Models.Enums;
 using System.Collections.Generic;
 
 namespace OnBoardAPI.Models
@@ -9,8 +11,9 @@ namespace OnBoardAPI.Models
 
         public Passenger Passenger { get; set; }
 
+        [JsonConverter(typeof(StringEnumConverter))]
         public OrderState OrderState { get; set; }
 
-        public IList<OrderDetail> OrderDetails { get; set; }
+        public IEnumerable<OrderDetail> OrderDetails { get; set; }
     }
 }
