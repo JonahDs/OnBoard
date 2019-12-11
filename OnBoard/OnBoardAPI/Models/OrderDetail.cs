@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,14 +10,24 @@ namespace OnBoardAPI.Models
     {
         public Product Product { get; set; }
 
+        [JsonIgnore]
         public Order Order { get; set; }
 
         public int ProductId { get; set; }
 
         public int OrderId { get; set; }
 
-        public int Id { get; set; }
-
         public int OrderedAmount { get; set; }
+
+        public OrderDetail() { }
+
+        public OrderDetail(Order order, Product product, int orderedAmount)
+        {
+            OrderId = order.OrderId;
+            ProductId = product.ProductId;
+            Order = order;
+            Product = Product;
+            OrderedAmount = orderedAmount;
+        }
     }
 }

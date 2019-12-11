@@ -12,6 +12,7 @@ namespace OnBoardAPI.Data.RepositoryInstances
     public class UserRepository : IUserRepository
     {
 
+
         private readonly DbSet<User> _users;
 
         private readonly Context _context;

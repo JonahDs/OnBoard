@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using OnBoardAPI.Models.Enums;
+using System.Collections.Generic;
 
 namespace OnBoardAPI.Models
 {
@@ -16,13 +17,16 @@ namespace OnBoardAPI.Models
         public double Sale { get; set; }
 
         public double SalePrice { get; set; }
-    
+
         public string ImageUrl { get; set; }
         // Convert the enum to a string, instead of the numeric value
         [JsonConverter(typeof(StringEnumConverter))]
         public ProductType ProductType { get; set; }
 
         public string ProductDescription { get; set; }
+
+        [JsonIgnore]
+        public IEnumerable<OrderDetail> OrderDetails { get; set; }
 
         /// <summary>
         /// Calculates the product price when there is a sale
