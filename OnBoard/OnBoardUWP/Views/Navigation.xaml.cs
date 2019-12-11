@@ -46,7 +46,7 @@ namespace OnBoardUWP.Views
                     mainFrame.Navigate(typeof(Movies));
                     break;
                 case "music":
-                    mainFrame.Navigate(typeof(Music));
+                    mainFrame.Navigate(typeof(MusicPlaylists));
                     break;
                 case "chat":
                     mainFrame.Navigate(typeof(Chat));
