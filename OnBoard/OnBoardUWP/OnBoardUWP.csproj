@@ -141,8 +141,12 @@
     <Compile Include="ViewModels\HomepageViewModel.cs" />
     <Compile Include="ViewModels\MusicPlayerViewModel.cs" />
     <Compile Include="ViewModels\MovieViewModel.cs" />
+
+    <Compile Include="ViewModels\OrderHistoryViewModel.cs" />
+    <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
+
     <Compile Include="ViewModels\SeatViewModel.cs" />
-    <Compile Include="ViewModels\MusicPlaylistsViewModel.cs" />
+
     <Compile Include="ViewModels\WeatherViewModel.cs" />
     <Compile Include="Views\Chat.xaml.cs">
       <DependentUpon>Chat.xaml</DependentUpon>
@@ -174,6 +178,11 @@
     <Compile Include="Views\Navigation.xaml.cs">
       <DependentUpon>Navigation.xaml</DependentUpon>
     </Compile>
+
+    <Compile Include="Views\OrderHistory.xaml.cs">
+      <DependentUpon>OrderHistory.xaml</DependentUpon>
+    </Compile>
+
     <Compile Include="Views\ShoppingCart.xaml.cs">
       <DependentUpon>ShoppingCart.xaml</DependentUpon>
     </Compile>
@@ -211,7 +220,9 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.8</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls.DataGrid">
+
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
+
       <Version>6.0.0</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
@@ -263,6 +274,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
+    <Page Include="Views\OrderHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+
     <Page Include="Views\ShoppingCart.xaml">
     </Page>
     <Page Include="Views\SpecificMovie.xaml">

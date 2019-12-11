@@ -2,6 +2,7 @@
 using OnBoardUWP.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -26,18 +27,9 @@ namespace OnBoardUWP.Views
     {
         public FoodViewModel viewModel;
 
-        //private int _numValue = 0;
-
-        //public int NumValue {
-        //    get { return _numValue; }
-        //    set {
-        //        _numValue = value;
-        //    }
-        //}
-
         public Food()
         {
-            viewModel = new FoodViewModel();
+            viewModel = App.FoodViewModel;
             this.InitializeComponent();
         }
 
@@ -49,41 +41,28 @@ namespace OnBoardUWP.Views
             this.UpdateLayout();
         }
 
-        //private void quantity_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    TextBox tb = sender as TextBox;
-        //    if (tb.Text == null)
-        //    {
-        //        return;
-        //    }
-
-        //    if (!int.TryParse(tb.Text, out _numValue))
-        //        tb.Text = _numValue.ToString();
-        //}
-
-        //private void cmdUp_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Button bt = sender as Button;
-        //    var id = Convert.ToInt32(bt.Tag.ToString());
-        //    viewModel.AddQuantity(id);
-        //    this.UpdateLayout();
-        //}
-
-        //private void cmdDown_Click(object sender, RoutedEventArgs e)
-        //{
-        //    NumValue--;
-        //}
-
         private void AddProduct(object sender, RoutedEventArgs e)
         {
             Button bt = sender as Button;
-            var productId = Convert.ToInt32(bt.Tag.ToString());
+            var productId = Convert.ToInt32(bt.Tag);
             viewModel.AddProductToBasket(productId);
         }
 
         private void ToShoppingCart(object sender, RoutedEventArgs e)
         {
-            this.foodFrame.Navigate(typeof(ShoppingCart), viewModel);
+            this.foodFrame.Navigate(typeof(ShoppingCart));
+        }
+
+        private void DeleteProduct(object sender, RoutedEventArgs e)
+        {
+            Button bt = sender as Button;
+            var productId = Convert.ToInt32(bt.Tag);
+            viewModel.DeleteProductFromBasket(productId);
+        }
+
+        private void ToOrderHistory(object sender, RoutedEventArgs e)
+        {
+            this.foodFrame.Navigate(typeof(OrderHistory));
         }
     }
 }

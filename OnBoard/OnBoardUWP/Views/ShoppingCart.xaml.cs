@@ -1,11 +1,14 @@
-﻿using OnBoardUWP.ViewModels;
+﻿using OnBoardUWP.Models;
+using OnBoardUWP.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,17 +26,30 @@ namespace OnBoardUWP.Views
     /// </summary>
     public sealed partial class ShoppingCart : Page
     {
-        public FoodViewModel viewModel;
+        public ShoppingCartViewModel viewModel;
 
         public ShoppingCart()
         {
+            viewModel = new ShoppingCartViewModel(App.HomepageModel.Seat.User);
             this.InitializeComponent();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            viewModel = (FoodViewModel)e.Parameter;
+            viewModel.groupProducts(App.FoodViewModel.SelectedProducts);
             base.OnNavigatedTo(e);
+        }
+
+        private void goBackToCatalog(object sender, RoutedEventArgs e)
+        {
+            this.shoppingcartFrame.Navigate(typeof(Food));
+        }
+
+        private async void placeOrder(object sender, RoutedEventArgs e)
+        {
+            viewModel.placeOrder();
+            this.shoppingcartFrame.Navigate(typeof(Food));
+            await new MessageDialog("", "Your order has been placed!").ShowAsync();
         }
     }
 }
