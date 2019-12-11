@@ -82,6 +82,7 @@ namespace OnBoardUWP.ViewModels
                 HttpStringContent content = new HttpStringContent(jsonString, encoding: Windows.Storage.Streams.UnicodeEncoding.Utf8, mediaType: "application/json");
                 HttpResponseMessage responseMessage = await client.PostAsync(uri, content);
                 responseMessage.EnsureSuccessStatusCode();
+
             }
             catch (Exception e)
             {
