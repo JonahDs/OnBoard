@@ -75,8 +75,8 @@ namespace OnBoardUWP
                 if (rootFrame.Content == null)
                 {
                     // Redirecting to the homepage, suppressing the navigation animation
-                    rootFrame.Navigate(typeof(Navigation), null, new SuppressNavigationTransitionInfo());
-                    //rootFrame.Navigate(typeof(Homepage), e.Arguments);
+                    rootFrame.Navigate(typeof(Login), null, new SuppressNavigationTransitionInfo());
+                    //rootFrame.Navigate(typeof(Navigation), null, new SuppressNavigationTransitionInfo());
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();

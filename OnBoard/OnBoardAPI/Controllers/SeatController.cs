@@ -28,5 +28,24 @@ namespace OnBoardAPI.Controllers
             return new OkObjectResult(_seatRepository.GetSeatInstanceWithSeatNumber(seatNumber));
         }
 
+        [HttpPut("switchSeats/{seatNrOne}/{seatNrTwo}")]
+        public ActionResult SwitchSeats(int seatNrOne, int seatNrTwo)
+        {
+            try
+            {
+                Seat seatInstanceOne = _seatRepository.GetSeatInstanceWithSeatNumber(seatNrOne);
+                Seat seatInstanceTwo = _seatRepository.GetSeatInstanceWithSeatNumber(seatNrTwo);
+                User bufferUser = seatInstanceOne.User;
+                seatInstanceOne.User = seatInstanceTwo.User;
+                seatInstanceTwo.User = bufferUser;
+                _seatRepository.SwitchUsersFromSeats(seatInstanceOne, seatInstanceTwo);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+            return Ok();
+        }
+
     }
 }

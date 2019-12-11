@@ -7,6 +7,6 @@ namespace OnBoardAPI.Models
 {
     public class CrewMember: User
     {
-        
+        public int CrewMemberID { get; set; }
     }
 }

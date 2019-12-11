@@ -23,11 +23,6 @@ namespace OnBoardAPI.Data.RepositoryInstances
         }
 
 
-        public User GetUserInstanceForAppliction(int userCount)
-        {
-            return GetUserWithId(userCount);
-        }
-
         public IEnumerable<Message> GetUserMessages(int userId)
         {
             User user = _users.Where(t => t.Id == userId).Include(t => t.Messages).FirstOrDefault();
@@ -51,6 +46,11 @@ namespace OnBoardAPI.Data.RepositoryInstances
             passenger.AddMessage(message);
             _context.Update(passenger);
             _context.SaveChanges();
+        }
+
+        public User GetCrewMemberInstance(int crewmemberId)
+        {
+            return _users.OfType<CrewMember>().Where(t => t.CrewMemberID == crewmemberId).FirstOrDefault();
         }
     }
 }

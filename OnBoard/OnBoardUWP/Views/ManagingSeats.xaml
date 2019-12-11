@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="OnBoardUWP.Views.ManagingSeats"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OnBoardUWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <ScrollViewer>
+            <controls:DataGrid x:Name="dataGrid" ItemsSource="{x:Bind homepageViewModel.Flight.Seats, Mode=OneWay}" AutoGenerateColumns="False">
+                <controls:DataGrid.Columns>
+                    <controls:DataGridTemplateColumn Header="Select User">
+                        <controls:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox Checked="SelectedUser" Unchecked="DeselectUser" Tag="{Binding SeatNumber}"></CheckBox>
+                            </DataTemplate>
+                        </controls:DataGridTemplateColumn.CellTemplate>
+                    </controls:DataGridTemplateColumn>
+                    <controls:DataGridTextColumn
+                        Header="Seat Number"
+                        Width="SizeToHeader"
+                        Binding="{Binding SeatNumber}"
+                        FontSize="15"
+                    />
+                    <controls:DataGridTextColumn
+                        Header="Passanger Name"
+                        Width="SizeToHeader"
+                        Binding="{Binding User.Name}"
+                        FontSize="15"
+                    />
+                    <controls:DataGridTextColumn
+                        Header="Passanger Firstname"
+                        Width="SizeToHeader"
+                        Binding="{Binding User.Firstname}"
+                        FontSize="15"
+                    />
+                    <controls:DataGridTextColumn
+                        Header="Passanger BookingNr"
+                        Width="SizeToHeader"
+                        Binding="{Binding User.BookingNr}"
+                        FontSize="15"
+                    />
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+        </ScrollViewer>
+        <Button Content="Switch Passangers" Click="Switch"></Button>
+    </Grid>
+</Page>
