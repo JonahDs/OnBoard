@@ -8,10 +8,10 @@ namespace OnBoardUWP.Models
 {
     public class Order
     {
-        public User Passenger { get; set; }
+        public int OrderId { get; set; }
+
+        public User User { get; set; }
 
         public string OrderState { get; set; }
-
-        public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }
