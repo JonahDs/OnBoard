@@ -29,7 +29,17 @@ namespace OnBoardUWP.Views
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            
+            NavigationViewItem selectedItem = (NavigationViewItem)args.SelectedItem;
+
+            string selectedTag = selectedItem.Tag.ToString();
+
+            switch (selectedTag)
+            {
+                case "seats":
+                    mainFrame.Navigate(typeof(ManagingSeats));
+                    break;
+               
+            }
         }
 
         private void nav_Loaded(object sender, RoutedEventArgs e)

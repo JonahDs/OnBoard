@@ -23,5 +23,12 @@ namespace OnBoardAPI.Data.RepositoryInstances
         {
             return _seats.Where(t => t.SeatNumber == seatNumber).Include(t => t.User).FirstOrDefault();
         }
+
+        public void SwitchUsersFromSeats(Seat s1, Seat s2)
+        {
+            _context.Update(s1);
+            _context.Update(s2);
+            _context.SaveChanges();
+        }
     }
 }
