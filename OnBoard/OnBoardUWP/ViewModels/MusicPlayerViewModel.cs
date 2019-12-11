@@ -3,9 +3,9 @@ using OnBoardUWP.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Web.Http;
 
 namespace OnBoardUWP.ViewModels
 {
@@ -13,9 +13,11 @@ namespace OnBoardUWP.ViewModels
     {
         private HttpClient client = new HttpClient();
         private Playlist _playlist;
-        public Playlist Playlist {
+        public Playlist Playlist
+        {
             get { return this._playlist; }
-            set {
+            set
+            {
                 Set(ref _playlist, value);
                 GetMusic();
             }
@@ -62,9 +64,9 @@ namespace OnBoardUWP.ViewModels
                     Artist = (string)musicjson["artist"]["name"],
                     Link = (string)musicjson["preview"],
                     Duration = TimeSpan.FromSeconds((double)musicjson["duration"]).ToString(@"mm\:ss")
-            });
+                });
             }
-           
+
 
         }
     }
