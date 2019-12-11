@@ -67,6 +67,9 @@ namespace OnBoardUWP.ViewModels
                         ProductsOnSale.Add(p);
                     }
                 });
+
+
+
             }
             catch (Exception ex)
             {
@@ -95,24 +98,20 @@ namespace OnBoardUWP.ViewModels
 
         public void AddProductToBasket(int productId)
         {
-            var product = Products.ToList().FirstOrDefault(p => p.ProductId == productId);
-            if(product != null)
-            {
-                SelectedProducts.Add(product);
-            } else
-            {
-                product = ProductsOnSale.ToList().FirstOrDefault(p => p.ProductId == productId);
-                SelectedProducts.Add(product);
-            }
+            var prod = Products.ToList().FirstOrDefault(p => p.ProductId == productId);
+            SelectedProducts.Add(prod);
         }
+        //public void AddQuantity(int productId)
+        //{
+        //    Products.ToList().FirstOrDefault(p => p.ProductId == productId).Quantity++;
+        //    FilteredProducts.ToList().FirstOrDefault(p => p.ProductId == productId).Quantity++;
+        //}
 
-        public void DeleteProductFromBasket(int productId)
-        {
-            var prod = SelectedProducts.FirstOrDefault(p => p.ProductId == productId);
-            if(prod != null)
-            {
-                SelectedProducts.Remove(prod);
-            }
-        }
+        //public void ReduceQuantity(int productId)
+        //{
+        //    var product = Products.ToList().FirstOrDefault(p => p.ProductId == productId);
+        //    if (product.Quantity != 0)
+        //        Products.ToList().FirstOrDefault(p => p.ProductId == productId).Quantity--;
+        //}
     }
 }

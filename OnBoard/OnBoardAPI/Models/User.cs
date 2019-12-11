@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,7 +13,6 @@ namespace OnBoardAPI.Models
 
         public string Firstname { get; set; }
 
-        [JsonIgnore]
         public IEnumerable<Order> Orders { get; set; }
 
         public IList<Message> Messages { get; set; }

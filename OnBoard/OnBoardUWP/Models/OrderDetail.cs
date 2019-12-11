@@ -6,9 +6,17 @@ using System.Threading.Tasks;
 
 namespace OnBoardUWP.Models
 {
-    public class OrderDetail
+    class OrderDetail
     {
         public Product Product { get; set; }
+
+        public Order Order { get; set; }
+
+        public int ProductId { get; set; }
+
+        public int OrderId { get; set; }
+
+        public int Id { get; set; }
 
         public int OrderedAmount { get; set; }
     }
