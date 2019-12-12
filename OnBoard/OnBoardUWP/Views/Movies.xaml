@@ -14,7 +14,7 @@
 
 
 
-            <ListView ItemsSource="{x:Bind movieViewModel.Movies}" ItemClick="MovieSelected" IsItemClickEnabled="True">
+            <ListView x:Name="movies" ItemsSource="{x:Bind movieViewModel.Movies}" ItemClick="MovieSelected" IsItemClickEnabled="True">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
@@ -24,9 +24,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Padding="10">
-                            <Image Stretch="Fill" Width="250" Height="300" >
+                            <Image Stretch="Fill" Width="250" Height="300">
                                 <Image.Source>
-                                    <BitmapImage UriSource="{Binding Poster}" ></BitmapImage>
+                                    <BitmapImage UriSource="{Binding Poster}" x:Name="movie" ></BitmapImage>
                                 </Image.Source>
                             </Image>
                             <TextBlock TextWrapping="Wrap" Margin="10" TextAlignment="Center" Text="{Binding Title}"></TextBlock>

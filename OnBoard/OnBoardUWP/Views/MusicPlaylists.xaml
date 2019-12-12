@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <ScrollViewer>
         <Grid>
-            <ListView ItemsSource="{x:Bind musicViewModel.Playlists}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
+            <ListView ItemsSource="{x:Bind musicViewModel.Playlists}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick" x:Name="playlist">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
