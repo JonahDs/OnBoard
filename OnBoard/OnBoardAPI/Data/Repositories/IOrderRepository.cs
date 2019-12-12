@@ -9,7 +9,9 @@ namespace OnBoardAPI.Data.Repositories
     public interface IOrderRepository
     {
         IEnumerable<Order> GetAll();
-        IEnumerable<Order> GetOrdersById(int userId);
+        IEnumerable<Order> GetOrdersByUserId(int userId);
         void PlaceOrder(Order order);
+        Order GetOrderById(int orderId);
+        void updatedOrderState(Order o);
     }
 }

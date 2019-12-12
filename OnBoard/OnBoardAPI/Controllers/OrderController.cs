@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using OnBoardAPI.Data.Repositories;
 using OnBoardAPI.DTO;
 using OnBoardAPI.Models;
+using OnBoardAPI.Models.Enums;
 
 namespace OnBoardAPI.Controllers
 {
@@ -44,7 +45,7 @@ namespace OnBoardAPI.Controllers
         public ActionResult<IEnumerable<Order>> GetAllOrdersFromPassenger(int userId)
         {
             Passenger passenger = _userRepository.GetUserWithId(userId);
-            return new OkObjectResult(_orderRepository.GetOrdersById(passenger.Id));
+            return new OkObjectResult(_orderRepository.GetOrdersByUserId(passenger.Id));
         }
 
         /// <summary>
@@ -76,6 +77,22 @@ namespace OnBoardAPI.Controllers
             catch (Exception e)
             {
                 return BadRequest();
+            }
+            return Ok();
+        }
+
+        [HttpPut("updateState/{orderId}/{state}")]
+        public ActionResult UpdateOrderState(int orderId, string state)
+        {
+            try
+            {
+                Order o = _orderRepository.GetOrderById(orderId);
+                o.OrderState = (OrderState)Enum.Parse(typeof(OrderState), state);
+                _orderRepository.updatedOrderState(o);
+            }
+            catch (Exception)
+            {
+                throw;
             }
             return Ok();
         }
