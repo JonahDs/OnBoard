@@ -127,7 +127,14 @@ namespace OnBoardAPI.Data
                     Departure = DateTime.Today,
                     Destination = "Bonaire",
                     EstimatedArrival = new DateTime(2019, 09, 13, 5, 2, 00),
-                    Seats = seats
+                    Seats = seats,
+                    // 50.905665, 4.493043
+                    StartLatitude = 50.905665,
+                    StartLongitude = 4.493043,
+                    //12.133721, -68.278008
+                    EndLatitude = 12.133721,
+                    EndLongitude = -68.278008,
+                    Origin = "Zaventem"
                 };
                 #endregion
 
