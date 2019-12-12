@@ -26,7 +26,7 @@
                                         <TextBlock Text="{x:Bind Product.ProductName}" FontWeight="Medium" FontSize="16"></TextBlock>
                                         <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                                             <TextBlock Text="€" Margin="0,0,4,0"></TextBlock>
-                                            <TextBlock Text="{x:Bind Product.ProductPrice}"></TextBlock>
+                                            <TextBlock Text="{x:Bind Product.SalePrice}"></TextBlock>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                                             <TextBlock Text="Amount:" Margin="0,0,4,0"></TextBlock>

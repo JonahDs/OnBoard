@@ -28,6 +28,14 @@ namespace OnBoardAPI.Models
         [JsonIgnore]
         public IEnumerable<OrderDetail> OrderDetails { get; set; }
 
+        public Product()
+        {
+            if(SalePrice == 0.00)
+            {
+                SalePrice = ProductPrice;
+            }
+        }
+
         /// <summary>
         /// Calculates the product price when there is a sale
         /// </summary>

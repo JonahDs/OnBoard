@@ -57,7 +57,7 @@ namespace OnBoardUWP.ViewModels
             var price = 0.00;
             OrderedProducts.ToList().ForEach(p =>
             {
-                price = p.Product.ProductPrice * p.OrderedAmount;
+                price = p.Product.SalePrice * p.OrderedAmount;
                 TotalPrice += price;
             });
         }
