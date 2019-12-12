@@ -38,7 +38,9 @@ namespace OnBoardUWP.Views
                 case "seats":
                     mainFrame.Navigate(typeof(ManagingSeats));
                     break;
-               
+                case "orders":
+                    mainFrame.Navigate(typeof(ManageOrders));
+                    break;
             }
         }
 

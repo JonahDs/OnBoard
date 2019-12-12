@@ -1,30 +1,27 @@
 ﻿<Page
-    x:Class="OnBoardUWP.Views.OrderHistory"
+    x:Class="OnBoardUWP.Views.ManageOrders"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:OnBoardUWP.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    xmlns:models="using:OnBoardUWP.Models"
     mc:Ignorable="d"
+     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:models="using:OnBoardUWP.Models"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
     <Frame x:Name="orderFrame">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <Grid Margin="10">
                 <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Orders from" Margin="0,0,6,20" FontSize="30"></TextBlock>
-                        <TextBlock Text="{x:Bind  homepageModel.Seat.User.Firstname}" FontSize="30"></TextBlock>
-                    </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="12,0,0,10">
-                        <TextBlock Width="160" Text="Passanger"/>
+                        <TextBlock Width="160" Text="Orders"/>
                         <TextBlock Width="260" Text="Product"/>
                         <TextBlock Width="80" Text="Amount"/>
                         <TextBlock Width="100" Text="Status"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <ListView x:Name="orderListview" ItemsSource="{x:Bind viewModel.Orders, Mode=OneWay}">
+                        <ListView x:Name="orderListview" ItemsSource="{x:Bind viewmodel.Orders, Mode=OneWay}">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <controls:WrapPanel Orientation="Vertical"/>
@@ -33,7 +30,7 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="models:Order">
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Width="148" Margin="0,10,0,0" Text="{x:Bind Passenger.Firstname}"></TextBlock>
+                                        <TextBlock Width="148" Margin="0,10,0,0" Text="Order"></TextBlock>
                                         <ListView x:Name="orderDetailListview" ItemsSource="{x:Bind OrderDetails, Mode=OneWay}">
                                             <ListView.ItemsPanel>
                                                 <ItemsPanelTemplate>
@@ -50,12 +47,13 @@
                                             </ListView.ItemTemplate>
                                         </ListView>
                                         <TextBlock Width="100" Margin="0,10,0,0" Text="{x:Bind OrderState}"></TextBlock>
-                                       
+                                        <ToggleSwitch OffContent="Pending" OnContent="Complete" Tag="{x:Bind OrderId}" Toggled="ToggleFlipped">
+
+                                        </ToggleSwitch>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Button x:Name="GoBack" HorizontalAlignment="Right" Content="Back to catalog" Click="goBackToCatalog" Margin="0,14,40,40"></Button>
                     </StackPanel>
                 </StackPanel>
             </Grid>

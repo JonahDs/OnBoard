@@ -19,56 +19,38 @@ namespace OnBoardUWP.ViewModels
 
         public User LoggedUser { get; set; }
 
-        public OrderHistoryViewModel(User loggedUser)
+        public OrderHistoryViewModel()
         {
-            LoggedUser = loggedUser;
             Orders = new ObservableCollection<Order>();
-            GetOrders();
         }
 
         /// <summary>
         /// Calls the api for the orders from the passenger
         /// </summary>
         /// <returns></returns>
-        private async void GetOrders()
+        public async void GetOrdersFromUser(User loggedUser)
         {
-            var userId = LoggedUser.Id;
-            Uri requestUri = new Uri($"http://localhost:50236/api/order/orders/{userId}");
+            Orders = await GlobalMethods.ApiCall<ObservableCollection<Order>>($"http://localhost:50236/api/order/orders/{loggedUser.Id}", client);
+        }
 
-            HttpResponseMessage httpResponse = new HttpResponseMessage();
-            string httpResponseBody = "";
+        public async void GetAllOrders()
+        {
+            Orders = await GlobalMethods.ApiCall<ObservableCollection<Order>>("http://localhost:50236/api/order/orders", client);
+        }
 
+        public async void UpdateOrderState(int orderId, string state)
+        {
             try
             {
-                httpResponse = await client.GetAsync(requestUri);
-                httpResponse.EnsureSuccessStatusCode();
-                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                var data = JsonConvert.DeserializeObject<ObservableCollection<Order>>(httpResponseBody);
-                data.ToList().ForEach(o =>
-                {
-                    Orders.Add(o);
-                    //Order order = new Order()
-                    //{
-                    //    Passenger = o.Passenger,
-                    //    OrderState = o.OrderState
-                    //};
+                Uri uri = new Uri($"http://localhost:50236/api/order/updateState/{orderId}/{state}");
 
-                    //ICollection<OrderDetail> orderDetails = new Collection<OrderDetail>();
-                    //o.OrderDetails.ToList().ForEach(od =>
-                    //{
-                    //    orderDetails.Add(new OrderDetail()
-                    //    {
-                    //        OrderedAmount = od.OrderedAmount,
-                    //        Product = od.Product
-                    //    });
-                    //});
-                    //order.OrderDetails = orderDetails;
-                    //Orders.Add(order);
-                });
+                HttpStringContent content = new HttpStringContent("", encoding: Windows.Storage.Streams.UnicodeEncoding.Utf8, mediaType: "application/json");
+                HttpResponseMessage responseMessage = await client.PutAsync(uri, content);
+                responseMessage.EnsureSuccessStatusCode();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                throw;
             }
         }
     }

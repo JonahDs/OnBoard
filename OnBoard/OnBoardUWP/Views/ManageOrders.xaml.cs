@@ -1,4 +1,5 @@
-﻿using OnBoardUWP.ViewModels;
+﻿using OnBoardUWP.Models;
+using OnBoardUWP.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,21 +22,26 @@ namespace OnBoardUWP.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class OrderHistory : Page
+    public sealed partial class ManageOrders : Page
     {
-        public OrderHistoryViewModel viewModel  = new OrderHistoryViewModel();
-        public HomepageViewModel homepageModel;
-
-        public OrderHistory()
+        OrderHistoryViewModel viewmodel = new OrderHistoryViewModel();
+        public ManageOrders()
         {
-            viewModel.GetOrdersFromUser(App.HomepageModel.Seat.User);
-            homepageModel = App.HomepageModel;
+            viewmodel.GetAllOrders();
             this.InitializeComponent();
         }
 
-        private void goBackToCatalog(object sender, RoutedEventArgs e)
+        private void ToggleFlipped(object sender, RoutedEventArgs args)
         {
-            this.orderFrame.Navigate(typeof(Food));
+            ToggleSwitch toggle = sender as ToggleSwitch;
+            int tag = (int)toggle.Tag;
+            if (toggle.IsOn)
+            {
+                viewmodel.UpdateOrderState(tag, toggle.OnContent.ToString());
+            } else
+            {
+                viewmodel.UpdateOrderState(tag, toggle.OnContent.ToString());
+            }
         }
     }
 }
