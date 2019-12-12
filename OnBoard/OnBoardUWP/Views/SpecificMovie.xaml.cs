@@ -43,6 +43,9 @@ namespace OnBoardUWP.Views
             }
         }
 
-
+        private void BackToMovies(object sender, RoutedEventArgs e)
+        {
+            movieDetailFrame.Navigate(typeof(Movies));
+        }
     }
 }
