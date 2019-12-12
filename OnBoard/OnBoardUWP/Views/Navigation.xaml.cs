@@ -11,7 +11,9 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -37,22 +39,23 @@ namespace OnBoardUWP.Views
             switch (selectedTag)
             {
                 case "home":
-                    mainFrame.Navigate(typeof(Homepage));
+                    mainFrame.Navigate(typeof(Homepage), null, new DrillInNavigationTransitionInfo());
                     break;
                 case "food":
-                    mainFrame.Navigate(typeof(Food));
+                    mainFrame.Navigate(typeof(Food), null, new EntranceNavigationTransitionInfo());
                     break;
                 case "movies":
-                    mainFrame.Navigate(typeof(Movies));
+                    mainFrame.Navigate(typeof(Movies), null, new DrillInNavigationTransitionInfo());
                     break;
                 case "music":
-                    mainFrame.Navigate(typeof(MusicPlaylists));
+                    mainFrame.Navigate(typeof(MusicPlaylists), null, new DrillInNavigationTransitionInfo());
                     break;
                 case "chat":
-                    mainFrame.Navigate(typeof(Chat));
+                    mainFrame.Navigate(typeof(Chat), null, new DrillInNavigationTransitionInfo());
                     break;
             }
         }
+
 
         private void nav_Loaded(object sender, RoutedEventArgs e)
         {

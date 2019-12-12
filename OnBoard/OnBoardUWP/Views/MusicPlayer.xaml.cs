@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
@@ -33,6 +34,8 @@ namespace OnBoardUWP.Views
         {   
             base.OnNavigatedTo(e);
             vm.Playlist = (Playlist)e.Parameter;
+
+        
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
