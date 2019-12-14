@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -30,11 +31,12 @@ namespace OnBoardUWP.Views
             this.InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            homepage.IsLoading = true;
             try
             {
-                homepage.GetSeatInstance(int.Parse(seatNumber.Text));
+                await homepage.GetSeatInstance(int.Parse(seatNumber.Text));
             }
             catch (Exception ex)
             {

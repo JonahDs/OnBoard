@@ -9,19 +9,59 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Frame x:Name="foodFrame">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="narrowView">
+                    <VisualState.StateTriggers>
+                        <!-- wanneer -->
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <!-- wat? -->
+                    <VisualState.Setters>
+                        <!--<Setter Target="firstColumn.Width" Value="*"></Setter>
+                        <Setter Target="secondColumn.Width" Value=""></Setter>-->
+                        <Setter Target="FilterProducts.(Grid.RowSpan)" Value="1"></Setter>
+                        <Setter Target="FilterProducts.(Grid.ColumnSpan)" Value="2"></Setter>
+                        <Setter Target="ProductList.(Grid.RowSpan)" Value="1"></Setter>
+                        <Setter Target="ProductList.(Grid.Row)" Value="1"></Setter>
+                        <Setter Target="ProductList.(Grid.ColumnSpan)" Value="2"></Setter>
+                        <Setter Target="ProductList.(Grid.Column)" Value="0"></Setter>
+                        <Setter Target="FirstRow.Height" Value="200"></Setter>
+                        <!--<Setter Target="ProductImage.Height" Value="80"></Setter>
+                        <Setter Target="SaleProductImage.Height" Value="80"></Setter>-->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="wideView">
+                    <VisualState.StateTriggers>
+                        <!-- wanneer -->
+                        <AdaptiveTrigger MinWindowWidth="650" />
+                    </VisualState.StateTriggers>
+                    <!-- wat? -->
+                    <VisualState.Setters>
+                        <Setter Target="firstColumn.Width" Value="180"></Setter>
+                        <Setter Target="secondColumn.Width" Value="*"></Setter>
+                        <Setter Target="FilterProducts.Margin" Value="20,260,0,0"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="180"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition x:Name="firstColumn"></ColumnDefinition>
+                <ColumnDefinition x:Name="secondColumn"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Orientation="Vertical" Grid.Column="0" Margin="20,260,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="FirstRow" Height="*"></RowDefinition>
+                <RowDefinition x:Name="SecondRow" Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel x:Name="FilterProducts" Orientation="Vertical" Grid.RowSpan="2" Margin="20,0,0,0">
                 <RadioButton Content="All" Tag="All" Checked="BGRadioButton_Checked" IsChecked="True"/>
                 <RadioButton Content="Dinner" Tag="Dinner" Checked="BGRadioButton_Checked"/>
                 <RadioButton Content="Snacks" Tag="Snacks" Checked="BGRadioButton_Checked"/>
                 <RadioButton Content="Drinks" Tag="Drinks" Checked="BGRadioButton_Checked"/>
-                <Button x:Name="OrderHistory" HorizontalAlignment="Center" Content="Order history" Margin="0,10,0,0" Click="ToOrderHistory"></Button>
+                <Button x:Name="OrderHistory" Content="Order history" Margin="0,10,0,0" Click="ToOrderHistory"></Button>
             </StackPanel>
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1">
+            <ScrollViewer x:Name="ProductList" VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
                 <Grid Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
@@ -40,7 +80,7 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate x:DataType="models:Product">
                                         <StackPanel Orientation="Vertical" Width="180">
-                                            <Image Width="auto" Height="100" Margin="10">
+                                            <Image x:Name="SaleProductImage" Width="auto" Height="100" Margin="10">
                                                 <Image.Source>
                                                     <BitmapImage UriSource="{x:Bind ImageUrl}"></BitmapImage>
                                                 </Image.Source>
@@ -78,7 +118,7 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate x:DataType="models:Product">
                                         <StackPanel Orientation="Vertical" Width="180">
-                                            <Image Width="auto" Height="100" Margin="10">
+                                            <Image x:Name="ProductImage" Width="auto" Height="100" Margin="10">
                                                 <Image.Source>
                                                     <BitmapImage UriSource="{x:Bind ImageUrl}"></BitmapImage>
                                                 </Image.Source>
