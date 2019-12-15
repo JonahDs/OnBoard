@@ -10,6 +10,7 @@ namespace OnBoardUWP.Models
     {
         public int DestinatorId { get; set; }
         public int SenderId { get; set; }
+        public string SenderName { get; set; }
         public string MessageString { get; set; }
     }
 }

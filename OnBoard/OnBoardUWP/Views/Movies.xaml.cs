@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
@@ -42,7 +43,12 @@ namespace OnBoardUWP.Views
         {
             // Fetch the rest of the movie details before navigating, task and await if needed to ensure this
             await movieViewModel.FetchMovieDetails(((Movie)args.ClickedItem).ImdbID);
-            movieFrame.Navigate(typeof(SpecificMovie));
+            movieFrame.Navigate(typeof(SpecificMovie), null, new DrillInNavigationTransitionInfo());
+            //Frame.Navigate(typeof(SpecificMovie), null, new DrillInNavigationTransitionInfo());
+
         }
+
+       
+
     }
 }

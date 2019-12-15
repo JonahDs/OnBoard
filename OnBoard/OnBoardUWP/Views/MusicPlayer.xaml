@@ -12,9 +12,9 @@
     <StackPanel>
         <StackPanel Orientation="Horizontal" Padding="40 0" Spacing="40" x:Name="panel1">
             <StackPanel>
-                <Image Stretch="Fill" Width="250" Height="300" >
+                <Image  x:Name="albumImage" Stretch="Fill" Width="250" Height="300" >
                     <Image.Source>
-                        <BitmapImage UriSource="{x:Bind vm.Playlist.Image}" ></BitmapImage>
+                        <BitmapImage  UriSource="{x:Bind vm.Playlist.Image}" ></BitmapImage>
                     </Image.Source>
                 </Image>
                 <TextBlock TextWrapping="Wrap" Margin="10" TextAlignment="Center" Text="{x:Bind vm.Playlist.Name}" FontSize="18" Style="{ThemeResource BaseTextBlockStyle}"></TextBlock>

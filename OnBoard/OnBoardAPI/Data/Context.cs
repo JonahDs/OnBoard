@@ -38,7 +38,7 @@ namespace OnBoardAPI.Data
             });
             builder.Entity<OrderDetail>().HasOne(t => t.Product).WithMany(t => t.OrderDetails).HasForeignKey(t => t.ProductId);
             builder.Entity<OrderDetail>().HasOne(t => t.Order).WithMany(t => t.OrderDetails).HasForeignKey(t => t.OrderId);
-            builder.Entity<Passenger>().HasMany(t => t.Messages).WithOne().HasForeignKey(t => t.SenderId);
+            //builder.Entity<Passenger>().HasMany(t => t.Messages).WithOne().HasForeignKey(t => t.SenderId);
 
 
 

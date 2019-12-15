@@ -26,24 +26,56 @@ namespace OnBoardUWP.Views
     {
         private HomepageViewModel homepage;
         private ChatViewModel chatmodel;
+        private bool isCrewmember = false;
+        private bool sendAll = false;
 
         public Chat()
         {
             homepage = App.HomepageModel;
-            chatmodel = new ChatViewModel(homepage.Seat.User);
+            if (ReferenceEquals(homepage.Seat, null))
+            {
+                ///A crewmember is logged
+                chatmodel = new ChatViewModel(homepage.CrewMember, homepage.Flight.Seats);
+                isCrewmember = true;
+            }
+            else
+            {
+                chatmodel = new ChatViewModel(homepage.Seat.User);
+
+            }
             this.InitializeComponent();
         }
-        
+
 
         public void SendButton_Click(object sender, RoutedEventArgs args)
         {
-            chatmodel.SendMessage(messageTextBox.Text, homepage.Seat.User);
+            if (isCrewmember == true)
+            {
+                chatmodel.SendMessage(messageTextBox.Text, homepage.CrewMember, sendAll);
+            }
+            else
+            {
+                chatmodel.SendMessage(messageTextBox.Text, homepage.Seat.User, sendAll);
+            }
         }
 
         public void DestinatorSet(object sender, SelectionChangedEventArgs args)
         {
             var selectedUser = args.AddedItems[0];
             chatmodel.SetMessageDestinator((User)selectedUser);
+        }
+
+        public void CheckboxClicked(object sender, RoutedEventArgs args)
+        {
+            CheckBox c = sender as CheckBox;
+            if(c.IsChecked == true)
+            {
+                sendAll = true;
+            }
+            else
+            {
+                sendAll = false;
+            }
         }
 
 

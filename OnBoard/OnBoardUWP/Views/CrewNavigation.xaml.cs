@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -36,10 +37,13 @@ namespace OnBoardUWP.Views
             switch (selectedTag)
             {
                 case "seats":
-                    mainFrame.Navigate(typeof(ManagingSeats));
+                    mainFrame.Navigate(typeof(ManagingSeats), null, new DrillInNavigationTransitionInfo());
                     break;
                 case "orders":
-                    mainFrame.Navigate(typeof(ManageOrders));
+                    mainFrame.Navigate(typeof(ManageOrders), null, new DrillInNavigationTransitionInfo());
+                    break;
+                case "chat":
+                    mainFrame.Navigate(typeof(Chat), null, new DrillInNavigationTransitionInfo());
                     break;
             }
         }
