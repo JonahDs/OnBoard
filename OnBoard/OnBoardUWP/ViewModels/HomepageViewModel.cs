@@ -86,7 +86,7 @@ namespace OnBoardUWP.ViewModels
 
         public async void GetCrewMemberInstance(int crewmemberId)
         {
-            CrewMember = await GlobalMethods.ApiCall<CrewMember>($"http://localhost:50236/api/user/{crewmemberId}", client);
+            CrewMember = await GlobalMethods.ApiCall<CrewMember>($"http://localhost:50236/api/user/crewmember/{crewmemberId}", client);
         }
 
     }

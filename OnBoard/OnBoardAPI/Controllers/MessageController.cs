@@ -20,6 +20,7 @@ namespace OnBoardAPI.Controllers
         [HttpGet("{fetchingUserId}")]
         public ActionResult<IEnumerable<Message>> FetchMessages(int fetchingUserId)
         {
+            var list = _userRepository.GetUserMessages(fetchingUserId);
             return new OkObjectResult(_userRepository.GetUserMessages(fetchingUserId));
         }
 

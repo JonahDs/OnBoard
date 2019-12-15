@@ -48,20 +48,30 @@ namespace OnBoardUWP.ViewModels
 
         public ChatViewModel(User loggedUser)
         {
+            MessageList = new ObservableCollection<Message>();
             FetchMessages(loggedUser.Id);
             FetchTextableUsers(loggedUser.Id);
+
+        }
+
+        public ChatViewModel(CrewMember crew, IEnumerable<Seat> OnBoardUsers)
+        {
+            MessageList = new ObservableCollection<Message>();
+            Users = new ObservableCollection<User>();
+            OnBoardUsers.ToList().ForEach(t => Users.Add(t.User));
         }
 
 
         public async void FetchMessages(int loggedUserId)
         {
             var list = await GlobalMethods.ApiCall<List<Message>>($"http://localhost:50236/api/message/{loggedUserId}", client);
+            MessageList = new ObservableCollection<Message>(list);
         }
 
         public async void FetchTextableUsers(int loggedUserId)
         {
             var list = await GlobalMethods.ApiCall<List<User>>($"http://localhost:50236/api/user/passenerGroup/{loggedUserId}", client);
-            Users = new ObservableCollection<User>(list);   
+            Users = new ObservableCollection<User>(list);
         }
 
 
@@ -71,9 +81,44 @@ namespace OnBoardUWP.ViewModels
         }
 
 
-        public async void SendMessage(string messageString, User loggedUser)
+        public async void SendMessage(string messageString, User loggedUser, bool all)
         {
-            Message message = new Message { SenderId = loggedUser.Id, DestinatorId = Destinator.Id, MessageString = messageString };
+            if (all == true)
+            {
+                Users.ToList().ForEach(async t =>
+                {
+                    Message messages = new Message { SenderId = loggedUser.Id, SenderName = loggedUser.Firstname, DestinatorId = t.Id, MessageString = messageString };
+                    await PostMessage(messages);
+                });
+            }
+            else
+            {
+                Message message = new Message { SenderId = loggedUser.Id, SenderName = loggedUser.Firstname, DestinatorId = Destinator.Id, MessageString = messageString };
+                await PostMessage(message);
+            }
+
+        }
+
+        public async void SendMessage(string messageString, CrewMember loggedUser, bool all)
+        {
+
+            if (all == true)
+            {
+                Users.ToList().ForEach(async t =>
+                {
+                    Message messages = new Message { SenderId = loggedUser.Id, SenderName = loggedUser.Firstname, DestinatorId = t.Id, MessageString = messageString };
+                    await PostMessage(messages);
+                });
+            }
+            else
+            {
+                Message message = new Message { SenderId = loggedUser.Id, SenderName = loggedUser.Firstname, DestinatorId = Destinator.Id, MessageString = messageString };
+                await PostMessage(message);
+            }
+        }
+
+        public async Task PostMessage(Message message)
+        {
             try
             {
                 Uri uri = new Uri($"http://localhost:50236/api/message/sendMessage/{message}");
@@ -88,6 +133,8 @@ namespace OnBoardUWP.ViewModels
             {
                 Debug.WriteLine(e);
             }
+
+            MessageList.Add(message);
         }
 
     }
