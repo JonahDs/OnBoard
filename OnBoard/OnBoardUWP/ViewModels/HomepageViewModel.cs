@@ -61,9 +61,6 @@ namespace OnBoardUWP.ViewModels
 
         private HttpClient client = new HttpClient();
 
-        private bool isLoading;
-        public bool IsLoading { get { return isLoading; } set { Set(ref isLoading, value); } }
-
         /// <summary>
         /// Creates a viewmodel and seeding the flight property
         /// </summary>
