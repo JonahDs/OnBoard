@@ -36,7 +36,5 @@ namespace OnBoardUWP.Views
             this.Frame.Navigate(typeof(MusicPlayer), e.ClickedItem, new DrillInNavigationTransitionInfo());
         }
 
-
-        
     }
 }

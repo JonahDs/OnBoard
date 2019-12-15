@@ -28,8 +28,8 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
                
-        <Button x:Name="sendButton" Content="Send Message" HorizontalAlignment="Left" Margin="275.333,113,0,0" VerticalAlignment="Top" Width="95" Click="SendButton_Click" Height="41" Grid.Column="1"/>
-        <TextBox x:Name="messageTextBox" HorizontalAlignment="Left" Height="41" Margin="82,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="311" Grid.ColumnSpan="2"/>
+        <Button x:Name="sendButton" Content="Send Message" HorizontalAlignment="Left" Margin="275.333,113,0,0" VerticalAlignment="Top" Width="95" Command="{x:Bind chatmodel.SendMessageCommand}" Height="41" Grid.Column="1"/>
+        <TextBox x:Name="messageTextBox" Text="{x:Bind chatmodel.Message, Mode=TwoWay}" HorizontalAlignment="Left" Height="41" Margin="82,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="311" Grid.ColumnSpan="2"/>
         <ListBox x:Name="messagesList" HorizontalAlignment="Left" Height="141" Margin="82,170,0,0" VerticalAlignment="Top" Width="311" RenderTransformOrigin="-0.304,0.109" BorderThickness="1" Grid.ColumnSpan="2" BorderBrush="Gainsboro"/>
     </Grid>
 </Page>

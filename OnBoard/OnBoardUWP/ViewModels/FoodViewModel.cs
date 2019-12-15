@@ -25,6 +25,12 @@ namespace OnBoardUWP.ViewModels
 
         private ObservableCollection<Product> _selectedProducts;
         public ObservableCollection<Product> SelectedProducts { get { return this._selectedProducts; } set { Set(ref _selectedProducts, value); } }
+
+        public RelayCommand AddProductToBasketCommand { get; set; }
+        public RelayCommand DeleteProductFromBasketCommand { get; set; }
+        public RelayCommand FilterProductsCommand { get; set; }
+
+
         /// <summary>
         /// Constructor that calls getProducts() method
         /// </summary>
@@ -35,6 +41,10 @@ namespace OnBoardUWP.ViewModels
             SelectedProducts = new ObservableCollection<Product>();
             FilteredProducts = Products;
             GetProducts();
+
+            AddProductToBasketCommand = new RelayCommand(productid => AddProductToBasket((int)productid));
+            DeleteProductFromBasketCommand = new RelayCommand(productid => DeleteProductFromBasket((int)productid));
+            FilterProductsCommand = new RelayCommand(foodcategory => FilterProducts((string)foodcategory));
         }
 
 
@@ -74,7 +84,7 @@ namespace OnBoardUWP.ViewModels
             }
         }
 
-        public void FilterProducts(string foodCategory)
+        private void FilterProducts(string foodCategory)
         {
             switch (foodCategory)
             {
@@ -93,7 +103,7 @@ namespace OnBoardUWP.ViewModels
             }
         }
 
-        public void AddProductToBasket(int productId)
+        private void AddProductToBasket(int productId)
         {
             var product = Products.ToList().FirstOrDefault(p => p.ProductId == productId);
             if (product != null)
@@ -107,7 +117,7 @@ namespace OnBoardUWP.ViewModels
             }
         }
 
-        public void DeleteProductFromBasket(int productId)
+        private void DeleteProductFromBasket(int productId)
         {
             var prod = SelectedProducts.FirstOrDefault(p => p.ProductId == productId);
             if (prod != null)

@@ -29,36 +29,15 @@ namespace OnBoardUWP.Views
         public Food()
         {
             viewModel = App.FoodViewModel;
+            DataContext = viewModel;
             this.InitializeComponent();
         }
-
-        private void BGRadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            RadioButton rb = sender as RadioButton;
-            string foodCategory = rb.Tag.ToString();
-            viewModel.FilterProducts(foodCategory);
-            this.UpdateLayout();
-        }
-
-        private void AddProduct(object sender, RoutedEventArgs e)
-        {
-            Button bt = sender as Button;
-            var productId = Convert.ToInt32(bt.Tag);
-            viewModel.AddProductToBasket(productId);
-        }
-
+        
         private void ToShoppingCart(object sender, RoutedEventArgs e)
         {
             this.foodFrame.Navigate(typeof(ShoppingCart));
         }
-
-        private void DeleteProduct(object sender, RoutedEventArgs e)
-        {
-            Button bt = sender as Button;
-            var productId = Convert.ToInt32(bt.Tag);
-            viewModel.DeleteProductFromBasket(productId);
-        }
-
+        
         private void ToOrderHistory(object sender, RoutedEventArgs e)
         {
             this.foodFrame.Navigate(typeof(OrderHistory));
