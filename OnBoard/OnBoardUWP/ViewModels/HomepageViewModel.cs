@@ -61,6 +61,9 @@ namespace OnBoardUWP.ViewModels
 
         private HttpClient client = new HttpClient();
 
+        private bool isLoading;
+        public bool IsLoading { get { return isLoading; } set { Set(ref isLoading, value); } }
+
         /// <summary>
         /// Creates a viewmodel and seeding the flight property
         /// </summary>
@@ -80,6 +83,7 @@ namespace OnBoardUWP.ViewModels
 
         public async Task GetSeatInstance(int seatNumber)
         {
+
             IsLoading = true;
             try
             {
@@ -90,6 +94,7 @@ namespace OnBoardUWP.ViewModels
                 IsLoading = false;
                 throw ex;
             }
+
         }
 
         public async Task GetCrewMemberInstance(int crewmemberId)

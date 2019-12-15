@@ -26,6 +26,7 @@ namespace OnBoardUWP.Views
         public CrewNavigation()
         {
             this.InitializeComponent();
+            mainFrame.Navigate(typeof(ManageOrders), null, new DrillInNavigationTransitionInfo());
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -45,6 +46,11 @@ namespace OnBoardUWP.Views
                 case "chat":
                     mainFrame.Navigate(typeof(Chat), null, new DrillInNavigationTransitionInfo());
                     break;
+                case "products":
+                    mainFrame.Navigate(typeof(ManagingProducts), null, new DrillInNavigationTransitionInfo());
+
+                    break;
+
             }
         }
 

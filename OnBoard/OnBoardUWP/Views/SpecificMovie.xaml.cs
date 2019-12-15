@@ -43,7 +43,11 @@ namespace OnBoardUWP.Views
                 MoviePopup.IsOpen = true;
             }
         }
+        
+        private void BackToMovies(object sender, RoutedEventArgs e)
+        {
+            movieDetailFrame.Navigate(typeof(Movies));
+        }
 
-       
     }
 }
