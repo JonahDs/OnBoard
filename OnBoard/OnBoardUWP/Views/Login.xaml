@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
@@ -15,5 +16,14 @@
         <TextBlock HorizontalAlignment="Left" Margin="779,210,0,0" Text="I'm a air hostes" FontSize="30" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="hostedId" HorizontalAlignment="Left" Margin="779,255,0,0" Text="TextBox" VerticalAlignment="Top" Height="117" Width="258" FontSize="35" BeforeTextChanging="Textbox_BeforeChange"/>
         <Button Content="Enter" HorizontalAlignment="Left" Margin="779,388,0,0" VerticalAlignment="Top" Click="ButtonAir_Click"/>
+
+        <controls:Loading x:Name="LoadingControl" IsLoading="{x:Bind homepage.IsLoading, Mode=OneWay}" Background="AliceBlue" Opacity="80">
+            <StackPanel Orientation="Horizontal" Padding="12">
+                <ProgressRing IsActive="True" />
+                <Border Background="AliceBlue" Opacity="80"></Border>
+                <TextBlock Text="We are fetching your account!" Foreground="Black" VerticalAlignment="Center" />
+            </StackPanel>
+        </controls:Loading>
     </Grid>
+   
 </Page>

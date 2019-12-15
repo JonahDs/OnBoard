@@ -56,6 +56,9 @@ namespace OnBoardUWP.ViewModels
             }
         }
 
+        private bool _loading;
+        public bool IsLoading { get { return _loading; } set { Set(ref _loading, value); } }
+
         private HttpClient client = new HttpClient();
 
         /// <summary>
@@ -75,14 +78,33 @@ namespace OnBoardUWP.ViewModels
             Flight = await GlobalMethods.ApiCall<Flight>("http://localhost:50236/api/flight", client);
         }
 
-        public async void GetSeatInstance(int seatNumber)
+        public async Task GetSeatInstance(int seatNumber)
         {
-            Seat = await GlobalMethods.ApiCall<Seat>($"http://localhost:50236/api/seat/{seatNumber}", client);
+            IsLoading = true;
+            try
+            {
+                Seat = await GlobalMethods.ApiCall<Seat>($"http://localhost:50236/api/seat/{seatNumber}", client);
+            }
+            catch (Exception ex)
+            {
+                IsLoading = false;
+                throw ex;
+            }
         }
 
-        public async void GetCrewMemberInstance(int crewmemberId)
+        public async Task GetCrewMemberInstance(int crewmemberId)
         {
-            CrewMember = await GlobalMethods.ApiCall<CrewMember>($"http://localhost:50236/api/user/crewmember/{crewmemberId}", client);
+            IsLoading = true;
+            try
+            {
+                CrewMember = await GlobalMethods.ApiCall<CrewMember>($"http://localhost:50236/api/user/crewmember/{crewmemberId}", client);
+            }
+            catch (Exception ex)
+            {
+                IsLoading = false;
+
+                throw ex;
+            }
         }
 
     }
