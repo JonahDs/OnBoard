@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.SignalR.Client;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using OnBoardUWP.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Storage.Streams;
 using Windows.Web.Http;
 
 namespace OnBoardUWP.ViewModels
@@ -58,7 +56,7 @@ namespace OnBoardUWP.ViewModels
             Message = "";
             FetchMessages(loggedUser.Id);
             FetchTextableUsers(loggedUser.Id);
-            SendMessageCommand = new RelayCommand(_ => SendMessage(loggedUser));
+            SendMessageCommand = new RelayCommand(choice => SendMessage(loggedUser, (bool)choice));
         }
 
         public ChatViewModel(CrewMember crew, IEnumerable<Seat> OnBoardUsers)
@@ -66,6 +64,7 @@ namespace OnBoardUWP.ViewModels
             MessageList = new ObservableCollection<Message>();
             Users = new ObservableCollection<User>();
             OnBoardUsers.ToList().ForEach(t => Users.Add(t.User));
+            SendMessageCommand = new RelayCommand(choice => SendMessage(crew, (bool)choice));
         }
 
 
@@ -81,51 +80,38 @@ namespace OnBoardUWP.ViewModels
             Users = new ObservableCollection<User>(list);
         }
 
-
-        public void SetMessageDestinator(User destinator)
+        public async void SendMessage(User loggedUser, bool all)
         {
-            Destinator = destinator;
-        }
-
-
-
-        public async void SendMessage(User loggedUser)
-        {
-            Message message = new Message { SenderId = loggedUser.Id, DestinatorId = Destinator.Id, MessageString = _message };
-        }
-
-        public async void SendMessage(string messageString, User loggedUser, bool all)
-        {
-            if (all == true)
+            if (all)
             {
                 Users.ToList().ForEach(async t =>
                 {
-                    Message messages = new Message { SenderId = loggedUser.Id, SenderName = loggedUser.Firstname, DestinatorId = t.Id, MessageString = messageString };
+                    Message messages = new Message { SenderId = loggedUser.Id, SenderName = loggedUser.Firstname, DestinatorId = t.Id, MessageString = _message };
                     await PostMessage(messages);
                 });
             }
             else
             {
-                Message message = new Message { SenderId = loggedUser.Id, SenderName = loggedUser.Firstname, DestinatorId = Destinator.Id, MessageString = messageString };
+                Message message = new Message { SenderId = loggedUser.Id, SenderName = loggedUser.Firstname, DestinatorId = Destinator.Id, MessageString = _message };
                 await PostMessage(message);
             }
 
         }
 
-        public async void SendMessage(string messageString, CrewMember loggedUser, bool all)
+        public async void SendMessage(CrewMember loggedUser, bool all)
         {
 
-            if (all == true)
+            if (all)
             {
                 Users.ToList().ForEach(async t =>
                 {
-                    Message messages = new Message { SenderId = loggedUser.Id, SenderName = loggedUser.Firstname, DestinatorId = t.Id, MessageString = messageString };
+                    Message messages = new Message { SenderId = loggedUser.Id, SenderName = loggedUser.Firstname, DestinatorId = t.Id, MessageString = _message };
                     await PostMessage(messages);
                 });
             }
             else
             {
-                Message message = new Message { SenderId = loggedUser.Id, SenderName = loggedUser.Firstname, DestinatorId = Destinator.Id, MessageString = messageString };
+                Message message = new Message { SenderId = loggedUser.Id, SenderName = loggedUser.Firstname, DestinatorId = Destinator.Id, MessageString = _message };
                 await PostMessage(message);
             }
         }
