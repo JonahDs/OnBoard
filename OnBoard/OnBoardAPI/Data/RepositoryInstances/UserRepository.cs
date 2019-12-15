@@ -26,7 +26,7 @@ namespace OnBoardAPI.Data.RepositoryInstances
 
         public IEnumerable<Message> GetUserMessages(int userId)
         {
-            User user = _users.Where(t => t.Id == userId).Include(t => t.Messages).FirstOrDefault();
+            User user = _users.Include(t => t.Messages).FirstOrDefault(t => t.Id == userId);
             return user.Messages;
         }
 
