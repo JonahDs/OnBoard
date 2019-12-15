@@ -25,7 +25,12 @@ namespace OnBoardAPI.Controllers
         [HttpGet("{seatNumber}")]
         public ActionResult<Seat> GetSeatInstance(int seatNumber)
         {
-            return new OkObjectResult(_seatRepository.GetSeatInstanceWithSeatNumber(seatNumber));
+            Seat s = _seatRepository.GetSeatInstanceWithSeatNumber(seatNumber);
+            if(s == null)
+            {
+                return BadRequest();
+            }
+            return new OkObjectResult(s);
         }
 
         [HttpPut("switchSeats/{seatNrOne}/{seatNrTwo}")]
