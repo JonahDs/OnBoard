@@ -50,10 +50,5 @@ namespace OnBoardUWP.Views
         {
             args.Cancel = args.NewText.Any(c => !char.IsDigit(c));
         }
-
-        private void SaveChanges(object sender, RoutedEventArgs args)
-        {
-            viewmodel.SaveChanges();
-        }
     }
 }
