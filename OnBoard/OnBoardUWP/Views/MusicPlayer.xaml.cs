@@ -33,9 +33,7 @@ namespace OnBoardUWP.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {   
             base.OnNavigatedTo(e);
-            vm.Playlist = (Playlist)e.Parameter;
-
-        
+            vm.Playlist = (Playlist)e.Parameter;                   
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
