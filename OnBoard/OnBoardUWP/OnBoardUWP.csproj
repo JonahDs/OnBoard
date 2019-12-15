@@ -142,6 +142,7 @@
     <Compile Include="ViewModels\FoodViewModel.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\HomepageViewModel.cs" />
+    <Compile Include="ViewModels\ManageProductsViewModel.cs" />
     <Compile Include="ViewModels\MovieViewModel.cs" />
     <Compile Include="ViewModels\MusicPlayerViewModel.cs" />
     <Compile Include="ViewModels\MusicPlaylistViewModel.cs" />
@@ -163,6 +164,9 @@
     </Compile>
     <Compile Include="Views\ManageOrders.xaml.cs">
       <DependentUpon>ManageOrders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ManagingProducts.xaml.cs">
+      <DependentUpon>ManagingProducts.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MusicPlayer.xaml.cs">
       <DependentUpon>MusicPlayer.xaml</DependentUpon>
@@ -254,6 +258,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ManageOrders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ManagingProducts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
