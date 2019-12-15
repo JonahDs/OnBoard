@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,30 +32,31 @@ namespace OnBoardUWP.Views
             this.InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            homepage.IsLoading = true;
             try
             {
-                homepage.GetSeatInstance(int.Parse(seatNumber.Text));
+                await homepage.GetSeatInstance(int.Parse(seatNumber.Text));
             }
             catch (Exception ex)
             {
-
-                throw;
+                await new MessageDialog(ex.Message, "Sorry, we coudn't fetch any account with given information :(").ShowAsync();
+                return;
             }
             Frame.Navigate(typeof(Navigation));
         }
 
-        public void ButtonAir_Click(object sender, RoutedEventArgs e)
+        public async void ButtonAir_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                homepage.GetCrewMemberInstance(int.Parse(hostedId.Text));
+                await homepage.GetCrewMemberInstance(int.Parse(hostedId.Text));
             }
             catch (Exception ex)
             {
-
-                throw;
+                await new MessageDialog(ex.Message, "Sorry, we coudn't fetch any account with given information :(").ShowAsync();
+                return;
             }
             Frame.Navigate(typeof(CrewNavigation));
 

@@ -121,6 +121,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Convertors\DateFormatConverter.cs" />
     <Compile Include="Convertors\ImagePathConvertor.cs" />
     <Compile Include="Models\CrewMember.cs" />
     <Compile Include="Models\Flight.cs" />

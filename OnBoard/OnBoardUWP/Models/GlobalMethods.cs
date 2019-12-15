@@ -28,6 +28,7 @@ namespace OnBoardUWP.Models
             catch (Exception ex)
             {
                 httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                throw new Exception(httpResponseBody);
             }
             return localObject;
         }

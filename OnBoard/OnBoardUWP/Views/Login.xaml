@@ -6,14 +6,67 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Height="38" Margin="363,210,0,0" Text="Enter seat number" FontWeight="Bold" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Top" />
-        <Button Content="Enter" HorizontalAlignment="Left" Margin="363,388,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBox x:Name="seatNumber" HorizontalAlignment="Left" Margin="363,255,0,0" Text="TextBox" VerticalAlignment="Top" Height="117" Width="258" FontSize="35" BeforeTextChanging="Textbox_BeforeChange"/>
-        <TextBlock HorizontalAlignment="Left" Margin="779,210,0,0" Text="I'm a air hostes" FontSize="30" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:Name="hostedId" HorizontalAlignment="Left" Margin="779,255,0,0" Text="TextBox" VerticalAlignment="Top" Height="117" Width="258" FontSize="35" BeforeTextChanging="Textbox_BeforeChange"/>
-        <Button Content="Enter" HorizontalAlignment="Left" Margin="779,388,0,0" VerticalAlignment="Top" Click="ButtonAir_Click"/>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="narrowView">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="passenger.(Grid.RowSpan)" Value="1"></Setter>
+                        <Setter Target="passenger.(Grid.ColumnSpan)" Value="2"></Setter>
+                        <Setter Target="crew.(Grid.RowSpan)" Value="1"></Setter>
+                        <Setter Target="crew.(Grid.Row)" Value="1"></Setter>
+                        <Setter Target="crew.(Grid.ColumnSpan)" Value="2"></Setter>
+                        <Setter Target="crew.(Grid.Column)" Value="0"></Setter>
+                        <Setter Target="hostedId.Height" Value="80"></Setter>
+                        <Setter Target="hostedId.Width" Value="210"></Setter>
+                        <Setter Target="seatNumber.Height" Value="80"></Setter>
+                        <Setter Target="seatNumber.Width" Value="210"></Setter>
+                        <Setter Target="seatTitle.FontSize" Value="24"></Setter>
+                        <Setter Target="crewTitle.FontSize" Value="24"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="wideView">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="650" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="passenger" Orientation="Vertical" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock x:Name="seatTitle" Height="38" Text="Enter seat number" FontWeight="Bold" FontSize="30" TextWrapping="Wrap"/>
+            <TextBox x:Name="seatNumber" Text="TextBox" Height="120" Width="260" FontSize="35" Margin="0,0,0,10" BeforeTextChanging="Textbox_BeforeChange"/>
+            <Button Content="Enter" HorizontalAlignment="Center" Click="Button_Click"/>
+        </StackPanel>
+        <StackPanel x:Name="crew" Orientation="Vertical" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock x:Name="crewTitle" Text="I'm a crewmember" FontSize="30" FontWeight="Bold" TextWrapping="Wrap"/>
+            <TextBox x:Name="hostedId" Text="TextBox" Height="120" Width="260" FontSize="35" Margin="0,0,0,10" BeforeTextChanging="Textbox_BeforeChange"/>
+            <Button Content="Enter" HorizontalAlignment="Center" Click="ButtonAir_Click"/>
+        </StackPanel>
+       
+<controls:Loading x:Name="LoadingControl" IsLoading="{x:Bind homepage.IsLoading, Mode=OneWay}" Background="AliceBlue" Opacity="80">
+            <StackPanel Orientation="Horizontal" Padding="12">
+                <ProgressRing IsActive="True" />
+                <Border Background="AliceBlue" Opacity="80"></Border>
+                <TextBlock Text="We are fetching your account!" Foreground="Black" VerticalAlignment="Center" />
+            </StackPanel>
+        </controls:Loading>
     </Grid>
+   
 </Page>
