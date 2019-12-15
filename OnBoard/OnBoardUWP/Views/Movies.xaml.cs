@@ -43,7 +43,9 @@ namespace OnBoardUWP.Views
         {
             // Fetch the rest of the movie details before navigating, task and await if needed to ensure this
             await movieViewModel.FetchMovieDetails(((Movie)args.ClickedItem).ImdbID);
-            Frame.Navigate(typeof(SpecificMovie), null, new DrillInNavigationTransitionInfo());
+            movieFrame.Navigate(typeof(SpecificMovie), null, new DrillInNavigationTransitionInfo());
+            //Frame.Navigate(typeof(SpecificMovie), null, new DrillInNavigationTransitionInfo());
+
         }
 
        
