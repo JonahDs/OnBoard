@@ -27,41 +27,13 @@ namespace OnBoardUWP.Views
         HomepageViewModel homepageViewModel;
         SeatViewModel seatViewModel;
 
-        ICollection<int> selectedSeats = new List<int>();
+        //ICollection<int> selectedSeats = new List<int>();
         public ManagingSeats()
         {
             homepageViewModel = App.HomepageModel;
             seatViewModel = new SeatViewModel();
+            DataContext = seatViewModel;
             this.InitializeComponent();
-        }
-
-        private async void SelectedUser(object sender, RoutedEventArgs e)
-        {
-            var seatNr = Convert.ToInt16((sender as CheckBox).Tag);
-            if (selectedSeats.Count < 2 && (sender as CheckBox).IsChecked == true)
-            {
-                selectedSeats.Add(seatNr);
-            }
-            else
-            {
-                var messageDialog = new MessageDialog("You can only select 2 passangers so switch seats.");
-                messageDialog.Commands.Add(new UICommand("Ok"));
-                messageDialog.Commands.Add(new UICommand("Close"));
-
-                //Uncheck the falsly checked button
-                (sender as CheckBox).IsChecked = false;
-                await messageDialog.ShowAsync();
-            }
-        }
-
-        private void DeselectUser(object sender, RoutedEventArgs e)
-        {
-            selectedSeats.Remove(Convert.ToInt16((sender as CheckBox).Tag));
-        }
-
-        private void Switch(object sender, RoutedEventArgs e)
-        {
-            seatViewModel.SwitchUsersWithId(selectedSeats as List<int>);
         }
 
     }
