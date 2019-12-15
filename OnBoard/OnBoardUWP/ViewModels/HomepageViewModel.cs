@@ -58,6 +58,9 @@ namespace OnBoardUWP.ViewModels
 
         private HttpClient client = new HttpClient();
 
+        private bool isLoading;
+        public bool IsLoading { get { return isLoading; } set { Set(ref isLoading, value); } }
+
         /// <summary>
         /// Creates a viewmodel and seeding the flight property
         /// </summary>
@@ -75,9 +78,10 @@ namespace OnBoardUWP.ViewModels
             Flight = await GlobalMethods.ApiCall<Flight>("http://localhost:50236/api/flight", client);
         }
 
-        public async void GetSeatInstance(int seatNumber)
+        public async Task GetSeatInstance(int seatNumber)
         {
             Seat = await GlobalMethods.ApiCall<Seat>($"http://localhost:50236/api/seat/{seatNumber}", client);
+            isLoading = false;
         }
 
         public async void GetCrewMemberInstance(int crewmemberId)

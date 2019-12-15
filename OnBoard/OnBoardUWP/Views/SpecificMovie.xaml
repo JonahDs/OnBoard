@@ -8,6 +8,29 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Frame x:Name="movieDetailFrame">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="narrowView">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MoviePopup.Height" Value="260"></Setter>
+                        <Setter Target="MoviePanel.Height" Value="260"></Setter>
+                        <Setter Target="MovieStackPanel.(Grid.ColumnSpan)" Value="2"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="wideView">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="650" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MoviePopup.Height" Value="320"></Setter>
+                        <Setter Target="MoviePanel.Height" Value="320"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <Grid Margin="10">
                 <Grid.RowDefinitions>
@@ -18,8 +41,8 @@
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
-                    <TextBlock x:Name="MovieTitle" Margin="0,0,0,10" FontSize="30" Text="{x:Bind movieViewModel.CurrentlyViewedMovie.Title}"></TextBlock>
+                <StackPanel x:Name="MovieStackPanel" Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                    <TextBlock x:Name="MovieTitle" TextWrapping="Wrap" Margin="0,0,0,10" FontSize="30" Text="{x:Bind movieViewModel.CurrentlyViewedMovie.Title}"></TextBlock>
                     <RelativePanel>
                         <Image x:Name="MoviePoster" Height="180" Margin="0,0,20,0">
                             <Image.Source>
@@ -33,11 +56,11 @@
                         <TextBlock x:Name="Rating" FontWeight="Bold" Text="Imdb Rating:" Margin="0,0,6,0" RelativePanel.RightOf="MoviePoster" RelativePanel.Below="MovieLanguage"></TextBlock>
                         <TextBlock x:Name="MovieScore" Margin="0,0,0,5" Text="{x:Bind movieViewModel.CurrentlyViewedMovie.ImdbRating}" RelativePanel.RightOf="Rating" RelativePanel.Below="MovieLanguage"></TextBlock>
                         <Button x:Name="PlayMovie" Content="Play this movie" Click="OpenMediaPlayer" Margin="0,10,0,0" RelativePanel.RightOf="MoviePoster" RelativePanel.Below="MovieScore"></Button>
-                        <Button Content="Back to movies" Click="BackToMovies" Margin="10,10,0,0" RelativePanel.RightOf="PlayMovie" RelativePanel.Below="MovieScore"></Button>
+                        <Button Content="Moviecatalog" Click="BackToMovies" Margin="10,10,0,0" RelativePanel.RightOf="PlayMovie" RelativePanel.Below="MovieScore"></Button>
                     </RelativePanel>
                 </StackPanel>
                 <Popup x:Name="MoviePopup" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,20,0,0">
-                    <RelativePanel Height="400">
+                    <RelativePanel x:Name="MoviePanel">
                         <MediaPlayerElement x:Name="MoviePlayer" AreTransportControlsEnabled="True" HorizontalAlignment="Stretch" Source="ms-appx:///Assets/exdee.mp4" VerticalAlignment="Stretch"></MediaPlayerElement>
                     </RelativePanel>
                 </Popup>
