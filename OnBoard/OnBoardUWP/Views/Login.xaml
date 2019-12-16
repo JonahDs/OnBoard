@@ -1,0 +1,72 @@
+﻿<Page
+    x:Class="OnBoardUWP.Views.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OnBoardUWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="narrowView">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="passenger.(Grid.RowSpan)" Value="1"></Setter>
+                        <Setter Target="passenger.(Grid.ColumnSpan)" Value="2"></Setter>
+                        <Setter Target="crew.(Grid.RowSpan)" Value="1"></Setter>
+                        <Setter Target="crew.(Grid.Row)" Value="1"></Setter>
+                        <Setter Target="crew.(Grid.ColumnSpan)" Value="2"></Setter>
+                        <Setter Target="crew.(Grid.Column)" Value="0"></Setter>
+                        <Setter Target="hostedId.Height" Value="80"></Setter>
+                        <Setter Target="hostedId.Width" Value="210"></Setter>
+                        <Setter Target="seatNumber.Height" Value="80"></Setter>
+                        <Setter Target="seatNumber.Width" Value="210"></Setter>
+                        <Setter Target="seatTitle.FontSize" Value="24"></Setter>
+                        <Setter Target="crewTitle.FontSize" Value="24"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="wideView">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="650" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="passenger" Orientation="Vertical" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock x:Name="seatTitle" Height="38" Text="Enter seat number" FontWeight="Bold" FontSize="30" TextWrapping="Wrap"/>
+            <TextBox x:Name="seatNumber" Text="TextBox" Height="120" Width="260" FontSize="35" Margin="0,0,0,10" BeforeTextChanging="Textbox_BeforeChange"/>
+            <Button Content="Enter" HorizontalAlignment="Center" Click="Button_Click"/>
+        </StackPanel>
+        <StackPanel x:Name="crew" Orientation="Vertical" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock x:Name="crewTitle" Text="I'm a crewmember" FontSize="30" FontWeight="Bold" TextWrapping="Wrap"/>
+            <TextBox x:Name="hostedId" Text="TextBox" Height="120" Width="260" FontSize="35" Margin="0,0,0,10" BeforeTextChanging="Textbox_BeforeChange"/>
+            <Button Content="Enter" HorizontalAlignment="Center" Click="ButtonAir_Click"/>
+        </StackPanel>
+       
+<controls:Loading x:Name="LoadingControl" IsLoading="{x:Bind homepage.IsLoading, Mode=OneWay}" Background="AliceBlue" Opacity="80">
+            <StackPanel Orientation="Horizontal" Padding="12">
+                <ProgressRing IsActive="True" />
+                <Border Background="AliceBlue" Opacity="80"></Border>
+                <TextBlock Text="We are fetching your account!" Foreground="Black" VerticalAlignment="Center" />
+            </StackPanel>
+        </controls:Loading>
+    </Grid>
+   
+</Page>

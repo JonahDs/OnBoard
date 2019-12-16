@@ -7,50 +7,25 @@
       <FileName>Models\CrewMember.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OnBoardAPI.Models.Flight">
-    <Position X="21.5" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAABAAAAAgAAAAAAggAAAAAAABAAAAEAAAAAAAAAgA=</HashCode>
-      <FileName>Models\Flight.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Seats" />
-    </ShowAsCollectionAssociation>
-  </Class>
   <Class Name="OnBoardAPI.Models.Passenger">
     <Position X="15" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAQAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Passenger.cs</FileName>
     </TypeIdentifier>
-  </Class>
-  <Class Name="OnBoardAPI.Models.Seat">
-    <Position X="21.5" Y="7.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAIAAAAAAAAA=</HashCode>
-      <FileName>Models\Seat.cs</FileName>
-    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Group" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="OnBoardAPI.Models.User">
-    <Position X="16" Y="4.5" Width="1.5" />
+    <Position X="16.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAECAGAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAECAEAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\User.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Orders" />
     </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="OnBoardAPI.Models.UserFlight">
-    <Position X="19" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAAAAAAAAAAgAAAJAAAAAAAAAAAAAgAA=</HashCode>
-      <FileName>Models\UserFlight.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Flight" />
-      <Property Name="User" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="OnBoardAPI.Models.Order">
     <Position X="12.5" Y="4.75" Width="1.5" />
@@ -65,26 +40,66 @@
   <Class Name="OnBoardAPI.Models.Product">
     <Position X="10.25" Y="7" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAIAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <HashCode>EAAAAIAQAgAAAAAAAAAAgAABAAAAAAAAAAAAAAAIAAA=</HashCode>
       <FileName>Models\Product.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ProductType" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="OnBoardAPI.Models.ProductOrder">
+  <Class Name="OnBoardAPI.Models.OrderDetail">
     <Position X="10.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAECAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\ProductOrder.cs</FileName>
+      <FileName>Models\OrderDetail.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Order" />
       <Property Name="Product" />
+      <Property Name="Order" />
     </ShowAsAssociation>
   </Class>
-  <Enum Name="OnBoardAPI.Models.OrderState">
-    <Position X="12.5" Y="7" Width="1.5" />
+  <Class Name="OnBoardAPI.Models.Flight">
+    <Position X="21.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAgAAAAAAggAAAAAAABAAAAEAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Flight.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Seats" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="OnBoardAPI.Models.Seat">
+    <Position X="19" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAIAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Models\Seat.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="OnBoardAPI.Models.PassengerGroup">
+    <Position X="15.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PassengerGroup.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Passengers" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Enum Name="OnBoardAPI.Models.Enums.ProductType">
+    <Position X="12.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Enums\ProductType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="OnBoardAPI.Models.Enums.OrderState">
+    <Position X="12.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
-      <FileName>Models\OrderState.cs</FileName>
+      <FileName>Models\Enums\OrderState.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segou UI" Size="9" />

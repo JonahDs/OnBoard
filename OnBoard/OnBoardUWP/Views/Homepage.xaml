@@ -1,0 +1,104 @@
+﻿<Page
+    x:Class="OnBoardUWP.Views.Homepage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OnBoardUWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:conv="using:OnBoardUWP.Convertors"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <conv:DateFormatConverter x:Name="DateFormatConverter"/>
+    </Page.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="narrowView">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="flightInformation.(Grid.RowSpan)" Value="1"></Setter>
+                        <Setter Target="flightInformation.(Grid.ColumnSpan)" Value="2"></Setter>
+                        <Setter Target="weatherStack.(Grid.RowSpan)" Value="1"></Setter>
+                        <Setter Target="weatherStack.(Grid.Row)" Value="1"></Setter>
+                        <Setter Target="weatherStack.(Grid.ColumnSpan)" Value="2"></Setter>
+                        <Setter Target="weatherStack.(Grid.Column)" Value="0"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="wideView">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid x:Name="mainGrid" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <RelativePanel x:Name="flightInformation" Grid.RowSpan="2">
+                <TextBlock x:Name="flight" Text="Welcome on flight" FontWeight="Bold" FontSize="30" Padding="5"></TextBlock>
+                <TextBlock x:Name="flightname" RelativePanel.Below="flight" Text="{x:Bind ViewModel.Flight.FlightName, Mode=OneWay}" FontWeight="Bold" FontSize="30pt" Padding="5"></TextBlock>
+                <TextBlock x:Name="from" Margin="0,0,56,0" RelativePanel.Below="flightname" Text="From:" FontSize="20" Padding="5"></TextBlock>
+                <TextBlock x:Name="fromlocation" RelativePanel.RightOf="from" RelativePanel.Below="flightname" Text="{x:Bind ViewModel.Flight.Origin, Mode=OneWay}" Padding="5" FontSize="20"></TextBlock>
+                <TextBlock x:Name="destination" Text="Destination: " FontSize="20" RelativePanel.Below="from" Padding="5"></TextBlock>
+                <TextBlock x:Name="destinationBinding" RelativePanel.RightOf="destination" RelativePanel.Below="fromlocation" Padding="5" Text="{x:Bind ViewModel.Flight.Destination, Mode=OneWay}" FontSize="20"></TextBlock>
+                <TextBlock x:Name="timeofdeparture" Margin="0,0,10,0" Text="Departure: " RelativePanel.Below="destination" FontSize="20" Padding="5"></TextBlock>
+                <TextBlock x:Name="timeofdepartureBinding" RelativePanel.RightOf="timeofdeparture" RelativePanel.Below="destinationBinding" Padding="5" Text="{x:Bind ViewModel.Flight.Departure, Mode=OneWay, Converter={StaticResource DateFormatConverter}}" FontSize="20"></TextBlock>
+                <TextBlock x:Name="timeofarrival" Margin="0,0,43,0" Text="Arrival: " RelativePanel.Below="timeofdeparture" FontSize="20" Padding="5"></TextBlock>
+                <TextBlock x:Name="timeofarrivalBinding" RelativePanel.RightOf="timeofarrival" RelativePanel.Below="timeofdepartureBinding" Padding="5" Text="{x:Bind ViewModel.Flight.EstimatedArrival, Mode=OneWay, Converter={StaticResource DateFormatConverter}}" FontSize="20"></TextBlock>
+            </RelativePanel>
+
+            <StackPanel x:Name="weatherStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
+                <TextBlock Text="Forecast" FontWeight="Bold" FontSize="30"></TextBlock>
+                <Grid Margin="0,10,10,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Day" FontWeight="Bold"></TextBlock>
+                    <TextBlock Grid.Column="1" Text="Weather Information" FontWeight="Bold"></TextBlock>
+                    <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="Max" FontWeight="Bold"></TextBlock>
+                    <TextBlock HorizontalAlignment="Center" Grid.Column="3" Text="Min" FontWeight="Bold"></TextBlock>
+                </Grid>
+                <Grid Margin="0,0,10,0">
+                    <ItemsControl ItemsSource="{x:Bind WeatherViewModel.WeatherForecast, Mode=OneWay}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,0,0,25">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="40"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Date.DayOfWeek}"></TextBlock>
+                                    <TextBlock Grid.Column="1" Text="{Binding DayPhrase}"></TextBlock>
+                                    <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding MaxTemperature}"></TextBlock>
+                                    <TextBlock HorizontalAlignment="Center" Grid.Column="3" Text="{Binding MinTemperature}"></TextBlock>
+                                </Grid>
+
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                <Maps:MapControl x:Name="MapControl1" ZoomInteractionMode="GestureAndControl" TiltInteractionMode="GestureAndControl" MapServiceToken="xGgeHOXe8DLIHNXtjKyh~2uij9sH2nyDku_TW1o9yxw~AmGx1daGQfLirSS9Qv3VwAAr9OvS_i2sWjdDR-RQF-cWI5lEyRpCxOo9SSGp1JM1" Width="auto" Height="600"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>
