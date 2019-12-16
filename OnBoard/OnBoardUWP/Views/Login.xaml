@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -59,14 +58,13 @@
             <TextBox x:Name="hostedId" Text="TextBox" Height="120" Width="260" FontSize="35" Margin="0,0,0,10" BeforeTextChanging="Textbox_BeforeChange"/>
             <Button Content="Enter" HorizontalAlignment="Center" Click="ButtonAir_Click"/>
         </StackPanel>
-       
-<controls:Loading x:Name="LoadingControl" IsLoading="{x:Bind homepage.IsLoading, Mode=OneWay}" Background="AliceBlue" Opacity="80">
-            <StackPanel Orientation="Horizontal" Padding="12">
+
+        <controls:Loading x:Name="LoadingControl" IsLoading="{x:Bind homepage.IsLoading, Mode=OneWay}" Background="AliceBlue" Opacity="80" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal">
                 <ProgressRing IsActive="True" />
                 <Border Background="AliceBlue" Opacity="80"></Border>
                 <TextBlock Text="We are fetching your account!" Foreground="Black" VerticalAlignment="Center" />
             </StackPanel>
         </controls:Loading>
     </Grid>
-   
 </Page>

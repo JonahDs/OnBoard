@@ -7,32 +7,32 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Frame x:Name="movieFrame">
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState x:Name="narrowView">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="SetImageWidth.Width" Value="120"></Setter>
-                        <Setter Target="SetImageHeight.Height" Value="120"></Setter>
-                        <Setter Target="SetColumnWidth.Width" Value="130"></Setter>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="wideView">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="650" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="SetImageWidth.Width" Value="260"></Setter>
-                        <Setter Target="SetImageHeight.Height" Value="260"></Setter>
-                        <Setter Target="SetColumnWidth.Width" Value="auto"></Setter>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+       
         <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup>
+                    <VisualState x:Name="narrowView">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="0" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="SetImageWidth.Width" Value="120"></Setter>
+                            <Setter Target="SetImageHeight.Height" Value="120"></Setter>
+                            <Setter Target="SetColumnWidth.Width" Value="130"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="wideView">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="650" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="SetImageWidth.Width" Value="260"></Setter>
+                            <Setter Target="SetImageHeight.Height" Value="260"></Setter>
+                            <Setter Target="SetColumnWidth.Width" Value="auto"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
             <Grid x:Name="movieGrid" Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
@@ -63,5 +63,4 @@
                 </ListView>
             </Grid>
         </ScrollViewer>
-    </Frame>
 </Page>
