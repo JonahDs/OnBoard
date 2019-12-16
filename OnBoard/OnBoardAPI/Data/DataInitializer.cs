@@ -213,13 +213,6 @@ namespace OnBoardAPI.Data
                 #endregion
 
                 #region Orders
-                Order jonahOrder = new Order
-                {
-                    Passenger = (Passenger)passenger1,
-                    OrderState = OrderState.Complete,
-                    OrderDetails = orderdetails1
-                };
-
                 Order johannaOrder = new Order
                 {
                     Passenger = (Passenger)passenger2,
@@ -234,7 +227,7 @@ namespace OnBoardAPI.Data
                     OrderDetails = orderdetails3
                 };
 
-                IEnumerable<Order> orders = new List<Order> { jonahOrder, johannaOrder, bramOrder };
+                IEnumerable<Order> orders = new List<Order> { johannaOrder, bramOrder };
                 _context.Order.AddRange(orders);
                 #endregion
 

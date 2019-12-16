@@ -35,7 +35,7 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="models:Order">
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Width="28" Margin="0,10,0,0" Text="{x:Bind OrderId}"></TextBlock>
+                                        <TextBlock Width="28" Margin="0,10,0,0" Text="{x:Bind OrderId, Mode=OneWay}"></TextBlock>
                                         <ListView x:Name="orderDetailListview" ItemsSource="{x:Bind OrderDetails, Mode=OneWay}">
                                             <ListView.ItemsPanel>
                                                 <ItemsPanelTemplate>
@@ -45,8 +45,8 @@
                                             <ListView.ItemTemplate>
                                                 <DataTemplate x:DataType="models:OrderDetail">
                                                     <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Width="220" Text="{x:Bind Product.ProductName}"></TextBlock>
-                                                        <TextBlock Width="68" Text="{x:Bind OrderedAmount}"></TextBlock>
+                                                        <TextBlock Width="220" Text="{x:Bind Product.ProductName, Mode=OneWay}"></TextBlock>
+                                                        <TextBlock Width="68" Text="{x:Bind OrderedAmount, Mode=OneWay}"></TextBlock>
                                                     </StackPanel>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
