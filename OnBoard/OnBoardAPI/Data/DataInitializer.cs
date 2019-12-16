@@ -192,8 +192,22 @@ namespace OnBoardAPI.Data
                     OrderedAmount = 3
                 };
 
+                OrderDetail cakeOrder3 = new OrderDetail
+                {
+                    Product = cake3,
+                    ProductId = cake3.ProductId,
+                    OrderedAmount = 3
+                };
 
-                IEnumerable<OrderDetail> orderdetails1 = new List<OrderDetail> { appleorder, cakeorder };
+                OrderDetail redbullOrder = new OrderDetail
+                {
+                    Product = redbull,
+                    ProductId = redbull.ProductId,
+                    OrderedAmount = 2
+                };
+
+
+                IEnumerable<OrderDetail> orderdetails1 = new List<OrderDetail> { redbullOrder, cakeOrder3 };
                 IEnumerable<OrderDetail> orderdetails2 = new List<OrderDetail> { cakeorder, hamburgerorder, appleorder };
                 IEnumerable<OrderDetail> orderdetails3 = new List<OrderDetail> { pancakesorder, cakeOrder2 };
                 #endregion
