@@ -21,7 +21,11 @@ namespace OnBoardAPI.Controllers
             _seatRepository = seatRepository;
         }
 
-
+        /// <summary>
+        /// Returns a seat with receiver seatnr, returns 200 code with it
+        /// </summary>
+        /// <param name="seatNumber"></param>
+        /// <returns></returns>
         [HttpGet("{seatNumber}")]
         public ActionResult<Seat> GetSeatInstance(int seatNumber)
         {
@@ -33,6 +37,12 @@ namespace OnBoardAPI.Controllers
             return new OkObjectResult(s);
         }
 
+        /// <summary>
+        /// Returns 200 if the swap of users is possible
+        /// </summary>
+        /// <param name="seatNrOne"></param>
+        /// <param name="seatNrTwo"></param>
+        /// <returns></returns>
         [HttpPut("switchSeats/{seatNrOne}/{seatNrTwo}")]
         public ActionResult SwitchSeats(int seatNrOne, int seatNrTwo)
         {

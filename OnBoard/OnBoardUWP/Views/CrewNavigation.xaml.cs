@@ -48,7 +48,10 @@ namespace OnBoardUWP.Views
                     break;
                 case "products":
                     mainFrame.Navigate(typeof(ManagingProducts), null, new DrillInNavigationTransitionInfo());
-
+                    break;
+                case "logout":
+                    App.Logout();
+                    Frame.Navigate(typeof(Login), null, new DrillInNavigationTransitionInfo());
                     break;
 
             }

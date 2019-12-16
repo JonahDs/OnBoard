@@ -107,5 +107,11 @@ namespace OnBoardUWP
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        public static void Logout()
+        {
+            HomepageModel.Refresh();
+            FoodViewModel.Refresh();
+        }
     }
 }
