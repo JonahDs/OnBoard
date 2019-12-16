@@ -96,6 +96,72 @@ namespace OnBoardAPI.Data
                 _context.User.Add(Maria);
                 #endregion
 
+                #region OrderDetails
+                OrderDetail appleorder = new OrderDetail
+                {
+                    Product = apple,
+                    ProductId = apple.ProductId,
+                    OrderedAmount = 2
+                };
+
+                OrderDetail spaghettiorder = new OrderDetail
+                {
+                    Product = spaghetti,
+                    ProductId = spaghetti.ProductId,
+                    OrderedAmount = 5
+                };
+
+                OrderDetail cakeorder = new OrderDetail
+                {
+                    Product = cake,
+                    ProductId = cake.ProductId,
+                    OrderedAmount = 1
+                };
+
+                OrderDetail pancakesorder = new OrderDetail
+                {
+                    Product = pancakes,
+                    ProductId = pancakes.ProductId,
+                    OrderedAmount = 2
+                };
+
+                OrderDetail hamburgerorder = new OrderDetail
+                {
+                    Product = hamburgerWithFries,
+                    ProductId = hamburgerWithFries.ProductId,
+                    OrderedAmount = 1
+                };
+
+                IEnumerable<OrderDetail> orderdetails1 = new List<OrderDetail> { appleorder, spaghettiorder };
+                IEnumerable<OrderDetail> orderdetails2 = new List<OrderDetail> { cakeorder, hamburgerorder, appleorder };
+                IEnumerable<OrderDetail> orderdetails3 = new List<OrderDetail> { pancakesorder, spaghettiorder };
+                #endregion
+
+                #region Orders
+                Order jonahOrder = new Order
+                {
+                    Passenger = (Passenger)passenger1,
+                    OrderState = OrderState.Complete,
+                    OrderDetails = orderdetails1
+                };
+
+                Order johannaOrder = new Order
+                {
+                    Passenger = (Passenger)passenger2,
+                    OrderState = OrderState.Complete,
+                    OrderDetails = orderdetails2
+                };
+
+                Order bramOrder = new Order
+                {
+                    Passenger = (Passenger)passenger3,
+                    OrderState = OrderState.Pending,
+                    OrderDetails = orderdetails3
+                };
+
+                IEnumerable<Order> orders = new List<Order> { jonahOrder, johannaOrder, bramOrder };
+                _context.Order.AddRange(orders);
+                #endregion
 
                 #region Seats
                 IList<Seat> seats;
