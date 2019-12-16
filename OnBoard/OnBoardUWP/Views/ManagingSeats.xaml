@@ -17,11 +17,11 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Manage seats" Margin="0,0,6,20" FontSize="30"></TextBlock>
+            <TextBlock Grid.Row="0" Text="Manage seats" Margin="0,0,6,20" Style="{StaticResource Title}"></TextBlock>
             <ListView Grid.Row="1" ItemsSource="{x:Bind homepageViewModel.Flight.Seats}" x:Name="list">
                 <ListView.HeaderTemplate>
                     <DataTemplate>
-                        <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}">
+                        <Grid Padding="12" Background="{StaticResource Background}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -29,10 +29,10 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="1" Text="Seat number" FontWeight="Bold" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                            <TextBlock Grid.Column="2" Text="Name" FontWeight="Bold" Style="{ThemeResource CaptionTextBlockStyle}" HorizontalAlignment="Stretch"/>
-                            <TextBlock Grid.Column="3" Text="First name" FontWeight="Bold" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                            <TextBlock Grid.Column="4" Text="Booking number" FontWeight="Bold" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                            <TextBlock Grid.Column="1" Text="Seat number" Style="{StaticResource TableHeader}"/>
+                            <TextBlock Grid.Column="2" Text="Name" Style="{StaticResource TableHeader}" HorizontalAlignment="Stretch"/>
+                            <TextBlock Grid.Column="3" Text="First name" Style="{StaticResource TableHeader}"/>
+                            <TextBlock Grid.Column="4" Text="Booking number" Style="{StaticResource TableHeader}"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.HeaderTemplate>
@@ -60,7 +60,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Grid.Row="2" Content="Switch Passengers" Command="{x:Bind seatViewModel.SwitchSeatsCommand}" IsEnabled="{x:Bind seatViewModel.HasTwoSeats, Mode=OneWay}"></Button>
+            <Button Grid.Row="2" Content="Switch Passengers" Style="{StaticResource ButtonStyle}" Command="{x:Bind seatViewModel.SwitchSeatsCommand}" IsEnabled="{x:Bind seatViewModel.HasTwoSeats, Mode=OneWay}"></Button>
         </Grid>
     </ScrollViewer>
 </Page>

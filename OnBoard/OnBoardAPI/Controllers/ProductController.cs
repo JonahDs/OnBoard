@@ -44,22 +44,5 @@ namespace OnBoardAPI.Controllers
             }
             return new OkObjectResult(_productRepository.SetSaleOnProduct(product, salePercentage));
         }
-
-        /// <summary>
-        /// Deletes a product from the database
-        /// </summary>
-        /// <param name="productId"></param>
-        /// <returns></returns>
-        [HttpPut("products/{productId}/delete")]
-        public ActionResult DeleteProduct(int productId)
-        {
-            Product product = _productRepository.GetProductById(productId);
-            if(product == null)
-            {
-                return NotFound();
-            }
-            _productRepository.DeleteProduct(productId);
-            return Ok();
-        }
     }
 }

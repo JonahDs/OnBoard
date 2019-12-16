@@ -49,20 +49,20 @@
                             <BitmapImage UriSource="{x:Bind vm.Playlist.Image}" ></BitmapImage>
                         </Image.Source>
                     </Image>
-                    <TextBlock TextWrapping="Wrap" Width="180" Margin="10" TextAlignment="Center" Text="{x:Bind vm.Playlist.Name}" FontSize="18" Style="{ThemeResource BaseTextBlockStyle}"></TextBlock>
+                    <TextBlock TextWrapping="Wrap" Width="180" Margin="10" TextAlignment="Center" Text="{x:Bind vm.Playlist.Name}" Style="{StaticResource TableHeader}" ></TextBlock>
                 </StackPanel>
                 <ListView x:Name="MusicList" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Margin="20,0,20,0" ItemsSource="{x:Bind vm.Playlist.Music}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick" Height="auto" MaxHeight="600" Width="auto">
                     <ListView.HeaderTemplate>
                         <DataTemplate>
-                            <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}">
+                            <Grid Padding="10" Background="{StaticResource Background}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Title" FontWeight="Bold" Style="{ThemeResource CaptionTextBlockStyle}" HorizontalAlignment="Stretch"/>
-                                <TextBlock Grid.Column="1" Text="Artist" FontWeight="Bold" Style="{ThemeResource CaptionTextBlockStyle}" HorizontalAlignment="Stretch"/>
-                                <TextBlock Grid.Column="2" Text="Playtime" FontWeight="Bold" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                                <TextBlock Grid.Column="0" Text="Title" Style="{StaticResource TableHeader}" HorizontalAlignment="Stretch"/>
+                                <TextBlock Grid.Column="1" Text="Artist" Style="{StaticResource TableHeader}" HorizontalAlignment="Stretch"/>
+                                <TextBlock Grid.Column="2" Text="Playtime" Style="{StaticResource TableHeader}"/>
                             </Grid>
                         </DataTemplate>
                     </ListView.HeaderTemplate>

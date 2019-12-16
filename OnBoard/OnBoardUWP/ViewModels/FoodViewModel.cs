@@ -125,5 +125,13 @@ namespace OnBoardUWP.ViewModels
                 SelectedProducts.Remove(prod);
             }
         }
+
+        public void Refresh() {
+            Products.Clear();
+            ProductsOnSale.Clear();
+            SelectedProducts.Clear();
+            FilteredProducts = Products;
+            GetProducts();
+        }
     }
 }

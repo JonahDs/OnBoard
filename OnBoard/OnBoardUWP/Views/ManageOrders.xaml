@@ -17,13 +17,13 @@
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="Manage orders" Margin="0,0,6,20" FontSize="30"></TextBlock>
+                <TextBlock Grid.Row="0" Text="Manage orders" Margin="0,0,6,20" Style="{StaticResource Title}"></TextBlock>
                 <StackPanel Grid.Row="1" Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal" Margin="12,0,0,10">
-                        <TextBlock Width="40" Text="#" FontWeight="Bold"/>
-                        <TextBlock Width="220" Text="Product" FontWeight="Bold"/>
-                        <TextBlock Width="80" Text="Amount" FontWeight="Bold"/>
-                        <TextBlock Width="100" Text="Status" FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10" Background="{StaticResource Background}" Padding="10">
+                        <TextBlock Width="40" Text="#" Style="{StaticResource TableHeader}"/>
+                        <TextBlock Width="220" Text="Product" Style="{StaticResource TableHeader}"/>
+                        <TextBlock Width="80" Text="Amount" Style="{StaticResource TableHeader}"/>
+                        <TextBlock Width="100" Text="Status" Style="{StaticResource TableHeader}"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <ListView x:Name="orderListview" ItemsSource="{x:Bind viewmodel.Orders, Mode=OneWay}">

@@ -6,17 +6,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    >
 
 
     <NavigationView IsSettingsVisible="False" x:Name="nav" Loaded="nav_Loaded" OpenPaneLength="240" SelectionChanged="NavigationView_SelectionChanged">
-        
         <NavigationView.MenuItems>
             <NavigationViewItem Content="Home" Icon="Home" x:Name="homebutton" Tag="home"/>
             <NavigationViewItem Content="Food and snacks" Icon="Shop" x:Name="foodbutton" Tag="food"/>
             <NavigationViewItem Content="Movies" Icon="Video" x:Name="moviesbutton"  Tag="movies"/>
             <NavigationViewItem Content="Music" Icon="Audio" x:Name="musicbutton" Tag="music"/>
             <NavigationViewItem Content="iChat" Icon="Message" x:Name="chatbutton" Tag="chat"/>
+            <NavigationViewItem Content="Logout" Icon="Clear" x:Name="logoutbutton" Tag="logout"/>
         </NavigationView.MenuItems>
         <Frame x:Name="mainFrame">
             <Frame.ContentTransitions>

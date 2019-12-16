@@ -31,7 +31,7 @@ namespace OnBoardUWP.Views
             homepage = App.HomepageModel;
             this.InitializeComponent();
         }
-
+        
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             homepage.IsLoading = true;
@@ -44,6 +44,7 @@ namespace OnBoardUWP.Views
                 await new MessageDialog(ex.Message, "Sorry, we coudn't fetch any account with given information :(").ShowAsync();
                 return;
             }
+            homepage.IsLoading = false;
             Frame.Navigate(typeof(Navigation));
         }
 
