@@ -48,31 +48,30 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <RelativePanel x:Name="flightInformation" Grid.RowSpan="2">
-                <TextBlock x:Name="flight" Text="Welcome on flight" FontWeight="Bold" FontSize="30" Padding="5"></TextBlock>
-                <TextBlock x:Name="flightname" RelativePanel.Below="flight" Text="{x:Bind ViewModel.Flight.FlightName, Mode=OneWay}" FontWeight="Bold" FontSize="30pt" Padding="5"></TextBlock>
-                <TextBlock x:Name="from" Margin="0,0,56,0" RelativePanel.Below="flightname" Text="From:" FontSize="20" Padding="5"></TextBlock>
+                <TextBlock x:Name="flight" Text="Welcome on flight" Style="{StaticResource Title}" Padding="5"></TextBlock>
+                <TextBlock x:Name="flightname" RelativePanel.Below="flight" Text="{x:Bind ViewModel.Flight.FlightName, Mode=OneWay}" Style="{StaticResource Title}" Padding="5"></TextBlock>
+                <TextBlock x:Name="from" Margin="0,0,56,0" RelativePanel.Below="flightname" Text="From:" Style="{StaticResource HomepageText}" Padding="5"></TextBlock>
                 <TextBlock x:Name="fromlocation" RelativePanel.RightOf="from" RelativePanel.Below="flightname" Text="{x:Bind ViewModel.Flight.Origin, Mode=OneWay}" Padding="5" FontSize="20"></TextBlock>
-                <TextBlock x:Name="destination" Text="Destination: " FontSize="20" RelativePanel.Below="from" Padding="5"></TextBlock>
+                <TextBlock x:Name="destination" Text="Destination: " Style="{StaticResource HomepageText}" RelativePanel.Below="from" Padding="5"></TextBlock>
                 <TextBlock x:Name="destinationBinding" RelativePanel.RightOf="destination" RelativePanel.Below="fromlocation" Padding="5" Text="{x:Bind ViewModel.Flight.Destination, Mode=OneWay}" FontSize="20"></TextBlock>
-                <TextBlock x:Name="timeofdeparture" Margin="0,0,10,0" Text="Departure: " RelativePanel.Below="destination" FontSize="20" Padding="5"></TextBlock>
+                <TextBlock x:Name="timeofdeparture" Margin="0,0,10,0" Text="Departure: " RelativePanel.Below="destination" Style="{StaticResource HomepageText}"  Padding="5"></TextBlock>
                 <TextBlock x:Name="timeofdepartureBinding" RelativePanel.RightOf="timeofdeparture" RelativePanel.Below="destinationBinding" Padding="5" Text="{x:Bind ViewModel.Flight.Departure, Mode=OneWay, Converter={StaticResource DateFormatConverter}}" FontSize="20"></TextBlock>
-                <TextBlock x:Name="timeofarrival" Margin="0,0,43,0" Text="Arrival: " RelativePanel.Below="timeofdeparture" FontSize="20" Padding="5"></TextBlock>
+                <TextBlock x:Name="timeofarrival" Margin="0,0,43,0" Text="Arrival: " RelativePanel.Below="timeofdeparture" Style="{StaticResource HomepageText}"  Padding="5"></TextBlock>
                 <TextBlock x:Name="timeofarrivalBinding" RelativePanel.RightOf="timeofarrival" RelativePanel.Below="timeofdepartureBinding" Padding="5" Text="{x:Bind ViewModel.Flight.EstimatedArrival, Mode=OneWay, Converter={StaticResource DateFormatConverter}}" FontSize="20"></TextBlock>
             </RelativePanel>
-
             <StackPanel x:Name="weatherStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
-                <TextBlock Text="Forecast" FontWeight="Bold" FontSize="30"></TextBlock>
-                <Grid Margin="0,10,10,10">
+                <TextBlock Text="Forecast" Style="{StaticResource Title}"></TextBlock>
+                <Grid Margin="0,10,10,10" Padding="10" Background="{StaticResource Background}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="40"/>
                         <ColumnDefinition Width="40"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Day" FontWeight="Bold"></TextBlock>
-                    <TextBlock Grid.Column="1" Text="Weather Information" FontWeight="Bold"></TextBlock>
-                    <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="Max" FontWeight="Bold"></TextBlock>
-                    <TextBlock HorizontalAlignment="Center" Grid.Column="3" Text="Min" FontWeight="Bold"></TextBlock>
+                    <TextBlock Grid.Column="0" Text="Day" Style="{StaticResource TableHeader}"></TextBlock>
+                    <TextBlock Grid.Column="1" Text="Weather Information" Style="{StaticResource TableHeader}"></TextBlock>
+                    <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="Max" Style="{StaticResource TableHeader}"></TextBlock>
+                    <TextBlock HorizontalAlignment="Center" Grid.Column="3" Text="Min" Style="{StaticResource TableHeader}"></TextBlock>
                 </Grid>
                 <Grid Margin="0,0,10,0">
                     <ItemsControl ItemsSource="{x:Bind WeatherViewModel.WeatherForecast, Mode=OneWay}">
@@ -90,13 +89,12 @@
                                     <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding MaxTemperature}"></TextBlock>
                                     <TextBlock HorizontalAlignment="Center" Grid.Column="3" Text="{Binding MinTemperature}"></TextBlock>
                                 </Grid>
-
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </Grid>
             </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,20,0,0">
                 <Maps:MapControl x:Name="MapControl1" ZoomInteractionMode="GestureAndControl" TiltInteractionMode="GestureAndControl" MapServiceToken="xGgeHOXe8DLIHNXtjKyh~2uij9sH2nyDku_TW1o9yxw~AmGx1daGQfLirSS9Qv3VwAAr9OvS_i2sWjdDR-RQF-cWI5lEyRpCxOo9SSGp1JM1" Width="auto" Height="600"/>
             </StackPanel>
         </Grid>

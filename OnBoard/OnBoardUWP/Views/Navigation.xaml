@@ -6,11 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    >
 
 
     <NavigationView IsSettingsVisible="False" x:Name="nav" Loaded="nav_Loaded" OpenPaneLength="240" SelectionChanged="NavigationView_SelectionChanged">
-        
         <NavigationView.MenuItems>
             <NavigationViewItem Content="Home" Icon="Home" x:Name="homebutton" Tag="home"/>
             <NavigationViewItem Content="Food and snacks" Icon="Shop" x:Name="foodbutton" Tag="food"/>

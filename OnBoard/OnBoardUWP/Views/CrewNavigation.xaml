@@ -12,7 +12,7 @@
         <NavigationView.MenuItems>
             <NavigationViewItem Content="Orders" Icon="Paste" x:Name="orderButton" Tag="orders"/>
             <NavigationViewItem Content="Seats" Icon="DockBottom" x:Name="seatbutton" Tag="seats"/>
-            <NavigationViewItem Content="Chat" Icon="Message" x:Name="chatbutton"  Tag="chat"/>
+            <NavigationViewItem Content="Chat" Icon="Message" x:Name="chatbutton" Tag="chat"/>
             <NavigationViewItem Content="Products" Icon="Shop" x:Name="productsbutton"  Tag="products"/>
 
         </NavigationView.MenuItems>
