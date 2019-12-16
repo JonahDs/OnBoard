@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 using Windows.Web.Http;
 
 namespace OnBoardUWP.ViewModels
@@ -16,31 +17,40 @@ namespace OnBoardUWP.ViewModels
         private HttpClient client = new HttpClient();
         private ObservableCollection<Message> _messageList;
         private string _message;
-        public string Message {
-            get {
+        public string Message
+        {
+            get
+            {
                 return _message;
             }
-            set {
+            set
+            {
                 Set(ref _message, value);
             }
         }
 
-        public ObservableCollection<Message> MessageList {
-            get {
+        public ObservableCollection<Message> MessageList
+        {
+            get
+            {
                 return _messageList;
             }
-            set {
+            set
+            {
                 Set(ref _messageList, value);
             }
         }
 
         private ObservableCollection<User> _users;
 
-        public ObservableCollection<User> Users {
-            get {
+        public ObservableCollection<User> Users
+        {
+            get
+            {
                 return _users;
             }
-            set {
+            set
+            {
                 Set(ref _users, value);
             }
         }
@@ -92,15 +102,26 @@ namespace OnBoardUWP.ViewModels
             }
             else
             {
+                try
+                {
+                    CheckIfDestinator();
+                }
+                catch (ArgumentNullException ex)
+                {
+                    ShowMessageDialog("You must select a destinator to send messages!");
+                    return;
+
+                }
                 Message message = new Message { SenderId = loggedUser.Id, SenderName = loggedUser.Firstname, DestinatorId = Destinator.Id, MessageString = _message };
                 await PostMessage(message);
             }
 
         }
 
+
+
         public async void SendMessage(CrewMember loggedUser, bool all)
         {
-
             if (all)
             {
                 Users.ToList().ForEach(async t =>
@@ -111,9 +132,27 @@ namespace OnBoardUWP.ViewModels
             }
             else
             {
+                try
+                {
+                    CheckIfDestinator();
+                }
+                catch (ArgumentNullException ex)
+                {
+                    ShowMessageDialog("You must select a destinator to send messages!");
+                    return;
+                }
                 Message message = new Message { SenderId = loggedUser.Id, SenderName = loggedUser.Firstname, DestinatorId = Destinator.Id, MessageString = _message };
                 await PostMessage(message);
             }
+        }
+
+        public bool CheckIfDestinator()
+        {
+            if (Destinator == null)
+            {
+                throw new ArgumentNullException();
+            }
+            return true;
         }
 
         public async Task PostMessage(Message message)
@@ -136,5 +175,12 @@ namespace OnBoardUWP.ViewModels
             MessageList.Add(message);
         }
 
+        private async void ShowMessageDialog(string text)
+        {
+            var messageDialog = new MessageDialog(text);
+            messageDialog.Commands.Add(new UICommand("Ok"));
+            messageDialog.Commands.Add(new UICommand("Close"));
+            await messageDialog.ShowAsync();
+        }
     }
 }
