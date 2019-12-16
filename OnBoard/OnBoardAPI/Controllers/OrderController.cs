@@ -33,7 +33,18 @@ namespace OnBoardAPI.Controllers
         [HttpGet("orders")]
         public ActionResult<IEnumerable<Order>> GetAllOrders()
         {
-            return new OkObjectResult(_orderRepository.GetAll());
+            IEnumerable<Order> orders = _orderRepository.GetAll();
+            orders.ToList().ForEach(o =>
+            {
+                if(o.OrderState == OrderState.Pending)
+                {
+                    o.OrderStateAsBool = false;
+                } else
+                {
+                    o.OrderStateAsBool = true;
+                }
+            });
+            return new OkObjectResult(orders);
         }
 
         /// <summary>
@@ -88,7 +99,8 @@ namespace OnBoardAPI.Controllers
             {
                 Order o = _orderRepository.GetOrderById(orderId);
                 o.OrderState = (OrderState)Enum.Parse(typeof(OrderState), state);
-                _orderRepository.updatedOrderState(o);
+                o.OrderStateAsBool = o.OrderState == OrderState.Pending ? false : true;
+                _orderRepository.UpdatedOrderState(o);
             }
             catch (Exception)
             {

@@ -40,7 +40,7 @@ namespace OnBoardAPI.Data.RepositoryInstances
             _context.SaveChanges();
         }
 
-        public void updatedOrderState(Order o)
+        public void UpdatedOrderState(Order o)
         {
             _context.Update(o);
             _context.SaveChanges();

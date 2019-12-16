@@ -14,6 +14,8 @@ namespace OnBoardAPI.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public OrderState OrderState { get; set; }
 
+        public bool OrderStateAsBool { get; set; }
+
         public IEnumerable<OrderDetail> OrderDetails { get; set; }
     }
 }
