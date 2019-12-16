@@ -8,39 +8,49 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Margin="0,0,193.333,50.667">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="109*"/>
-            <ColumnDefinition Width="288*"/>
-        </Grid.ColumnDefinitions>
-
-
-        <ComboBox x:Name="Available_users" Header="Available Users" Height="60" Width="296" SelectedItem="{x:Bind chatmodel.Destinator, Mode=TwoWay}"  ItemsSource="{x:Bind chatmodel.Users, Mode=OneWay}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Name}" Margin="0,0,3,0"/>
-                        <TextBlock Text="{Binding Firstname}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-
-        <CheckBox Name="choice" Content="Send to All">
-            </CheckBox>
-            <Button x:Name="sendButton" Content="Send Message" HorizontalAlignment="Left" Margin="275.333,113,0,0" VerticalAlignment="Top" Width="95" Command="{x:Bind chatmodel.SendMessageCommand}" CommandParameter="{x:Bind choice.IsChecked, Mode=TwoWay}" Height="41" Grid.Column="1"/>
-        <TextBox x:Name="messageTextBox" Text="{x:Bind chatmodel.Message, Mode=TwoWay}" HorizontalAlignment="Left" Height="41" Margin="82,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="311" Grid.ColumnSpan="2"/>
-            <ListBox x:Name="messagesList" HorizontalAlignment="Left" Height="141" Margin="82,170,0,0" VerticalAlignment="Top" Width="311" RenderTransformOrigin="-0.304,0.109" BorderThickness="1" Grid.ColumnSpan="2" BorderBrush="Gainsboro"
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Chat" FontSize="30"></TextBlock>
+            <Grid Grid.Row="1" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <ComboBox x:Name="Available_users" Grid.Column="0" Grid.Row="0" Margin="20,10,20,0" Header="Available Users" Height="60" Width="300" SelectedItem="{x:Bind chatmodel.Destinator, Mode=TwoWay}"  ItemsSource="{x:Bind chatmodel.Users, Mode=OneWay}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}" Margin="0,0,3,0"/>
+                                <TextBlock Text="{Binding Firstname}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <CheckBox x:Name="choice" Grid.Column="1" Grid.Row="0" Content="Send to All" VerticalAlignment="Bottom" />
+                <StackPanel Orientation="Vertical" Margin="20" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+                    <ListBox x:Name="messagesList" HorizontalAlignment="Left" Height="450" Margin="0,0,0,20" Width="auto" MinWidth="200" BorderThickness="2" BorderBrush="Gainsboro"
                  ItemsSource="{x:Bind chatmodel.MessageList, Mode=OneWay}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding SenderName}" Margin="3,0,0,0"></TextBlock>
-
-                            <TextBlock Text="{Binding MessageString}"></TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-    </Grid>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding SenderName}" Margin="3,0,0,0"></TextBlock>
+                                    <TextBlock Text="{Binding MessageString}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <TextBox x:Name="messageTextBox" Margin="0,0,0,20" Text="{x:Bind chatmodel.Message, Mode=TwoWay}" Height="40" TextWrapping="Wrap" MinWidth="200" Width="auto"/>
+                    <Button x:Name="sendButton" Content="Send Message" HorizontalAlignment="Left" Command="{x:Bind chatmodel.SendMessageCommand}" CommandParameter="{x:Bind choice.IsChecked, Mode=TwoWay}"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
 </Page>
