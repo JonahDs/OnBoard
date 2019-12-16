@@ -92,6 +92,12 @@ namespace OnBoardAPI.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Updates the state of an order
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
         [HttpPut("updateState/{orderId}/{state}")]
         public ActionResult UpdateOrderState(int orderId, string state)
         {
