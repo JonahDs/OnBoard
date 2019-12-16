@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Frame x:Name="movieDetailFrame">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="narrowView">
@@ -61,10 +60,9 @@
                 </StackPanel>
                 <Popup x:Name="MoviePopup" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,20,0,0">
                     <RelativePanel x:Name="MoviePanel">
-                        <MediaPlayerElement x:Name="MoviePlayer" AreTransportControlsEnabled="True" HorizontalAlignment="Stretch" Source="ms-appx:///Assets/exdee.mp4" VerticalAlignment="Stretch"></MediaPlayerElement>
+                        <MediaPlayerElement x:Name="MoviePlayer" AreTransportControlsEnabled="True"  HorizontalAlignment="Stretch" Source="ms-appx:///Assets/exdee.mp4" VerticalAlignment="Stretch"></MediaPlayerElement>
                     </RelativePanel>
                 </Popup>
             </Grid>
         </ScrollViewer>
-    </Frame>
 </Page>

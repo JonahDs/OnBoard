@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Media.Core;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -46,7 +47,17 @@ namespace OnBoardUWP.Views
         
         private void BackToMovies(object sender, RoutedEventArgs e)
         {
-            movieDetailFrame.Navigate(typeof(Movies));
+            Frame.Navigate(typeof(Movies));
+        }
+
+
+        protected async override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            base.OnNavigatingFrom(e);
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                MoviePlayer.MediaPlayer.Dispose();
+            });
         }
 
     }
