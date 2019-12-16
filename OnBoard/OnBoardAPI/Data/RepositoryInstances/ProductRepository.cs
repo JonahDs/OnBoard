@@ -20,17 +20,6 @@ namespace OnBoardAPI.Data.RepositoryInstances
         }
 
         /// <summary>
-        /// Deletes a product and saves the changes
-        /// </summary>
-        /// <param name="productId"></param>
-        public void DeleteProduct(int productId)
-        {
-            _products.Remove(_products.FirstOrDefault(t => t.ProductId == productId));
-            _context.SaveChanges();
-        }
-
-
-        /// <summary>
         /// Get all products
         /// </summary>
         /// <returns> Collection of products </returns>

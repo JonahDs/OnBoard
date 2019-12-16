@@ -11,6 +11,5 @@ namespace OnBoardAPI.Data.Repositories
         IEnumerable<Product> GetAll();
         Product GetProductById(int productId);
         double SetSaleOnProduct(Product product, double salePercentage);
-        void DeleteProduct(int productId);
     }
 }

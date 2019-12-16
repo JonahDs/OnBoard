@@ -21,6 +21,11 @@ namespace OnBoardAPI.Controllers
             _userRepository = userRepository;
         }
 
+        /// <summary>
+        /// returns 200 with the users from your group
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [HttpGet("passenerGroup/{userId}")]
         public ActionResult<IEnumerable<User>> GetCompanionGroups(int userId)
         {
@@ -28,6 +33,11 @@ namespace OnBoardAPI.Controllers
             return new OkObjectResult(users.ToList().Where(t => t.Id != userId));
         }
 
+        /// <summary>
+        /// Returns 200 with a given crewmember instance
+        /// </summary>
+        /// <param name="crewmemberId"></param>
+        /// <returns></returns>
         [HttpGet("crewmember/{crewmemberId}")]
         public ActionResult<CrewMember> GetCrewMemberInstance(int crewmemberId)
         {

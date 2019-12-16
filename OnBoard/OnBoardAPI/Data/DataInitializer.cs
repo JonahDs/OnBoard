@@ -45,12 +45,25 @@ namespace OnBoardAPI.Data
 
                 Product cake4 = new Product { ProductName = "Cake 4", ProductPrice = 8.50, ProductType = ProductType.Snacks, ProductDescription = "Hmmmm cake", SalePrice = 8.50, ImageUrl = "https://images.squarespace-cdn.com/content/v1/538500e4e4b0fa9e95efc7b9/1558977907797-27MUKZZPLWI74TIPOGED/ke17ZwdGBToddI8pDm48kMtiXMEMZ8ID8MVhA-T_Qc9Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIXpy3a2Cibo6eml5BpILeGX-BY3QvcZT7F317PmmzovI/SKOR+CC+slice.png?format=1000w" };
 
-                IEnumerable<Product> products = new List<Product> { apple, hamburgerWithFries, chocolateBar, pear, spaghetti, cake, pancakes, cake2, cake3, cake4 };
+                Product fanta = new Product { ProductName = "Fanta", ProductPrice = 2.50, ProductType = ProductType.Drinks, SalePrice = 2.50, ImageUrl = "https://5.imimg.com/data5/BB/BB/GLADMIN-/fanta-250x250.png" };
+
+                Product duvel = new Product { ProductName = "Duvel", ProductPrice = 5.00, ProductType = ProductType.Drinks, SalePrice = 5.00, ImageUrl = "https://www.bierfamilie.nl/wp-content/uploads/2017/09/Duvel.png" };
+
+                Product redbull = new Product { ProductName = "Redbull", ProductPrice = 3.00, ProductType = ProductType.Drinks, SalePrice = 2.50, ImageUrl = "https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c1e9.png" };
+
+                Product icetea = new Product { ProductName = "Duvel", ProductPrice = 5.00, ProductType = ProductType.Drinks, SalePrice = 5.00, ImageUrl = "https://www.lipton.com/content/dam/unilever/lipton_international/belgium/pack_shot/lipton_ice_tea_green_matcha_cucumber_mint_330ml-1206351-1567836-png.png" };
+
+                Product jupiler = new Product { ProductName = "Jupiler", ProductPrice = 3.00, ProductType = ProductType.Drinks, SalePrice = 3.00, ImageUrl = "https://pngimage.net/wp-content/uploads/2018/06/jupiler-png-3.png" };
+
+
+                IEnumerable<Product> products = new List<Product> { apple, hamburgerWithFries, chocolateBar, pear, spaghetti, cake, pancakes, cake2, cake3, cake4, fanta, duvel, redbull, icetea, jupiler };
                 _context.Product.AddRange(products);
                 #endregion
 
                 #region PassangerGroups
                 PassengerGroup group1 = new PassengerGroup();
+
+                PassengerGroup group2 = new PassengerGroup();
                 #endregion
 
                 #region Passangers
@@ -82,8 +95,34 @@ namespace OnBoardAPI.Data
 
                 };
 
+                User passenger4 = new Passenger
+                {
+                    BookingNr = 12456248,
+                    Firstname = "Helena",
+                    Name = "De Bakker",
+                    Group = group2
 
+                };
+
+                User passenger5 = new Passenger
+                {
+                    BookingNr = 95756659,
+                    Firstname = "Kurt",
+                    Name = "De Bakker",
+                    Group = group2
+
+                };
                 #endregion
+
+                User passenger6 = new Passenger
+                {
+                    BookingNr = 74306529,
+                    Firstname = "Astrid",
+                    Name = "De Bakker",
+                    Group = group2
+
+                };
+
 
                 #region CrewMember
                 User Maria = new CrewMember
@@ -93,7 +132,14 @@ namespace OnBoardAPI.Data
                     Name = "Garcia",
                 };
 
-                _context.User.Add(Maria);
+                User Bart = new CrewMember
+                {
+                    CrewMemberID = 1111,
+                    Firstname = "Bart",
+                    Name = "De Visser",
+                };
+
+                _context.User.AddRange(Maria, Bart);
                 #endregion
 
                 #region OrderDetails
@@ -132,9 +178,38 @@ namespace OnBoardAPI.Data
                     OrderedAmount = 1
                 };
 
-                IEnumerable<OrderDetail> orderdetails1 = new List<OrderDetail> { appleorder, spaghettiorder };
+                OrderDetail cakeOrder = new OrderDetail
+                {
+                    Product = cake,
+                    ProductId = cake.ProductId,
+                    OrderedAmount = 5
+                };
+
+                OrderDetail cakeOrder2 = new OrderDetail
+                {
+                    Product = cake2,
+                    ProductId = cake2.ProductId,
+                    OrderedAmount = 3
+                };
+
+                OrderDetail cakeOrder3 = new OrderDetail
+                {
+                    Product = cake3,
+                    ProductId = cake3.ProductId,
+                    OrderedAmount = 3
+                };
+
+                OrderDetail redbullOrder = new OrderDetail
+                {
+                    Product = redbull,
+                    ProductId = redbull.ProductId,
+                    OrderedAmount = 2
+                };
+
+
+                IEnumerable<OrderDetail> orderdetails1 = new List<OrderDetail> { redbullOrder, cakeOrder3 };
                 IEnumerable<OrderDetail> orderdetails2 = new List<OrderDetail> { cakeorder, hamburgerorder, appleorder };
-                IEnumerable<OrderDetail> orderdetails3 = new List<OrderDetail> { pancakesorder, spaghettiorder };
+                IEnumerable<OrderDetail> orderdetails3 = new List<OrderDetail> { pancakesorder, cakeOrder2 };
                 #endregion
 
                 #region Orders
@@ -182,7 +257,26 @@ namespace OnBoardAPI.Data
                     SeatNumber = 3,
                     User = passenger3
                 };
-                seats = new List<Seat> { s1p1, s2p2, s3p3 };
+
+                Seat s4p4 = new Seat
+                {
+                    SeatNumber = 4,
+                    User = passenger4
+                };
+
+                Seat s5p5 = new Seat
+                {
+                    SeatNumber = 5,
+                    User = passenger5
+                };
+
+                Seat s6p6 = new Seat
+                {
+                    SeatNumber = 6,
+                    User = passenger6
+                };
+
+                seats = new List<Seat> { s1p1, s2p2, s3p3, s4p4, s5p5, s6p6 };
                 #endregion
 
                 #region Flight

@@ -107,7 +107,12 @@ namespace OnBoardUWP.ViewModels
 
                 throw ex;
             }
+            IsLoading = false;
         }
 
+        public void Refresh()
+        {
+            GetFlightInformation();
+        }
     }
 }

@@ -17,6 +17,11 @@ namespace OnBoardAPI.Controllers
             _userRepository = userRepository;
         }
 
+        /// <summary>
+        /// Get all messages from the user
+        /// </summary>
+        /// <param name="fetchingUserId"></param>
+        /// <returns></returns>
         [HttpGet("{fetchingUserId}")]
         public ActionResult<IEnumerable<Message>> FetchMessages(int fetchingUserId)
         {
@@ -24,6 +29,11 @@ namespace OnBoardAPI.Controllers
             return new OkObjectResult(_userRepository.GetUserMessages(fetchingUserId));
         }
 
+        /// <summary>
+        /// Stores a messge to given user embedded in message,
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         [HttpPost("sendMessage/{message}")]
         public ActionResult SendMessage(Message message)
         {
