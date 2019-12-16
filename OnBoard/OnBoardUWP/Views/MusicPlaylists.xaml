@@ -8,9 +8,41 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <ScrollViewer>
-        <Grid>
-            <ListView ItemsSource="{x:Bind musicViewModel.Playlists}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick" x:Name="playlist">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="narrowView">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SetImageWidth.Width" Value="120"></Setter>
+                        <Setter Target="SetImageHeight.Height" Value="120"></Setter>
+                        <Setter Target="SetColumnWidth.Width" Value="130"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="wideView">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="650" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SetImageWidth.Width" Value="200"></Setter>
+                        <Setter Target="SetImageHeight.Height" Value="200"></Setter>
+                        <Setter Target="SetColumnWidth.Width" Value="auto"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Name="SetImageWidth" Visibility="Collapsed"/>
+            <TextBlock Name="SetImageHeight" Visibility="Collapsed"/>
+            <TextBlock Name="SetColumnWidth" Visibility="Collapsed"/>
+            <TextBlock Grid.Row="0" Text="Music" FontSize="30" Margin="0,0,0,10"></TextBlock>
+            <ListView Grid.Row="1" ItemsSource="{x:Bind musicViewModel.Playlists}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick" x:Name="playlist">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
@@ -18,8 +50,8 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate x:Name="TableDataTemplate" x:DataType="models:Playlist">
-                        <StackPanel Padding="10">
-                            <Image Stretch="Fill" Width="250" Height="300" >
+                        <StackPanel Padding="10" Width="{Binding Path=Width, ElementName=SetColumnWidth}">
+                            <Image Stretch="Fill" Width="{Binding Path=Width, ElementName=SetImageWidth}" Height="{Binding Path=Height, ElementName=SetImageHeight}" >
                             <Image.Source>
                                 <BitmapImage UriSource="{x:Bind Image}" ></BitmapImage>
                             </Image.Source>
