@@ -132,19 +132,11 @@ namespace OnBoardAPI.Data
                     OrderedAmount = 1
                 };
 
-                IEnumerable<OrderDetail> orderdetails1 = new List<OrderDetail> { appleorder, spaghettiorder };
                 IEnumerable<OrderDetail> orderdetails2 = new List<OrderDetail> { cakeorder, hamburgerorder, appleorder };
                 IEnumerable<OrderDetail> orderdetails3 = new List<OrderDetail> { pancakesorder, spaghettiorder };
                 #endregion
 
                 #region Orders
-                Order jonahOrder = new Order
-                {
-                    Passenger = (Passenger)passenger1,
-                    OrderState = OrderState.Complete,
-                    OrderDetails = orderdetails1
-                };
-
                 Order johannaOrder = new Order
                 {
                     Passenger = (Passenger)passenger2,
@@ -159,7 +151,7 @@ namespace OnBoardAPI.Data
                     OrderDetails = orderdetails3
                 };
 
-                IEnumerable<Order> orders = new List<Order> { jonahOrder, johannaOrder, bramOrder };
+                IEnumerable<Order> orders = new List<Order> { johannaOrder, bramOrder };
                 _context.Order.AddRange(orders);
                 #endregion
 
