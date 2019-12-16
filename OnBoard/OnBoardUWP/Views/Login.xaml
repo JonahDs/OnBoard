@@ -60,7 +60,7 @@
             <Button Content="Enter" HorizontalAlignment="Center" Click="ButtonAir_Click"/>
         </StackPanel>
        
-<controls:Loading x:Name="LoadingControl" IsLoading="{x:Bind homepage.IsLoading, Mode=OneWay}" Background="AliceBlue" Opacity="80">
+<controls:Loading x:Name="LoadingControl" IsLoading="{x:Bind homepage.IsLoading, Mode=OneWay}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="AliceBlue" Opacity="80">
             <StackPanel Orientation="Horizontal" Padding="12">
                 <ProgressRing IsActive="True" />
                 <Border Background="AliceBlue" Opacity="80"></Border>
