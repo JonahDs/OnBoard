@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -40,22 +41,22 @@ namespace OnBoardUWP.Views
             }
             catch (Exception ex)
             {
-
-                throw;
+                await new MessageDialog(ex.Message, "Sorry, we coudn't fetch any account with given information :(").ShowAsync();
+                return;
             }
             Frame.Navigate(typeof(Navigation));
         }
 
-        public void ButtonAir_Click(object sender, RoutedEventArgs e)
+        public async void ButtonAir_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                homepage.GetCrewMemberInstance(int.Parse(hostedId.Text));
+                await homepage.GetCrewMemberInstance(int.Parse(hostedId.Text));
             }
             catch (Exception ex)
             {
-
-                throw;
+                await new MessageDialog(ex.Message, "Sorry, we coudn't fetch any account with given information :(").ShowAsync();
+                return;
             }
             Frame.Navigate(typeof(CrewNavigation));
 

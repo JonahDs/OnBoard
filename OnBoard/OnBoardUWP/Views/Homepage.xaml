@@ -97,7 +97,7 @@
                 </Grid>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-                <Maps:MapControl x:Name="MapControl1" ZoomInteractionMode="GestureAndControl" TiltInteractionMode="GestureAndControl" MapServiceToken="Anyrbx-nBep-_jFv3GSbnMbGrR4fnY8ZfoKH3uORx7qmEvr8_G1QuG6iW2mXW5ft" Width="auto" Height="600"/>
+                <Maps:MapControl x:Name="MapControl1" ZoomInteractionMode="GestureAndControl" TiltInteractionMode="GestureAndControl" MapServiceToken="xGgeHOXe8DLIHNXtjKyh~2uij9sH2nyDku_TW1o9yxw~AmGx1daGQfLirSS9Qv3VwAAr9OvS_i2sWjdDR-RQF-cWI5lEyRpCxOo9SSGp1JM1" Width="auto" Height="600"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>

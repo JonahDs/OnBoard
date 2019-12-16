@@ -11,9 +11,47 @@
     <StackPanel>
         <ScrollViewer>
             <ListView ItemsSource="{x:Bind viewmodel.Products, Mode=OneWay}">
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="ProductName" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                            <TextBlock Grid.Column="1" Text="Current Price" Style="{ThemeResource CaptionTextBlockStyle}" HorizontalAlignment="Stretch"/>
+                            <TextBlock Grid.Column="2" Text="Current Sale" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                            <TextBlock Grid.Column="3" Text="New Sale" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
+                    <DataTemplate x:Name="TableDataTemplate" x:DataType="models:Product">
+                        <Grid Padding="12" AutomationProperties.Name="{x:Bind ProductName}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="{x:Bind ProductName}" />
+                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{x:Bind ProductPrice}"/>
+                            <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{x:Bind SalePrice}" />
+                            <TextBox Grid.Column="3" BorderThickness="0" Tag="{x:Bind ProductId}" TextChanged="PercentageEntered" BeforeTextChanging="Textbox_BeforeChange" PlaceholderText="Enter promotion percentage"></TextBox>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--<ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:Product">
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                             <TextBlock Text="{x:Bind ProductName}" Margin="3,0,0,0"></TextBlock>
                             <TextBlock Text="Current Price"></TextBlock>
                             <TextBlock Text="{x:Bind SalePrice}" Margin="3,0,0,0"></TextBlock>
@@ -21,8 +59,8 @@
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
         </ScrollViewer>
-        <Button Content="Save Changes" Click="SaveChanges"></Button>
+        <Button Content="Save Changes" Command="{x:Bind viewmodel.SaveChangesCommand}"></Button>
     </StackPanel>
 </Page>

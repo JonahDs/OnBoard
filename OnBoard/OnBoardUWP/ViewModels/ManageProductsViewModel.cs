@@ -16,11 +16,14 @@ namespace OnBoardUWP.ViewModels
 
         private HttpClient client = new HttpClient();
 
+        public RelayCommand SaveChangesCommand { get; set; }
+        
         private Dictionary<int, double> productsWithPercentage = new Dictionary<int, double>();
 
         public ManageProductsViewModel()
         {
             GetProducts();
+            SaveChangesCommand = new RelayCommand(_ => SaveChanges());
         }
 
         public async void GetProducts()

@@ -31,7 +31,12 @@ namespace OnBoardAPI.Controllers
         [HttpGet("crewmember/{crewmemberId}")]
         public ActionResult<CrewMember> GetCrewMemberInstance(int crewmemberId)
         {
-            return new OkObjectResult(_userRepository.GetCrewMemberInstance(crewmemberId));
+            User c = _userRepository.GetCrewMemberInstance(crewmemberId);
+            if(c == null)
+            {
+                return BadRequest();
+            }
+            return new OkObjectResult(c);
         }
     }
 }
