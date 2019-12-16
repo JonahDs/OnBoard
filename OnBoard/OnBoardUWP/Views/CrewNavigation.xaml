@@ -14,7 +14,7 @@
             <NavigationViewItem Content="Seats" Icon="DockBottom" x:Name="seatbutton" Tag="seats"/>
             <NavigationViewItem Content="Chat" Icon="Message" x:Name="chatbutton"  Tag="chat"/>
             <NavigationViewItem Content="Products" Icon="Shop" x:Name="productsbutton"  Tag="products"/>
-
+            <NavigationViewItem Content="Log out" Icon="Clear" x:Name="logoutbutton"  Tag="logout"/>
         </NavigationView.MenuItems>
         <Frame x:Name="mainFrame"></Frame>
     </NavigationView>

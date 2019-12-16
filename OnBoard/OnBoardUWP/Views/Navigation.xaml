@@ -17,6 +17,7 @@
             <NavigationViewItem Content="Movies" Icon="Video" x:Name="moviesbutton"  Tag="movies"/>
             <NavigationViewItem Content="Music" Icon="Audio" x:Name="musicbutton" Tag="music"/>
             <NavigationViewItem Content="iChat" Icon="Message" x:Name="chatbutton" Tag="chat"/>
+            <NavigationViewItem Content="Logout" Icon="Clear" x:Name="logoutbutton" Tag="logout"/>
         </NavigationView.MenuItems>
         <Frame x:Name="mainFrame">
             <Frame.ContentTransitions>

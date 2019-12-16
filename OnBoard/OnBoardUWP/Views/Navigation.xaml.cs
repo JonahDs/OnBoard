@@ -53,6 +53,10 @@ namespace OnBoardUWP.Views
                 case "chat":
                     mainFrame.Navigate(typeof(Chat), null, new DrillInNavigationTransitionInfo());
                     break;
+                case "logout":
+                    App.Logout();
+                    Frame.Navigate(typeof(Login), null, new DrillInNavigationTransitionInfo());
+                    break;
             }
         }
 
