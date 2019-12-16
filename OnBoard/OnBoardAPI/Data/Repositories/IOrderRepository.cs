@@ -12,6 +12,6 @@ namespace OnBoardAPI.Data.Repositories
         IEnumerable<Order> GetOrdersByUserId(int userId);
         void PlaceOrder(Order order);
         Order GetOrderById(int orderId);
-        void updatedOrderState(Order o);
+        void UpdatedOrderState(Order o);
     }
 }

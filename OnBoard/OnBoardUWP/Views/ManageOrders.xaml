@@ -51,7 +51,7 @@
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
-                                        <ToggleSwitch OffContent="Pending" OnContent="Complete" Tag="{x:Bind OrderId}" Toggled="ToggleFlipped">
+                                        <ToggleSwitch OffContent="Pending" OnContent="Complete" Tag="{x:Bind OrderId}" IsOn="{x:Bind OrderStateAsBool}" Toggled="ToggleFlipped">
                                         </ToggleSwitch>
                                     </StackPanel>
                                 </DataTemplate>

@@ -14,6 +14,8 @@ namespace OnBoardUWP.Models
 
         public string OrderState { get; set; }
 
+        public bool OrderStateAsBool { get; set; }
+
         public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

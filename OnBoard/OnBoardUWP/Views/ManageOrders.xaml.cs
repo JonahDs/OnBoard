@@ -40,7 +40,7 @@ namespace OnBoardUWP.Views
                 viewmodel.UpdateOrderState(tag, toggle.OnContent.ToString());
             } else
             {
-                viewmodel.UpdateOrderState(tag, toggle.OnContent.ToString());
+                viewmodel.UpdateOrderState(tag, toggle.OffContent.ToString());
             }
         }
     }
