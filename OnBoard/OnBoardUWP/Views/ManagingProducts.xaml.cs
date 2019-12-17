@@ -51,7 +51,7 @@ namespace OnBoardUWP.Views
 
                 if (!succes)
                 {
-                    await new MessageDialog("We are sorry", "You have entered a percentage higher than 100! Reconcider your choice").ShowAsync();
+                    await new MessageDialog("We are sorry", "You have entered a percentage higher than 100! Reconsider your choice").ShowAsync();
                     text.Text = "0";
                 }
             }

@@ -93,8 +93,7 @@ namespace OnBoardUWP.ViewModels
             catch (Exception ex)
             {
                 IsLoading = false;
-                return;
-                //throw ex;
+                throw ex;
             }
 
         }
@@ -111,7 +110,6 @@ namespace OnBoardUWP.ViewModels
                 IsLoading = false;
                 throw ex;
             }
-            IsLoading = false;
         }
 
         public void Refresh()
