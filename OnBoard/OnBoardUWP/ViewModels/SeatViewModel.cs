@@ -23,11 +23,11 @@ namespace OnBoardUWP.ViewModels
         {
             _selectedSeats = new ObservableCollection<int>();
             SelectUserCommand = new RelayCommand(seatnr => SelectUser((int)seatnr));
-            SwitchSeatsCommand = new RelayCommand(_ => SwitchUsers());
+            SwitchSeatsCommand = new RelayCommand(async _ => await SwitchUsers());
         }
 
 
-        private async void SwitchUsers()
+        private async Task SwitchUsers()
         {
             var seatOne = _selectedSeats.First();
             var seatTwo = _selectedSeats.Last();
@@ -37,10 +37,10 @@ namespace OnBoardUWP.ViewModels
                 HttpStringContent content = new HttpStringContent("", Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json");
                 HttpResponseMessage message = await client.PutAsync(uri, content);
                 message.EnsureSuccessStatusCode();
+                _selectedSeats.Clear();
             }
             catch (Exception e)
             {
-
                 throw;
             }
         }
@@ -65,9 +65,5 @@ namespace OnBoardUWP.ViewModels
             messageDialog.Commands.Add(new UICommand("Close"));
             await messageDialog.ShowAsync();
         }
-
-
-
-
     }
 }
