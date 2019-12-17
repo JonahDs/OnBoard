@@ -1,7 +1,5 @@
 # OnBoard
-###
-Groep J7 - De Bleecker Bram, De Bruycker Johanna, De Smet Jonah
-###
+### Groep J7 - De Bleecker Bram, De Bruycker Johanna, De Smet Jonah
 
 Als je wilt aanmelden als een passagier gebruik je het SeatNr, voor een crewmember is het CrewmemberNr
 
