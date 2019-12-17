@@ -80,14 +80,22 @@ namespace OnBoardUWP.ViewModels
 
         private async void FetchMessages(int loggedUserId)
         {
+            try
+            {
             var list = await GlobalMethods.ApiCall<List<Message>>($"http://localhost:50236/api/message/{loggedUserId}", client);
             MessageList = new ObservableCollection<Message>(list);
+            }
+            catch {}
         }
 
         private async void FetchTextableUsers(int loggedUserId)
         {
-            var list = await GlobalMethods.ApiCall<List<User>>($"http://localhost:50236/api/user/passenerGroup/{loggedUserId}", client);
-            Users = new ObservableCollection<User>(list);
+            try
+            {
+                var list = await GlobalMethods.ApiCall<List<User>>($"http://localhost:50236/api/user/passenerGroup/{loggedUserId}", client);
+                Users = new ObservableCollection<User>(list);
+            }
+            catch {}
         }
 
         public async void SendMessage(User loggedUser, bool all)

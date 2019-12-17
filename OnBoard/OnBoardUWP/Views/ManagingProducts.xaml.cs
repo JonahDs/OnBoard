@@ -36,12 +36,24 @@ namespace OnBoardUWP.Views
 
             TextBox text = sender as TextBox;
             var percentage = text.Text;
-            int productId = (int)text.Tag;
-            bool succes = viewmodel.ResetProductAndPercentage(productId, Convert.ToDouble(percentage));
-            if(succes == false)
+            if (percentage != "")
             {
-                await new MessageDialog("We are sorry", "You have entered a percentage higher than 100! Reconcider your choice").ShowAsync();
-                text.Text = "0";
+                int productId = (int)text.Tag;
+                bool succes = false;
+                try
+                {
+                    succes = viewmodel.ResetProductAndPercentage(productId, Convert.ToDouble(percentage));
+                }
+                catch
+                {
+                    await new MessageDialog("Invalid input").ShowAsync();
+                }
+
+                if (!succes)
+                {
+                    await new MessageDialog("We are sorry", "You have entered a percentage higher than 100! Reconcider your choice").ShowAsync();
+                    text.Text = "0";
+                }
             }
         }
 

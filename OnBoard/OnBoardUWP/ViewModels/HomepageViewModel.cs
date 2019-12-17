@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
+using Windows.UI.Xaml;
 using Windows.Web.Http;
 
 namespace OnBoardUWP.ViewModels
@@ -16,42 +18,33 @@ namespace OnBoardUWP.ViewModels
     {
         private Flight _flight;
 
-        public Flight Flight
-        {
-            get
-            {
+        public Flight Flight {
+            get {
                 return _flight;
             }
-            set
-            {
+            set {
                 Set(ref _flight, value);
             }
         }
 
         private Seat _seat;
 
-        public Seat Seat
-        {
-            get
-            {
+        public Seat Seat {
+            get {
                 return _seat;
             }
-            set
-            {
+            set {
                 Set(ref _seat, value);
             }
         }
 
         private CrewMember _crewMember;
 
-        public CrewMember CrewMember
-        {
-            get
-            {
+        public CrewMember CrewMember {
+            get {
                 return _crewMember;
             }
-            set
-            {
+            set {
                 Set(ref _crewMember, value);
             }
         }
@@ -75,7 +68,18 @@ namespace OnBoardUWP.ViewModels
         /// <returns></returns>
         private async void GetFlightInformation()
         {
-            Flight = await GlobalMethods.ApiCall<Flight>("http://localhost:50236/api/flight", client);
+            try
+            {
+                Flight = await GlobalMethods.ApiCall<Flight>("http://localhost:50236/api/flight", client);
+                Flight.Seats = Flight.Seats.OrderBy(f => f.SeatNumber);
+            }
+            catch(Exception ex)
+            {
+                var messageDialog = new MessageDialog("Can't connect to the api, restart application");
+                messageDialog.Commands.Add(new UICommand("Close application"));
+                await messageDialog.ShowAsync();
+                Application.Current.Exit();
+            }
         }
 
         public async Task GetSeatInstance(int seatNumber)
@@ -89,7 +93,8 @@ namespace OnBoardUWP.ViewModels
             catch (Exception ex)
             {
                 IsLoading = false;
-                throw ex;
+                return;
+                //throw ex;
             }
 
         }
@@ -104,7 +109,6 @@ namespace OnBoardUWP.ViewModels
             catch (Exception ex)
             {
                 IsLoading = false;
-
                 throw ex;
             }
             IsLoading = false;
@@ -113,6 +117,15 @@ namespace OnBoardUWP.ViewModels
         public void Refresh()
         {
             GetFlightInformation();
+        }
+
+        private async void ShowMessageDialog(string text)
+        {
+            var messageDialog = new MessageDialog(text);
+            messageDialog.Commands.Add(new UICommand("Ok"));
+            messageDialog.Commands.Add(new UICommand("Close"));
+            await messageDialog.ShowAsync();
+
         }
     }
 }

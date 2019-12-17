@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 using Windows.Web.Http;
 
 namespace OnBoardUWP.ViewModels
@@ -46,24 +47,39 @@ namespace OnBoardUWP.ViewModels
             return true;
         }
 
-        public void SaveChanges()
+        public async void SaveChanges()
         {
+            var tasks = new List<Task>();
             productsWithPercentage.ToList().ForEach(async t =>
             {
-                try
-                {
-                    Uri uri = new Uri($"http://localhost:50236/api/product/products/{t.Key}/sale{t.Value}");
-
-                    HttpStringContent content = new HttpStringContent("", encoding: Windows.Storage.Streams.UnicodeEncoding.Utf8, mediaType: "application/json");
-                    HttpResponseMessage responseMessage = await client.PutAsync(uri, content);
-                    responseMessage.EnsureSuccessStatusCode();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
+                tasks.Add(ChangeSalePrice(t.Key, t.Value));
             });
+            await Task.WhenAll(tasks);
+            GetProducts();
+        }
 
+        private async Task ChangeSalePrice(int productid, double percentage)
+        {
+            try
+            {
+                Uri uri = new Uri($"http://localhost:50236/api/product/products/{productid}/sale{percentage}");
+
+                HttpStringContent content = new HttpStringContent("", encoding: Windows.Storage.Streams.UnicodeEncoding.Utf8, mediaType: "application/json");
+                HttpResponseMessage responseMessage = await client.PutAsync(uri, content);
+                responseMessage.EnsureSuccessStatusCode();
+            }
+            catch (Exception)
+            {
+                ShowMessageDialog("Something went wrong while saving, try again!");
+            }
+        }
+
+        private async void ShowMessageDialog(string text)
+        {
+            var messageDialog = new MessageDialog(text);
+            messageDialog.Commands.Add(new UICommand("Ok"));
+            messageDialog.Commands.Add(new UICommand("Close"));
+            await messageDialog.ShowAsync();
         }
     }
 }
