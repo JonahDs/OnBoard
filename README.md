@@ -31,3 +31,5 @@ tenslotte AccuWeather voor het ophalen van het weer. Voor geen van de API's is e
 het makkelijkste te implementeren en waren ook gratis. Let wel dat de weer API maar 30 calls per dag kan realiseren.
 
 Het maken van de app werd mogelijk gemaakt door alle 3 de groepsleden, waarbij er geen moeilijkheden ondervonden werden.
+
+Moest het project niet correct geladen worden kan het gecloned worden met https://github.com/JonahDs/OnBoard.git
