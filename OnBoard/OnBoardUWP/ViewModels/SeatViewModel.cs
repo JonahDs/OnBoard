@@ -17,7 +17,14 @@ namespace OnBoardUWP.ViewModels
         public RelayCommand SelectUserCommand { get; set; }
         public RelayCommand SwitchSeatsCommand { get; set; }
        
-        public bool HasTwoSeats => _selectedSeats.Count == 2;
+        public bool HasTwoSeats => _selectedSeats.Count == 2 && !NeedsRefresh;
+        private bool _needsRefresh;
+        public bool NeedsRefresh {
+            get { return _needsRefresh; }
+            set {
+                Set(ref _needsRefresh, value);
+            }
+        }
 
         public SeatViewModel()
         {
@@ -38,6 +45,8 @@ namespace OnBoardUWP.ViewModels
                 HttpResponseMessage message = await client.PutAsync(uri, content);
                 message.EnsureSuccessStatusCode();
                 _selectedSeats.Clear();
+                NeedsRefresh = true;
+                OnPropertyChanged(nameof(HasTwoSeats));
             }
             catch (Exception e)
             {
@@ -53,6 +62,7 @@ namespace OnBoardUWP.ViewModels
             {
                 _selectedSeats.Add(seatnr);
             }
+            NeedsRefresh = false;
             OnPropertyChanged(nameof(HasTwoSeats));
             if (_selectedSeats.Count > 2)
                 ShowMessageDialog("You can only select 2 passengers to switch seats");

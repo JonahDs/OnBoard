@@ -62,9 +62,7 @@
             </ListView>
             <StackPanel Orientation="Horizontal" Grid.Row="2">
                 <Button Content="Switch Passengers" Style="{StaticResource ButtonStyle}" Margin="0,0,10,0" Command="{x:Bind seatViewModel.SwitchSeatsCommand}" IsEnabled="{x:Bind seatViewModel.HasTwoSeats, Mode=OneWay}"></Button>
-                <Button Content="Refresh" Style="{StaticResource ButtonStyle}" Click="Refresh">
-
-                </Button>
+                <Button Content="Refresh" Style="{StaticResource ButtonStyle}" Click="Refresh" IsEnabled="{x:Bind seatViewModel.NeedsRefresh, Mode=OneWay}"></Button>
             </StackPanel>
         </Grid>
     </ScrollViewer>

@@ -110,6 +110,7 @@ namespace OnBoardUWP.ViewModels
                 IsLoading = false;
                 throw ex;
             }
+            IsLoading = false;
         }
 
         public void Refresh()
