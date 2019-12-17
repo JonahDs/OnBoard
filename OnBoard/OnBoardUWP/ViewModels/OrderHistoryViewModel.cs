@@ -30,12 +30,21 @@ namespace OnBoardUWP.ViewModels
         /// <returns></returns>
         public async void GetOrdersFromUser(User loggedUser)
         {
-            Orders = await GlobalMethods.ApiCall<ObservableCollection<Order>>($"http://localhost:50236/api/order/orders/{loggedUser.Id}", client);
+            try
+            {
+                Orders = await GlobalMethods.ApiCall<ObservableCollection<Order>>($"http://localhost:50236/api/order/orders/{loggedUser.Id}", client);
+            }
+            catch { }
+
         }
 
         public async void GetAllOrders()
         {
-            Orders = await GlobalMethods.ApiCall<ObservableCollection<Order>>("http://localhost:50236/api/order/orders", client);
+            try
+            {
+                Orders = await GlobalMethods.ApiCall<ObservableCollection<Order>>("http://localhost:50236/api/order/orders", client);
+            }
+            catch { }
         }
 
         public async void UpdateOrderState(int orderId, string state)
@@ -48,9 +57,9 @@ namespace OnBoardUWP.ViewModels
                 HttpResponseMessage responseMessage = await client.PutAsync(uri, content);
                 responseMessage.EnsureSuccessStatusCode();
             }
-            catch (Exception )
+            catch (Exception)
             {
-                throw;
+                //throw;
             }
         }
     }

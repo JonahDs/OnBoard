@@ -14,14 +14,14 @@
             <Grid Margin="10">
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Orders from" Margin="0,0,6,20" FontSize="30"></TextBlock>
-                        <TextBlock Text="{x:Bind  homepageModel.Seat.User.Firstname}" FontSize="30"></TextBlock>
-                        <TextBlock Text="{x:Bind  homepageModel.Seat.User.Name}" Margin="6,0,0,0" FontSize="30"></TextBlock>
+                        <TextBlock Text="Orders from" Margin="0,0,6,20" Style="{StaticResource Title}"></TextBlock>
+                        <TextBlock Text="{x:Bind  homepageModel.Seat.User.Firstname}" Style="{StaticResource Title}"></TextBlock>
+                        <TextBlock Text="{x:Bind  homepageModel.Seat.User.Name}" Margin="6,0,0,0" Style="{StaticResource Title}"></TextBlock>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="12,0,0,10">
-                        <TextBlock Width="100" Text="Status" FontWeight="Bold"/>
-                        <TextBlock Width="260" Text="Product" FontWeight="Bold"/>
-                        <TextBlock Width="80" Text="Amount" FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10" Padding="10" Background="{StaticResource Background}">
+                        <TextBlock Width="100" Text="Status" Style="{StaticResource TableHeader}"/>
+                        <TextBlock Width="260" Text="Product" Style="{StaticResource TableHeader}"/>
+                        <TextBlock Width="80" Text="Amount" Style="{StaticResource TableHeader}"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <ListView x:Name="orderListview" ItemsSource="{x:Bind viewModel.Orders, Mode=OneWay}">
@@ -49,13 +49,11 @@
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
-                                        
-                                       
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Button x:Name="GoBack" HorizontalAlignment="Right" Content="Back to catalog" Click="goBackToCatalog" Margin="0,14,40,40"></Button>
+                        <Button x:Name="GoBack" HorizontalAlignment="Right" Style="{StaticResource ButtonStyle}" Content="Back to catalog" Click="goBackToCatalog" Margin="0,14,40,40"></Button>
                     </StackPanel>
                 </StackPanel>
             </Grid>

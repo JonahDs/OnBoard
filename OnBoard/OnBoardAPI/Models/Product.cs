@@ -23,8 +23,6 @@ namespace OnBoardAPI.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public ProductType ProductType { get; set; }
 
-        public string ProductDescription { get; set; }
-
         [JsonIgnore]
         public IEnumerable<OrderDetail> OrderDetails { get; set; }
 

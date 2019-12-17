@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Media.Core;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -36,9 +37,17 @@ namespace OnBoardUWP.Views
             vm.Playlist = (Playlist)e.Parameter;                   
         }
 
-        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        private async void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            mediaSimple.Source = new Uri(((Music)e.ClickedItem).Link);
+            try
+            {
+                mediaSimple.Source = new Uri(((Music)e.ClickedItem).Link);
+            }
+            catch
+            {
+                await new MessageDialog("The selected song could not be found").ShowAsync();
+            }
+            
         }
     }
 }

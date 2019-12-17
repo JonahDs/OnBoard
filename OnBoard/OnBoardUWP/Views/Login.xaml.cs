@@ -41,6 +41,7 @@ namespace OnBoardUWP.Views
             }
             catch (Exception ex)
             {
+                homepage.IsLoading = false;
                 await new MessageDialog(ex.Message, "Sorry, we coudn't fetch any account with given information :(").ShowAsync();
                 return;
             }

@@ -1,0 +1,41 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OnBoardUWP">
+
+    <SolidColorBrush x:Key="Background" Color="#FFA8C3EB"/>
+    <SolidColorBrush x:Key="Foreground" Color="#FF1E4988"/>
+
+    <Style x:Key="ButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Background}"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource Foreground}"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="FontFamily" Value="Segoe UI"></Setter>
+    </Style>
+
+    <Style TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe UI"></Setter>
+    </Style>
+    
+    <Style x:Key="Title" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource Foreground}"></Setter>
+        <Setter Property="FontSize" Value="30"></Setter>
+        <Setter Property="FontFamily" Value="Segoe UI"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+    </Style>
+
+    <Style x:Key="TableHeader" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource Foreground}"></Setter>
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="FontFamily" Value="Segoe UI"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+    </Style>
+
+    <Style x:Key="HomepageText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource Foreground}"></Setter>
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="FontFamily" Value="Segoe UI"></Setter>
+    </Style>
+
+
+</ResourceDictionary>

@@ -49,21 +49,21 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel x:Name="passenger" Orientation="Vertical" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock x:Name="seatTitle" Height="38" Text="Enter seat number" FontWeight="Bold" FontSize="30" TextWrapping="Wrap"/>
-            <TextBox x:Name="seatNumber" Text="TextBox" Height="120" Width="260" FontSize="35" Margin="0,0,0,10" BeforeTextChanging="Textbox_BeforeChange"/>
-            <Button Content="Enter" HorizontalAlignment="Center" Click="Button_Click"/>
+            <TextBlock x:Name="seatTitle" Style="{StaticResource Title}" Height="38" Text="Enter seat number" TextWrapping="Wrap"/>
+            <TextBox x:Name="seatNumber" Height="120" Width="260" FontSize="35" Margin="0,0,0,10" BeforeTextChanging="Textbox_BeforeChange"/>
+            <Button Content="Enter" HorizontalAlignment="Center" Click="Button_Click" Style="{StaticResource ButtonStyle}"/>
         </StackPanel>
         <StackPanel x:Name="crew" Orientation="Vertical" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock x:Name="crewTitle" Text="I'm a crewmember" FontSize="30" FontWeight="Bold" TextWrapping="Wrap"/>
-            <TextBox x:Name="hostedId" Text="TextBox" Height="120" Width="260" FontSize="35" Margin="0,0,0,10" BeforeTextChanging="Textbox_BeforeChange"/>
-            <Button Content="Enter" HorizontalAlignment="Center" Click="ButtonAir_Click"/>
+            <TextBlock x:Name="crewTitle" Style="{StaticResource Title}" Text="I'm a crewmember" TextWrapping="Wrap"/>
+            <TextBox x:Name="hostedId" Height="120" Width="260" FontSize="35" Margin="0,0,0,10" BeforeTextChanging="Textbox_BeforeChange"/>
+            <Button Content="Enter" HorizontalAlignment="Center" Click="ButtonAir_Click" Style="{StaticResource ButtonStyle}"/>
         </StackPanel>
 
         <controls:Loading x:Name="LoadingControl" IsLoading="{x:Bind homepage.IsLoading, Mode=OneWay}" Background="AliceBlue" Opacity="80" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
-                <ProgressRing IsActive="True" />
+                <ProgressRing IsActive="True" Margin="0,0,10,0"/>
                 <Border Background="AliceBlue" Opacity="80"></Border>
-                <TextBlock Text="We are fetching your account!" Foreground="Black" VerticalAlignment="Center" />
+                <TextBlock Text="We are fetching your account!" Style="{StaticResource Title}" VerticalAlignment="Center" />
             </StackPanel>
         </controls:Loading>
     </Grid>
