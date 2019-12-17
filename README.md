@@ -5,17 +5,17 @@ Groep J7 - De Bleecker Bram, De Bruycker Johanna, De Smet Jonah
 
 Als je wilt aanmelden als een passagier gebruik je het SeatNr, voor een crewmember is het CrewmemberNr
 
-Passagiers
-De Bruycker Johanna - SeatNr: 2 - Group: 2
-De Smet Jonah - SeatNr: 1 - Group: 2
-De bleecker Bram - SeatNr: 3 - Group: 2
-De Bakker Helena - SeatNr: 4 - Group: 1
-De Bakker Kurt - SeatNr: 5 - Group: 1
-De Bakker Astrid - SeatNr: 6 - Group: 1
+Passagiers  
+De Bruycker Johanna - SeatNr: 2 - Group: 2  
+De Smet Jonah - SeatNr: 1 - Group: 2  
+De bleecker Bram - SeatNr: 3 - Group: 2  
+De Bakker Helena - SeatNr: 4 - Group: 1  
+De Bakker Kurt - SeatNr: 5 - Group: 1  
+De Bakker Astrid - SeatNr: 6 - Group: 1  
 
-Crewmembers
-Garcia Maria - CrewmemberNr: 1234
-De Visser Bart - CrewmemberNr: 1111
+Crewmembers  
+Garcia Maria - CrewmemberNr: 1234  
+De Visser Bart - CrewmemberNr: 1111  
 
 
 Sommige gebruikers hebben orders (in dataInit).
